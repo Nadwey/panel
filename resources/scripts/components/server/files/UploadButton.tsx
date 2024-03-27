@@ -1,4 +1,4 @@
-import { CloudUploadIcon } from '@heroicons/react/outline';
+import { CloudUploadIcon } from '@heroicons/react/24/outline';
 import { useSignal } from '@preact/signals-react';
 import axios from 'axios';
 import { useEffect, useRef } from 'react';

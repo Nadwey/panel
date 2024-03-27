@@ -1,4 +1,4 @@
-import { CloudUploadIcon, XIcon } from '@heroicons/react/solid';
+import { CloudUploadIcon, XCircleIcon } from '@heroicons/react/24/solid';
 import { useSignal } from '@preact/signals-react';
 import { useContext, useEffect } from 'react';
 
@@ -53,7 +53,7 @@ const FileUploadList = () => {
                         onClick={cancelFileUpload.bind(this, name)}
                         className={'text-slate-500 transition-colors duration-75 hover:text-slate-200'}
                     >
-                        <XIcon className={'h-5 w-5'} />
+                        <XCircleIcon className={'h-5 w-5'} />
                     </button>
                 </div>
             ))}

@@ -24,6 +24,6 @@ class AuthServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        Sanctum::ignoreMigrations();
+        // Sanctum::ignoreMigrations();
     }
 }

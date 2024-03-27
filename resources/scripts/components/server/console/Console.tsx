@@ -1,13 +1,12 @@
-import { ChevronDoubleRightIcon } from '@heroicons/react/solid';
+import { ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
-import { debounce } from 'debounce';
+import debounce from 'debounce';
 import type { KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ITerminalInitOnlyOptions, ITerminalOptions, ITheme } from 'xterm';
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
 import { SearchAddon } from 'xterm-addon-search';
-import { SearchBarAddon } from 'xterm-addon-search-bar';
 import { WebLinksAddon } from 'xterm-addon-web-links';
 import { theme as th } from 'twin.macro';
 
@@ -64,7 +63,6 @@ export default () => {
     const terminal = useMemo(() => new Terminal({ ...terminalProps, ...terminalInitOnlyProps }), []);
     const fitAddon = new FitAddon();
     const searchAddon = new SearchAddon();
-    const searchBar = new SearchBarAddon({ searchAddon });
     const webLinksAddon = new WebLinksAddon();
     const scrollDownHelperAddon = new ScrollDownHelperAddon();
     const { connected, instance } = ServerContext.useStoreState(state => state.socket);
@@ -73,11 +71,6 @@ export default () => {
     const isTransferring = ServerContext.useStoreState(state => state.server.data!.isTransferring);
     const [history, setHistory] = usePersistedState<string[]>(`${serverId}:command_history`, []);
     const [historyIndex, setHistoryIndex] = useState(-1);
-    // SearchBarAddon has hardcoded z-index: 999 :(
-    const zIndex = `
-    .xterm-search-bar__addon {
-        z-index: 10;
-    }`;
 
     const handleConsoleOutput = (line: string, prelude = false) =>
         terminal.writeln((prelude ? TERMINAL_PRELUDE : '') + line.replace(/(?:\r\n|\r|\n)$/im, '') + '\u001b[0m');
@@ -132,13 +125,11 @@ export default () => {
         if (connected && ref.current && !terminal.element) {
             terminal.loadAddon(fitAddon);
             terminal.loadAddon(searchAddon);
-            terminal.loadAddon(searchBar);
             terminal.loadAddon(webLinksAddon);
             terminal.loadAddon(scrollDownHelperAddon);
 
             terminal.open(ref.current);
             fitAddon.fit();
-            searchBar.addNewStyle(zIndex);
 
             // Add support for capturing keys
             terminal.attachCustomKeyEventHandler((e: KeyboardEvent) => {
@@ -147,10 +138,9 @@ export default () => {
                     return false;
                 } else if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
                     e.preventDefault();
-                    searchBar.show();
                     return false;
                 } else if (e.key === 'Escape') {
-                    searchBar.hidden();
+                    
                 }
                 return true;
             });
