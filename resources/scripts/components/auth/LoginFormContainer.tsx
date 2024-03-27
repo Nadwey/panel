@@ -10,19 +10,19 @@ type Props = React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, 
 };
 
 const Container = styled.div`
-    ${({ theme }) => theme.breakpoints.up("small")} {
+    ${({ theme }) => theme.breakpoints.up('small')} {
         ${tw`w-4/5 mx-auto`}
     }
-    
-    ${({ theme }) => theme.breakpoints.up("medium")} {
+
+    ${({ theme }) => theme.breakpoints.up('medium')} {
         ${tw`p-10`}
     }
 
-    ${({ theme }) => theme.breakpoints.up("large")} {
+    ${({ theme }) => theme.breakpoints.up('large')} {
         ${tw`w-3/5`}
     }
 
-    ${({ theme }) => theme.breakpoints.up("xLarge")} {
+    ${({ theme }) => theme.breakpoints.up('xLarge')} {
         ${tw`w-full`}
         max-width: 700px;
     }

@@ -22,7 +22,7 @@ interface Values {
 const schema = object().shape({
     name: string().required('A nest name must be provided.').max(32, 'Nest name must not exceed 32 characters.'),
     description: string().max(255, 'Nest description must not exceed 255 characters.'),
-    author: string().email()
+    author: string().email(),
 });
 
 export default () => {
@@ -47,7 +47,11 @@ export default () => {
 
     return (
         <>
-            <Formik onSubmit={submit} initialValues={{ name: '', description: '', author: '' }} validationSchema={schema}>
+            <Formik
+                onSubmit={submit}
+                initialValues={{ name: '', description: '', author: '' }}
+                validationSchema={schema}
+            >
                 {({ isSubmitting, resetForm }) => (
                     <Modal
                         visible={visible}

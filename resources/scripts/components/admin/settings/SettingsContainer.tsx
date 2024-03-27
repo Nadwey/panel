@@ -1,4 +1,10 @@
-import { AdjustmentsVerticalIcon, CpuChipIcon, CodeBracketIcon, EnvelopeIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
+import {
+    AdjustmentsVerticalIcon,
+    CpuChipIcon,
+    CodeBracketIcon,
+    EnvelopeIcon,
+    ShieldCheckIcon,
+} from '@heroicons/react/24/outline';
 import { Route, Routes } from 'react-router-dom';
 import tw from 'twin.macro';
 

@@ -139,8 +139,6 @@ export default () => {
                 } else if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
                     e.preventDefault();
                     return false;
-                } else if (e.key === 'Escape') {
-                    
                 }
                 return true;
             });

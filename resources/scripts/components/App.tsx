@@ -13,7 +13,7 @@ import { ServerContext } from '@/state/server';
 import { SiteSettings } from '@/state/settings';
 import { AdminContext } from '@/state/admin';
 import { ThemeProvider as Provider } from 'styled-components';
-// @ts-ignore shut up
+// @ts-expect-error shut up
 import type { ThemeProviderProps } from 'styled-components';
 import { theme } from '@/theme';
 

@@ -33,11 +33,11 @@ const ModalContainer = styled.div<{ alignTop?: boolean }>`
     max-width: 95%;
     max-height: calc(100vh - 8rem);
 
-    ${({ theme }) => theme.breakpoints.up("medium")} {
+    ${({ theme }) => theme.breakpoints.up('medium')} {
         max-width: 75%;
     }
 
-    ${({ theme }) => theme.breakpoints.up("large")} {
+    ${({ theme }) => theme.breakpoints.up('large')} {
         max-width: 50%;
     }
 
@@ -46,7 +46,7 @@ const ModalContainer = styled.div<{ alignTop?: boolean }>`
         props.alignTop &&
         css`
             margin-top: 20%;
-            ${({ theme }) => theme.breakpoints.up("medium")} {
+            ${({ theme }) => theme.breakpoints.up('medium')} {
                 margin-top: 10%;
             }
         `};

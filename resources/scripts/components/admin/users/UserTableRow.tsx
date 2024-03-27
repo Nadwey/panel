@@ -1,4 +1,11 @@
-import { NoSymbolIcon, EllipsisVerticalIcon, LockOpenIcon, PencilIcon, LifebuoyIcon, TrashIcon } from '@heroicons/react/24/solid';
+import {
+    NoSymbolIcon,
+    EllipsisVerticalIcon,
+    LockOpenIcon,
+    PencilIcon,
+    LifebuoyIcon,
+    TrashIcon,
+} from '@heroicons/react/24/solid';
 import { useState } from 'react';
 
 import Checkbox from '@/components/elements/inputs/Checkbox';

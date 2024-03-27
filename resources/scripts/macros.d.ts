@@ -1,6 +1,6 @@
 import { ComponentType, ReactElement } from 'react';
 import styledImport, { css as cssImport, CSSProp, StyledComponentProps } from 'styled-components';
-import { theme } from "./theme";
+import { theme } from './theme';
 import { StyledBreakpointsTheme } from 'styled-breakpoints';
 
 type MyTheme = typeof theme;

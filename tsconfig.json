@@ -7,15 +7,9 @@
         "module": "ESNext",
         "target": "ES2019",
         "paths": {
-            "@/*": [
-                "./resources/scripts/*"
-            ],
-            "@definitions/*": [
-                "./resources/scripts/api/definitions/*"
-            ],
-            "@feature/*": [
-                "./resources/scripts/components/server/features/*"
-            ]
+            "@/*": ["./resources/scripts/*"],
+            "@definitions/*": ["./resources/scripts/api/definitions/*"],
+            "@feature/*": ["./resources/scripts/components/server/features/*"]
         },
         "plugins": [
             {
