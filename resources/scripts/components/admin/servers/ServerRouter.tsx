@@ -18,6 +18,7 @@ import {
     FolderIcon,
     ShieldExclamationIcon,
 } from '@heroicons/react/24/outline';
+import DatabasesContainer from '../databases/DatabasesContainer';
 
 export default () => {
     const params = useParams<'id'>();
@@ -79,6 +80,7 @@ export default () => {
             <Routes>
                 <Route path="" element={<ServerSettingsContainer />} />
                 <Route path="startup" element={<ServerStartupContainer />} />
+                <Route path="databases" element={<DatabasesContainer />} />
                 <Route path="manage" element={<ServerManageContainer />} />
             </Routes>
         </AdminContentBlock>
