@@ -12,7 +12,7 @@ class AddExternalIdColumnToServersTable extends Migration
     public function up(): void
     {
         Schema::table('servers', function (Blueprint $table) {
-            $table->string('external_id')->after('id')->nullable()->unique();
+            $table->string('external_id')->after('id')->default(null)->nullable()->unique();
         });
     }
 
