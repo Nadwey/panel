@@ -90,11 +90,11 @@ function Modal({
     }, [isDismissable, closeOnEscape, render]);
 
     useEffect(() => {
-        setRender(visible);
+        if (!render) onDismissed();
+    }, [render]);
 
-        if (!visible) {
-            onDismissed();
-        }
+    useEffect(() => {
+        setRender(visible);
     }, [visible]);
 
     return (
