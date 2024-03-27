@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 
 import Spinner from '@/components/elements/Spinner';
-import { breakpoint } from '@/theme';
+import { theme } from '@/theme';
 import FadeTransition from '@/components/elements/transitions/FadeTransition';
 
 export interface RequiredModalProps {
@@ -32,15 +32,23 @@ export const ModalMask = styled.div`
 const ModalContainer = styled.div<{ alignTop?: boolean }>`
     max-width: 95%;
     max-height: calc(100vh - 8rem);
-    ${breakpoint('md')`max-width: 75%`};
-    ${breakpoint('lg')`max-width: 50%`};
+
+    ${({ theme }) => theme.breakpoints.up("medium")} {
+        max-width: 75%;
+    }
+
+    ${({ theme }) => theme.breakpoints.up("large")} {
+        max-width: 50%;
+    }
 
     ${tw`relative flex flex-col w-full m-auto`};
     ${props =>
         props.alignTop &&
         css`
             margin-top: 20%;
-            ${breakpoint('md')`margin-top: 10%`};
+            ${({ theme }) => theme.breakpoints.up("medium")} {
+                margin-top: 10%;
+            }
         `};
 
     margin-bottom: auto;

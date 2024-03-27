@@ -1,4 +1,10 @@
-export const breakpoint = (size: string) => {
-    if (size === "xl") return (str: string) => str;
-    return (str: string) => null;
-};
+import { createStyledBreakpointsTheme } from 'styled-breakpoints';
+
+export const theme = createStyledBreakpointsTheme({
+    breakpoints: {
+        small: '640px',
+        medium: '768px',
+        large: '1024px',
+        xLarge: '1280px',
+    },
+});

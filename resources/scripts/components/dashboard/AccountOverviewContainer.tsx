@@ -4,7 +4,6 @@ import UpdateEmailAddressForm from '@/components/dashboard/forms/UpdateEmailAddr
 import ConfigureTwoFactorForm from '@/components/dashboard/forms/ConfigureTwoFactorForm';
 import PageContentBlock from '@/components/elements/PageContentBlock';
 import tw from 'twin.macro';
-import { breakpoint } from '@/theme';
 import styled from 'styled-components';
 import MessageBox from '@/components/MessageBox';
 import { useLocation } from 'react-router-dom';
@@ -15,13 +14,13 @@ const Container = styled.div`
     & > div {
         ${tw`w-full`};
 
-        ${breakpoint('sm')`
-      width: calc(50% - 1rem);
-    `}
+        ${({ theme }) => theme.breakpoints.up('small')} {
+            width: calc(50% - 1rem);
+        }
 
-        ${breakpoint('md')`
-      ${tw`w-auto flex-1`};
-    `}
+        ${({ theme }) => theme.breakpoints.up('medium')} {
+            ${tw`w-auto flex-1`};
+        }
     }
 `;
 

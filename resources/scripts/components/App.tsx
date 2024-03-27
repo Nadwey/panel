@@ -12,6 +12,10 @@ import { store } from '@/state';
 import { ServerContext } from '@/state/server';
 import { SiteSettings } from '@/state/settings';
 import { AdminContext } from '@/state/admin';
+import { ThemeProvider as Provider } from 'styled-components';
+// @ts-ignore shut up
+import type { ThemeProviderProps } from 'styled-components';
+import { theme } from '@/theme';
 
 const AdminRouter = lazy(() => import('@/routers/AdminRouter'));
 const AuthenticationRouter = lazy(() => import('@/routers/AuthenticationRouter'));
@@ -38,6 +42,12 @@ interface ExtendedWindow extends Window {
 
 // setupInterceptors(history);
 
+export interface ThemeProviderProps {
+    children: React.ReactNode;
+}
+
+export const ThemeProvider = ({ children }: ThemeProviderProps) => <Provider theme={theme}>{children}</Provider>;
+
 function App() {
     const { PterodactylUser, SiteConfiguration } = window as ExtendedWindow;
     if (PterodactylUser && !store.getState().user.data) {
@@ -61,63 +71,64 @@ function App() {
 
     return (
         <>
-            {/* @ts-expect-error go away */}
             <GlobalStylesheet />
 
             <StoreProvider store={store}>
-                <ProgressBar />
+                <ThemeProvider>
+                    <ProgressBar />
 
-                <div className="mx-auto w-auto">
-                    <BrowserRouter>
-                        <Routes>
-                            <Route
-                                path="/auth/*"
-                                element={
-                                    <Spinner.Suspense>
-                                        <AuthenticationRouter />
-                                    </Spinner.Suspense>
-                                }
-                            />
-
-                            <Route
-                                path="/server/:id/*"
-                                element={
-                                    <AuthenticatedRoute>
+                    <div className="mx-auto w-auto">
+                        <BrowserRouter>
+                            <Routes>
+                                <Route
+                                    path="/auth/*"
+                                    element={
                                         <Spinner.Suspense>
-                                            <ServerContext.Provider>
-                                                <ServerRouter />
-                                            </ServerContext.Provider>
+                                            <AuthenticationRouter />
                                         </Spinner.Suspense>
-                                    </AuthenticatedRoute>
-                                }
-                            />
+                                    }
+                                />
 
-                            <Route
-                                path="/admin/*"
-                                element={
-                                    <Spinner.Suspense>
-                                        <AdminContext.Provider>
-                                            <AdminRouter />
-                                        </AdminContext.Provider>
-                                    </Spinner.Suspense>
-                                }
-                            />
+                                <Route
+                                    path="/server/:id/*"
+                                    element={
+                                        <AuthenticatedRoute>
+                                            <Spinner.Suspense>
+                                                <ServerContext.Provider>
+                                                    <ServerRouter />
+                                                </ServerContext.Provider>
+                                            </Spinner.Suspense>
+                                        </AuthenticatedRoute>
+                                    }
+                                />
 
-                            <Route
-                                path="/*"
-                                element={
-                                    <AuthenticatedRoute>
+                                <Route
+                                    path="/admin/*"
+                                    element={
                                         <Spinner.Suspense>
-                                            <DashboardRouter />
+                                            <AdminContext.Provider>
+                                                <AdminRouter />
+                                            </AdminContext.Provider>
                                         </Spinner.Suspense>
-                                    </AuthenticatedRoute>
-                                }
-                            />
+                                    }
+                                />
 
-                            <Route path="*" element={<NotFound />} />
-                        </Routes>
-                    </BrowserRouter>
-                </div>
+                                <Route
+                                    path="/*"
+                                    element={
+                                        <AuthenticatedRoute>
+                                            <Spinner.Suspense>
+                                                <DashboardRouter />
+                                            </Spinner.Suspense>
+                                        </AuthenticatedRoute>
+                                    }
+                                />
+
+                                <Route path="*" element={<NotFound />} />
+                            </Routes>
+                        </BrowserRouter>
+                    </div>
+                </ThemeProvider>
             </StoreProvider>
         </>
     );

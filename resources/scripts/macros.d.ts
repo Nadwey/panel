@@ -1,6 +1,9 @@
 import { ComponentType, ReactElement } from 'react';
-// eslint-disable-next-line no-restricted-imports
 import styledImport, { css as cssImport, CSSProp, StyledComponentProps } from 'styled-components';
+import { theme } from "./theme";
+import { StyledBreakpointsTheme } from 'styled-breakpoints';
+
+type MyTheme = typeof theme;
 
 declare module 'react' {
     interface Attributes {
@@ -21,6 +24,8 @@ declare module 'styled-components' {
             props: StyledComponentProps<C, T, O, A> & { as?: Element | string; forwardedAs?: never | undefined },
         ): ReactElement<StyledComponentProps<C, T, O, A>>;
     }
+
+    export interface DefaultTheme extends MyTheme, StyledBreakpointsTheme {}
 }
 
 declare module 'twin.macro' {
