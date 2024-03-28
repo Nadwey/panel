@@ -3,6 +3,7 @@
 namespace Pterodactyl\Tests\Integration\Api\Client\Server;
 
 use Illuminate\Http\Response;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Pterodactyl\Models\Permission;
 use Pterodactyl\Repositories\Wings\DaemonPowerRepository;
 use Pterodactyl\Tests\Integration\Api\Client\ClientApiIntegrationTestCase;
@@ -15,9 +16,8 @@ class PowerControllerTest extends ClientApiIntegrationTestCase
      * the command to the server.
      *
      * @param string[] $permissions
-     *
-     * @dataProvider invalidPermissionDataProvider
      */
+    #[DataProvider('invalidPermissionDataProvider')]
     public function testSubuserWithoutPermissionsReceivesError(string $action, array $permissions)
     {
         [$user, $server] = $this->generateTestAccount($permissions);
@@ -45,9 +45,8 @@ class PowerControllerTest extends ClientApiIntegrationTestCase
 
     /**
      * Test that sending a valid power actions works.
-     *
-     * @dataProvider validPowerActionDataProvider
      */
+    #[DataProvider('validPowerActionDataProvider')]
     public function testActionCanBeSentToServer(string $action, string $permission)
     {
         $service = \Mockery::mock(DaemonPowerRepository::class);

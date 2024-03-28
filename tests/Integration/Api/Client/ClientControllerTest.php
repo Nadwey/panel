@@ -2,6 +2,7 @@
 
 namespace Pterodactyl\Tests\Integration\Api\Client;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Pterodactyl\Models\User;
 use Pterodactyl\Models\Server;
 use Pterodactyl\Models\Subuser;
@@ -285,9 +286,8 @@ class ClientControllerTest extends ClientApiIntegrationTestCase
     /**
      * Test that no servers get returned if the user requests all admin level servers by using
      * ?type=admin or ?type=admin-all in the request.
-     *
-     * @dataProvider filterTypeDataProvider
      */
+    #[DataProvider('filterTypeDataProvider')]
     public function testNoServersAreReturnedIfAdminFilterIsPassedByRegularUser(string $type)
     {
         /** @var User[] $users */
