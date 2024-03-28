@@ -90,7 +90,9 @@ class DropdownMenu extends PureComponent<Props, State> {
     override render() {
         return (
             <div>
-                {this.props.renderToggle(this.onClickHandler)}
+                {this.props.renderToggle(e => {
+                    this.onClickHandler(e);
+                })}
 
                 <FadeTransition duration="duration-150" show={this.state.visible} appear unmount>
                     <div
