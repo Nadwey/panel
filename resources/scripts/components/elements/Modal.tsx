@@ -5,7 +5,6 @@ import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 
 import Spinner from '@/components/elements/Spinner';
-import { theme } from '@/theme';
 import FadeTransition from '@/components/elements/transitions/FadeTransition';
 
 export interface RequiredModalProps {
