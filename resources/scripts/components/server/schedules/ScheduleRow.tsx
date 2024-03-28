@@ -4,9 +4,10 @@ import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { format } from 'date-fns';
 import tw from 'twin.macro';
 import ScheduleCronRow from '@/components/server/schedules/ScheduleCronRow';
+import DeleteScheduleButton from './DeleteScheduleButton';
 
-export default ({ schedule }: { schedule: Schedule }) => (
-    <>
+export default ({ schedule }: { schedule: Schedule }) => {
+    return <>
         <div css={tw`hidden md:block`}>
             <FontAwesomeIcon icon={faCalendarAlt} fixedWidth />
         </div>
@@ -37,5 +38,6 @@ export default ({ schedule }: { schedule: Schedule }) => (
                 {schedule.isProcessing ? 'Processing' : schedule.isActive ? 'Active' : 'Inactive'}
             </p>
         </div>
+        <DeleteScheduleButton scheduleId={schedule.id} />
     </>
-);
+};

@@ -47,7 +47,7 @@ export default ({ backup, className }: Props) => {
     });
 
     return (
-        <GreyRowBox css={tw`flex-wrap md:flex-nowrap items-center`} className={className}>
+        <GreyRowBox css={tw`flex-wrap md:flex-nowrap items-center overflow-visible`} className={className}>
             <div css={tw`flex items-center truncate w-full md:flex-1`}>
                 <div css={tw`mr-4`}>
                     {backup.completedAt !== null ? (

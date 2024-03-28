@@ -10,13 +10,13 @@ import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 
 interface Props {
     scheduleId: number;
-    onDeleted: () => void;
 }
 
-export default ({ scheduleId, onDeleted }: Props) => {
+export default ({ scheduleId }: Props) => {
     const [visible, setVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const uuid = ServerContext.useStoreState(state => state.server.data!.uuid);
+    const removeSchedule = ServerContext.useStoreActions(actions => actions.schedules.removeSchedule);
     const { addError, clearFlashes } = useStoreActions((actions: Actions<ApplicationStore>) => actions.flashes);
 
     const onDelete = () => {
@@ -25,7 +25,7 @@ export default ({ scheduleId, onDeleted }: Props) => {
         deleteSchedule(uuid, scheduleId)
             .then(() => {
                 setIsLoading(false);
-                onDeleted();
+                removeSchedule(scheduleId);
             })
             .catch(error => {
                 console.error(error);
