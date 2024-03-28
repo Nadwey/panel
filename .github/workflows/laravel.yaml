@@ -24,7 +24,7 @@ jobs:
       QUEUE_CONNECTION: sync
     steps:
       - name: Code checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -97,7 +97,7 @@ jobs:
       DB_USERNAME: root
     steps:
       - name: Code checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get cache directory
         id: composer-cache
@@ -105,7 +105,7 @@ jobs:
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
@@ -172,7 +172,7 @@ jobs:
       DB_PASSWORD: postgres
     steps:
       - name: Code checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get cache directory
         id: composer-cache
@@ -180,7 +180,7 @@ jobs:
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ matrix.php }}-${{ hashFiles('**/composer.lock') }}
