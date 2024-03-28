@@ -78,8 +78,7 @@ export default () => {
                         <div css={tw`px-4 py-4`}>
                             {versionData?.panel.current === 'canary' ? (
                                 <p css={tw`text-neutral-200`}>
-                                    I hope you enjoy living on the edge because you are running a{' '}
-                                    <Code>{versionData?.panel.current}</Code> version of Pterodactyl.
+                                    Yo, that Pterodactyl version (<Code>{versionData?.panel.current}</Code>) is straight-up sus. You livin' on the wild side, bruh?
                                 </p>
                             ) : versionData?.panel.latest === versionData?.panel.current ? (
                                 <p css={tw`text-neutral-200`}>
