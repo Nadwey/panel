@@ -4,7 +4,6 @@ use Illuminate\Support\Str;
 use NunoMaduro\Collision\Provider;
 use Illuminate\Contracts\Console\Kernel;
 use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\ErrorHandler\ErrorHandler;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -46,6 +45,3 @@ if (!env('SKIP_MIGRATIONS')) {
 } else {
     $output->writeln(PHP_EOL . '<comment>Skipping database migrations...</comment>' . PHP_EOL);
 }
-
-// https://github.com/symfony/symfony/issues/53812
-ErrorHandler::register(null, false);

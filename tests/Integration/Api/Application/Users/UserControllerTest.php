@@ -7,7 +7,6 @@ use Illuminate\Http\Response;
 use Pterodactyl\Transformers\Api\Application\UserTransformer;
 use Pterodactyl\Transformers\Api\Application\ServerTransformer;
 use Pterodactyl\Tests\Integration\Api\Application\ApplicationApiIntegrationTestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
 
 class UserControllerTest extends ApplicationApiIntegrationTestCase
 {
@@ -244,8 +243,9 @@ class UserControllerTest extends ApplicationApiIntegrationTestCase
     /**
      * Test that an API key without write permissions cannot create, update, or
      * delete a user model.
+     *
+     * @dataProvider userWriteEndpointsDataProvider
      */
-    #[DataProvider('userWriteEndpointsDataProvider')]
     public function testApiKeyWithoutWritePermissions(string $method, string $url)
     {
         $this->markTestSkipped('todo: implement proper admin api key permissions system');
