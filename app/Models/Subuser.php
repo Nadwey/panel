@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property array $permissions
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Pterodactyl\Models\User $user
- * @property \Pterodactyl\Models\Server $server
+ * @property User $user
+ * @property Server $server
  */
 class Subuser extends Model
 {

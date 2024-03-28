@@ -26,7 +26,7 @@ use Pterodactyl\Contracts\Extensions\HashidsInterface;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $hashid
- * @property \Pterodactyl\Models\Server $server
+ * @property Server $server
  * @property \Pterodactyl\Models\Task[]|\Illuminate\Support\Collection $tasks
  */
 class Schedule extends Model
@@ -102,9 +102,6 @@ class Schedule extends Model
         'next_run_at' => 'nullable|date',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     public function getRouteKeyName(): string
     {
         return $this->getKeyName();

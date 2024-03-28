@@ -39,7 +39,7 @@ class ResetPasswordController extends Controller
     /**
      * Reset the given user's password.
      *
-     * @throws \Pterodactyl\Exceptions\DisplayException
+     * @throws DisplayException
      */
     public function __invoke(ResetPasswordRequest $request): JsonResponse
     {

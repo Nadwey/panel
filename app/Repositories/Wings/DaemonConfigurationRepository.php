@@ -12,7 +12,7 @@ class DaemonConfigurationRepository extends DaemonRepository
     /**
      * Returns system information from the wings instance.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws DaemonConnectionException
      */
     public function getSystemInformation(?int $version = null): array
     {
@@ -30,7 +30,7 @@ class DaemonConfigurationRepository extends DaemonRepository
      * this instance using a passed-in model. This allows us to change plenty of information
      * in the model, and still use the old, pre-update model to actually make the HTTP request.
      *
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws DaemonConnectionException
      */
     public function update(Node $node): ResponseInterface
     {

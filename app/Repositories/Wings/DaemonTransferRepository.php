@@ -10,7 +10,7 @@ use Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException;
 class DaemonTransferRepository extends DaemonRepository
 {
     /**
-     * @throws \Pterodactyl\Exceptions\Http\Connection\DaemonConnectionException
+     * @throws DaemonConnectionException
      */
     public function notify(Node $targetNode, Plain $token): void
     {

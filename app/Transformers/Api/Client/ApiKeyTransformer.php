@@ -7,9 +7,6 @@ use Pterodactyl\Transformers\Api\Transformer;
 
 class ApiKeyTransformer extends Transformer
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getResourceName(): string
     {
         return ApiKey::RESOURCE_NAME;

@@ -44,7 +44,7 @@ use Pterodactyl\Notifications\SendPasswordReset as ResetPasswordNotification;
  * @property string $avatar_url
  * @property string|null $admin_role_name
  * @property string $md5
- * @property \Pterodactyl\Models\AdminRole|null $adminRole
+ * @property AdminRole|null $adminRole
  * @property \Illuminate\Database\Eloquent\Collection|\Pterodactyl\Models\ApiKey[] $apiKeys
  * @property int|null $api_keys_count
  * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications

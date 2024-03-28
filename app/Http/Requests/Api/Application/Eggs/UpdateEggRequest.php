@@ -4,7 +4,7 @@ namespace Pterodactyl\Http\Requests\Api\Application\Eggs;
 
 class UpdateEggRequest extends StoreEggRequest
 {
-    public function rules(array $rules = null): array
+    public function rules(?array $rules = null): array
     {
         return [
             'nest_id' => 'sometimes|numeric|exists:nests,id',
@@ -18,7 +18,7 @@ class UpdateEggRequest extends StoreEggRequest
             'config_files' => 'sometimes|nullable|json',
             'config_startup' => 'sometimes|nullable|json',
             'config_stop' => 'sometimes|nullable|string|max:191',
-//            'config_from' => 'sometimes|nullable|numeric|exists:eggs,id',
+            //            'config_from' => 'sometimes|nullable|numeric|exists:eggs,id',
             'startup' => 'sometimes|string',
             'script_container' => 'sometimes|string',
             'script_entry' => 'sometimes|string',

@@ -19,8 +19,8 @@ use Pterodactyl\Contracts\Extensions\HashidsInterface;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $hashid
- * @property \Pterodactyl\Models\Schedule $schedule
- * @property \Pterodactyl\Models\Server $server
+ * @property Schedule $schedule
+ * @property Server $server
  */
 class Task extends Model
 {
@@ -93,9 +93,6 @@ class Task extends Model
         'continue_on_failure' => 'boolean',
     ];
 
-    /**
-     * {@inheritDoc}
-     */
     public function getRouteKeyName(): string
     {
         return $this->getKeyName();

@@ -91,7 +91,7 @@ class ServerDetailsController extends Controller
             ->get();
 
         $this->connection->transaction(function () use ($node, $servers) {
-            /** @var \Pterodactyl\Models\Server $server */
+            /** @var Server $server */
             foreach ($servers as $server) {
                 /** @var \Pterodactyl\Models\ActivityLog|null $activity */
                 $activity = $server->activity->first();

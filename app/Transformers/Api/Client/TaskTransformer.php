@@ -7,9 +7,6 @@ use Pterodactyl\Transformers\Api\Transformer;
 
 class TaskTransformer extends Transformer
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getResourceName(): string
     {
         return Task::RESOURCE_NAME;
