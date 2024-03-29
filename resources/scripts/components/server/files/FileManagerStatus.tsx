@@ -1,5 +1,5 @@
-import { CloudUploadIcon, XCircleIcon } from '@heroicons/react/24/solid';
-import { useSignal } from '@preact/signals-react';
+import { CloudArrowUpIcon, XCircleIcon } from '@heroicons/react/24/solid';
+import { useSignals, useSignal } from '@preact/signals-react/runtime';
 import { useContext, useEffect } from 'react';
 
 import { Button } from '@/components/elements/button/index';
@@ -32,6 +32,7 @@ const Spinner = ({ progress, className }: { progress: number; className?: string
 );
 
 const FileUploadList = () => {
+    useSignals();
     const { close } = useContext(DialogWrapperContext);
     const cancelFileUpload = ServerContext.useStoreActions(actions => actions.files.cancelFileUpload);
     const clearFileUploads = ServerContext.useStoreActions(actions => actions.files.clearFileUploads);
@@ -96,7 +97,7 @@ export default () => {
                         onClick={() => (open.value = true)}
                     >
                         <Spinner progress={(progress.uploaded / progress.total) * 100} className={'h-8 w-8'} />
-                        <CloudUploadIcon className={'absolute mx-auto h-3 animate-pulse'} />
+                        <CloudArrowUpIcon className={'absolute mx-auto h-3 animate-pulse'} />
                     </button>
                 </Tooltip>
             )}

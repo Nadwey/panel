@@ -24,6 +24,8 @@ import { FileActionCheckbox } from '@/components/server/files/SelectFileCheckbox
 import { hashToPath } from '@/helpers';
 import style from './style.module.css';
 import FadeTransition from '@/components/elements/transitions/FadeTransition';
+import UploadButton from './UploadButton';
+import FileManagerStatus from './FileManagerStatus';
 
 const sortFiles = (files: FileObject[]): FileObject[] => {
     const sortedFiles: FileObject[] = files
@@ -77,9 +79,9 @@ export default () => {
                     />
                     <Can action={'file.create'}>
                         <div className={style.manager_actions}>
-                            {/*<FileManagerStatus />*/}
+                            <FileManagerStatus />
                             <NewDirectoryButton />
-                            {/*<UploadButton />*/}
+                            <UploadButton />
                             <NavLink to={`/server/${id}/files/new${window.location.hash}`}>
                                 <Button>New File</Button>
                             </NavLink>
