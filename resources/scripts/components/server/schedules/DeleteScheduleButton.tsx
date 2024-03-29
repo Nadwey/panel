@@ -4,9 +4,10 @@ import { ServerContext } from '@/state/server';
 import { Actions, useStoreActions } from 'easy-peasy';
 import { ApplicationStore } from '@/state';
 import { httpErrorToHuman } from '@/api/http';
-import { Button } from '@/components/elements/button/index';
+import Button from '@/components/elements/Button';
 import { Dialog } from '@/components/elements/dialog';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
+import { TrashIcon } from '@heroicons/react/24/solid';
 
 interface Props {
     scheduleId: number;
@@ -48,13 +49,16 @@ export default ({ scheduleId }: Props) => {
                 <SpinnerOverlay visible={isLoading} />
                 All tasks will be removed and any running processes will be terminated.
             </Dialog.Confirm>
-            <Button.Danger
-                variant={Button.Variants.Secondary}
-                className={'mr-4 flex-1 border-transparent sm:flex-none'}
-                onClick={() => setVisible(true)}
+            <Button
+                isSecondary
+                color={'red'}
+                onClick={e => {
+                    e.preventDefault();
+                    setVisible(true);
+                }}
             >
-                Delete
-            </Button.Danger>
+                <TrashIcon height={'1rem'} />
+            </Button>
         </>
     );
 };

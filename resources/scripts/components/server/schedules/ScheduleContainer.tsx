@@ -48,11 +48,10 @@ function ScheduleContainer() {
                         </p>
                     ) : (
                         schedules.map(schedule => (
-                            // @ts-expect-error go away
                             <GreyRowBox
                                 key={schedule.id}
                                 as={Link}
-                                to={schedule.id}
+                                to={`${schedule.id}`}
                                 css={tw`cursor-pointer mb-2 flex-wrap`}
                             >
                                 <ScheduleRow schedule={schedule} />

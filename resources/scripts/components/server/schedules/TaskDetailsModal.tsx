@@ -36,8 +36,8 @@ const schema = object().shape({
     action: string().required().oneOf(['command', 'power', 'backup']),
     payload: string().when('action', {
         is: (v: string) => v !== 'backup',
-        then: string().required('A task payload must be provided.'),
-        otherwise: string(),
+        then: () => string().required('A task payload must be provided.'),
+        otherwise: () => string(),
     }),
     continueOnFailure: boolean(),
     timeOffset: number()
