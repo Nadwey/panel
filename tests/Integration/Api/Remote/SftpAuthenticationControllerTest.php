@@ -7,7 +7,7 @@ use Pterodactyl\Models\User;
 use Pterodactyl\Models\Server;
 use Pterodactyl\Models\Permission;
 use Pterodactyl\Models\UserSSHKey;
-use phpseclib3\Crypt\EC\PrivateKey;
+use phpseclib3\Crypt\EC;
 use Pterodactyl\Tests\Integration\IntegrationTestCase;
 
 class SftpAuthenticationControllerTest extends IntegrationTestCase
@@ -119,7 +119,7 @@ class SftpAuthenticationControllerTest extends IntegrationTestCase
             $this->postJson('/api/remote/sftp/auth', [
                 'type' => 'public_key',
                 'username' => $this->getUsername(),
-                'password' => PrivateKey::createKey('Ed25519')->getPublicKey()->toString('OpenSSH'),
+                'password' => EC::createKey('Ed25519')->getPublicKey()->toString("OpenSSH"),
             ])
                 ->assertForbidden();
         }
