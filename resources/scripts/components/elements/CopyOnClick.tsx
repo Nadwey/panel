@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import copy from 'copy-to-clipboard';
 import type { MouseEvent, ReactNode } from 'react';
 import { Children, cloneElement, isValidElement, useEffect, useState } from 'react';
 
@@ -37,7 +36,7 @@ const CopyOnClick = ({ text, showInNotification = true, children }: CopyOnClickP
               // @ts-expect-error I don't know
               className: classNames(children.props.className || '', 'cursor-pointer'),
               onClick: (e: MouseEvent<HTMLElement>) => {
-                  copy(String(text));
+                  navigator.clipboard.writeText(String(text));
                   setCopied(true);
                   if (typeof children.props.onClick === 'function') {
                       children.props.onClick(e);

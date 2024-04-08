@@ -15,7 +15,6 @@ import { useFlashKey } from '@/plugins/useFlash';
 import useFileManagerSwr from '@/plugins/useFileManagerSwr';
 import { ServerContext } from '@/state/server';
 
-
 function isFileOrDirectory(event: DragEvent): boolean {
     if (!event.dataTransfer?.types) {
         return false;
