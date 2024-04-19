@@ -38,6 +38,7 @@ function ServerStartupLineContainer({ egg, server }: { egg?: Egg; server: Server
         }
 
         // Whenever the egg is changed, set the server's startup command to the egg's default.
+        setFieldValue('eggId', egg.id);
         setFieldValue('image', Object.values(egg.dockerImages)[0] ?? '');
         setFieldValue('startup', '');
     }, [egg]);
