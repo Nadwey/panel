@@ -1,4 +1,4 @@
-import { ChipIcon, CodeIcon, MailIcon, ShieldCheckIcon } from '@heroicons/react/outline';
+import { CpuChipIcon, CodeBracketIcon, EnvelopeIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 import { Route, Routes } from 'react-router-dom';
 import tw from 'twin.macro';
 
@@ -76,10 +76,10 @@ const SettingsRouter = () => {
 
             <SubNavigation>
                 <SubNavigationLink to="/admin/settings" name="General">
-                    <ChipIcon />
+                    <CpuChipIcon />
                 </SubNavigationLink>
                 <SubNavigationLink to="/admin/settings/mail" name="Mail">
-                    <MailIcon />
+                    <EnvelopeIcon />
                 </SubNavigationLink>
                 <SubNavigationLink to="/admin/settings/security" name="Security">
                     <ShieldCheckIcon />
@@ -88,7 +88,7 @@ const SettingsRouter = () => {
                     <AdjustmentsIcon />
                 </SubNavigationLink> */}
                 <SubNavigationLink to="/admin/settings/advanced" name="Advanced">
-                    <CodeIcon />
+                    <CodeBracketIcon />
                 </SubNavigationLink>
             </SubNavigation>
 
