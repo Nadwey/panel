@@ -44,7 +44,14 @@ export default ({ children, ...props }: Props) => {
     const arrowEl = useRef<HTMLDivElement>(null);
     const [open, setOpen] = useState(false);
 
-    const { x, y, refs: { floating, reference }, middlewareData, strategy, context } = useFloating({
+    const {
+        x,
+        y,
+        refs: { floating, reference },
+        middlewareData,
+        strategy,
+        context,
+    } = useFloating({
         open,
         strategy: 'fixed',
         placement: props.placement || 'top',
