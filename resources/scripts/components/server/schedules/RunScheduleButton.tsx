@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
-import Button from '@/components/elements/Button';
+import { Button } from '@/components/elements/button';
 import triggerScheduleExecution from '@/api/server/schedules/triggerScheduleExecution';
 import { ServerContext } from '@/state/server';
 import useFlash from '@/plugins/useFlash';
@@ -33,7 +33,6 @@ const RunScheduleButton = ({ schedule }: { schedule: Schedule }) => {
         <>
             <SpinnerOverlay visible={loading} size={'large'} />
             <Button
-                isSecondary
                 color={'red'}
                 disabled={schedule.isProcessing}
                 onClick={e => {

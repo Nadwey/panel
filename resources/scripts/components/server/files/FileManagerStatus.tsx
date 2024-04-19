@@ -2,7 +2,7 @@ import { CloudArrowUpIcon, XCircleIcon } from '@heroicons/react/24/solid';
 import { useSignals, useSignal } from '@preact/signals-react/runtime';
 import { useContext, useEffect } from 'react';
 
-import { Button } from '@/components/elements/button/index';
+import { Button } from '@/components/elements/button';
 import { Dialog, DialogWrapperContext } from '@/components/elements/dialog';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
 import Code from '@/components/elements/Code';

@@ -4,7 +4,7 @@ import { ServerContext } from '@/state/server';
 import { Actions, useStoreActions } from 'easy-peasy';
 import { ApplicationStore } from '@/state';
 import { httpErrorToHuman } from '@/api/http';
-import Button from '@/components/elements/Button';
+import { Button } from '@/components/elements/button';
 import { Dialog } from '@/components/elements/dialog';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 import { TrashIcon } from '@heroicons/react/24/solid';
@@ -50,7 +50,6 @@ export default ({ scheduleId }: Props) => {
                 All tasks will be removed and any running processes will be terminated.
             </Dialog.Confirm>
             <Button
-                isSecondary
                 color={'red'}
                 onClick={e => {
                     e.preventDefault();
