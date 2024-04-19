@@ -4,9 +4,9 @@ namespace Pterodactyl\Http\Middleware;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
 use Pterodactyl\Models\User;
 use Pterodactyl\Exceptions\Http\TwoFactorAuthRequiredException;
+use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
 
 class RequireTwoFactorAuthentication
 {
@@ -19,7 +19,9 @@ class RequireTwoFactorAuthentication
      */
     protected string $redirectRoute = '/account';
 
-    public function __construct(private readonly SettingsRepositoryInterface $settings) {}
+    public function __construct(private readonly SettingsRepositoryInterface $settings)
+    {
+    }
 
     /**
      * Check the user state on the incoming request to determine if they should be allowed to

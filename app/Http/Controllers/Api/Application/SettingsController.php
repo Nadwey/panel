@@ -3,14 +3,14 @@
 namespace Pterodactyl\Http\Controllers\Api\Application;
 
 use Illuminate\Http\Response;
-use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
-use Pterodactyl\Exceptions\Model\DataValidationException;
-use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
 use Illuminate\Contracts\Console\Kernel;
-use Pterodactyl\Http\Requests\Api\Application\Settings\UpdateSettingsRequest;
 use Pterodactyl\Services\Helpers\SettingsService;
 use Pterodactyl\Traits\Helpers\AvailableLanguages;
+use Pterodactyl\Exceptions\Model\DataValidationException;
+use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
 use Pterodactyl\Transformers\Api\Application\SettingsTransformer;
+use Pterodactyl\Http\Requests\Api\Application\Settings\UpdateSettingsRequest;
 
 class SettingsController extends ApplicationApiController
 {
@@ -18,10 +18,6 @@ class SettingsController extends ApplicationApiController
 
     /**
      * VersionController constructor.
-     *
-     * @param Kernel $kernel
-     * @param SettingsService $settingsService
-     * @param SettingsRepositoryInterface $settingsRepository
      */
     public function __construct(
         private readonly Kernel $kernel,
@@ -49,11 +45,12 @@ class SettingsController extends ApplicationApiController
     {
         $data = $request->validated();
 
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $this->settingsRepository->set($key, $value);
         }
 
         $this->kernel->call('queue:clear');
+
         return response()->noContent();
     }
 }

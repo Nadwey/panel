@@ -2,22 +2,23 @@
 
 namespace Pterodactyl\Services\Helpers;
 
-use Pterodactyl\Repositories\Eloquent\SettingsRepository;
 use Pterodactyl\Traits\Helpers\AvailableLanguages;
-use Pterodactyl\Models\Setting;
+use Pterodactyl\Repositories\Eloquent\SettingsRepository;
 
 class SettingsService
 {
     use AvailableLanguages;
 
-    public function __construct(private readonly SettingsRepository $repository) {}
+    public function __construct(private readonly SettingsRepository $repository)
+    {
+    }
 
     /**
      * Return the current version of the panel that is being used.
      */
     public function getCurrentSettings(): array
     {
-        return array(
+        return [
             'general' => [
                 'name' => $this->repository->get('appName', config('app.name')),
                 'language' => $this->repository->get('language', config('app.locale')),
@@ -34,12 +35,12 @@ class SettingsService
             ],
             'security' => [
                 'recaptcha' => [
-                    'enabled' => $this->repository->get('recaptchaEnabled' , config('recaptcha.enabled')),
+                    'enabled' => $this->repository->get('recaptchaEnabled', config('recaptcha.enabled')),
                     'site_key' => $this->repository->get('recaptchaSiteKey', config('recaptcha.website_key')),
                     'secret_key' => $this->repository->get('recaptchaSecretKey', config('recaptcha.secret_key')),
                 ],
                 '2fa_enabled' => $this->repository->get('sfaEnabled', config('pterodactyl.auth.2fa_required')),
             ],
-        );
+        ];
     }
 }
