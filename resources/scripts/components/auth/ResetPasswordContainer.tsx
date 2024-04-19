@@ -64,7 +64,7 @@ function ResetPasswordContainer() {
                 <LoginFormContainer title={'Reset Password'} css={tw`w-full flex`}>
                     <div>
                         <label>Email</label>
-                        <Input value={email} isLight disabled />
+                        <Input value={email} $isLight disabled />
                     </div>
                     <div css={tw`mt-6`}>
                         <Field

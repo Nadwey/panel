@@ -33,6 +33,7 @@ const Spinner = ({ progress, className }: { progress: number; className?: string
 
 const FileUploadList = () => {
     useSignals();
+
     const { close } = useContext(DialogWrapperContext);
     const cancelFileUpload = ServerContext.useStoreActions(actions => actions.files.cancelFileUpload);
     const clearFileUploads = ServerContext.useStoreActions(actions => actions.files.clearFileUploads);
@@ -74,6 +75,7 @@ const FileUploadListDialog = asDialog({
 })(FileUploadList);
 
 export default () => {
+    useSignals();
     const open = useSignal(false);
 
     const count = ServerContext.useStoreState(state => Object.keys(state.files.uploads).length);

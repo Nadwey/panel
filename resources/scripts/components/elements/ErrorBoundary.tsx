@@ -10,16 +10,16 @@ interface Props {
 }
 
 interface State {
-    hasError: boolean;
+    $hasError: boolean;
 }
 
 class ErrorBoundary extends Component<Props, State> {
     override state: State = {
-        hasError: false,
+        $hasError: false,
     };
 
     static getDerivedStateFromError() {
-        return { hasError: true };
+        return { $hasError: true };
     }
 
     override componentDidCatch(error: Error) {
@@ -27,7 +27,7 @@ class ErrorBoundary extends Component<Props, State> {
     }
 
     override render() {
-        return this.state.hasError ? (
+        return this.state.$hasError ? (
             <div css={tw`flex items-center justify-center w-full my-4`}>
                 <div css={tw`flex items-center bg-neutral-900 rounded p-3 text-red-500`}>
                     <Icon icon={faExclamationTriangle} css={tw`h-4 w-auto mr-2`} />

@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import debounce from 'debounce';
 import type { KeyboardEvent as ReactKeyboardEvent } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import type { ITerminalInitOnlyOptions, ITerminalOptions, ITheme } from 'xterm';
-import { Terminal } from 'xterm';
-import { FitAddon } from 'xterm-addon-fit';
-import { SearchAddon } from 'xterm-addon-search';
-import { WebLinksAddon } from 'xterm-addon-web-links';
+import type { ITerminalInitOnlyOptions, ITerminalOptions, ITheme } from '@xterm/xterm';
+import { Terminal } from '@xterm/xterm';
+import { FitAddon } from '@xterm/addon-fit';
+import { SearchAddon } from '@xterm/addon-search';
+import { WebLinksAddon } from '@xterm/addon-web-links';
 import { theme as th } from 'twin.macro';
 
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
@@ -18,7 +18,7 @@ import { usePermissions } from '@/plugins/usePermissions';
 import { usePersistedState } from '@/plugins/usePersistedState';
 import { ServerContext } from '@/state/server';
 
-import 'xterm/css/xterm.css';
+import '@xterm/xterm/css/xterm.css';
 import styles from './style.module.css';
 
 const theme: ITheme = {

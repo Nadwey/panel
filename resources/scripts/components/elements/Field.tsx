@@ -24,7 +24,7 @@ const Field = forwardRef<HTMLInputElement, Props>(
             {({ field, form: { errors, touched } }: FieldProps) => (
                 <div>
                     {label && (
-                        <Label htmlFor={id} isLight={light}>
+                        <Label htmlFor={id} $isLight={light}>
                             {label}
                         </Label>
                     )}
@@ -32,8 +32,8 @@ const Field = forwardRef<HTMLInputElement, Props>(
                         id={id}
                         {...field}
                         {...props}
-                        isLight={light}
-                        hasError={!!(touched[field.name] && errors[field.name])}
+                        $isLight={light}
+                        $hasError={!!(touched[field.name] && errors[field.name])}
                     />
                     {touched[field.name] && errors[field.name] ? (
                         <p className={'input-help error'}>
@@ -63,7 +63,7 @@ export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaProps>(func
             {({ field, form: { errors, touched } }: FieldProps) => (
                 <div className={className}>
                     {label && (
-                        <Label htmlFor={id} isLight={light}>
+                        <Label htmlFor={id} $isLight={light}>
                             {label}
                         </Label>
                     )}
@@ -71,8 +71,8 @@ export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaProps>(func
                         id={id}
                         {...field}
                         {...props}
-                        isLight={light}
-                        hasError={!!(touched[field.name] && errors[field.name])}
+                        $isLight={light}
+                        $hasError={!!(touched[field.name] && errors[field.name])}
                     />
                     <InputError errors={errors} touched={touched} name={field.name}>
                         {description || null}
