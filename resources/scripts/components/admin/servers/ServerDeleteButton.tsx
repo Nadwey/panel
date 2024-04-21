@@ -1,4 +1,3 @@
-import { TrashIcon } from '@heroicons/react/24/outline';
 import type { Actions } from 'easy-peasy';
 import { useStoreActions } from 'easy-peasy';
 import { useState } from 'react';
@@ -9,6 +8,7 @@ import ConfirmationModal from '@/components/elements/ConfirmationModal';
 import deleteServer from '@/api/admin/servers/deleteServer';
 import { useServerFromRoute } from '@/api/admin/server';
 import type { ApplicationStore } from '@/state';
+import { IconTrash } from '@tabler/icons-react';
 
 export default () => {
     const navigate = useNavigate();
@@ -53,7 +53,7 @@ export default () => {
             </ConfirmationModal>
 
             <Button.Danger type="button" onClick={() => setVisible(true)} className="flex items-center justify-center">
-                <TrashIcon className="mr-2 h-5 w-5" /> Delete Server
+                <IconTrash className="mr-2 h-5 w-5" /> Delete Server
             </Button.Danger>
         </>
     );

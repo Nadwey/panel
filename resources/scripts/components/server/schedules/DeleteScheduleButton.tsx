@@ -7,7 +7,7 @@ import { httpErrorToHuman } from '@/api/http';
 import { Button } from '@/components/elements/button';
 import { Dialog } from '@/components/elements/dialog';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
-import { TrashIcon } from '@heroicons/react/24/solid';
+import { IconTrash } from '@tabler/icons-react';
 
 interface Props {
     scheduleId: number;
@@ -56,7 +56,7 @@ export default ({ scheduleId }: Props) => {
                     setVisible(true);
                 }}
             >
-                <TrashIcon height={'1rem'} />
+                <IconTrash height={'1rem'} />
             </Button>
         </>
     );

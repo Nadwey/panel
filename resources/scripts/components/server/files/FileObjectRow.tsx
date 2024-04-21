@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileAlt, faFileArchive, faFileImport, faFolder } from '@fortawesome/free-solid-svg-icons';
 import { differenceInHours, format, formatDistanceToNow } from 'date-fns';
 import type { ReactNode } from 'react';
 import { memo } from 'react';
@@ -16,6 +14,7 @@ import { bytesToString } from '@/lib/formatters';
 import { usePermissions } from '@/plugins/usePermissions';
 import { ServerContext } from '@/state/server';
 import styles from './style.module.css';
+import { IconFile, IconFileImport, IconFileZip, IconFolder } from '@tabler/icons-react';
 
 function Clickable({ file, children }: { file: FileObject; children: ReactNode }) {
     const [canRead] = usePermissions(['file.read']);
@@ -51,11 +50,15 @@ function FileObjectRow({ file }: { file: FileObject }) {
             <MemoizedClickable file={file}>
                 <div css={tw`flex-none text-neutral-400 ml-6 mr-4 text-lg pl-3`}>
                     {file.isFile ? (
-                        <FontAwesomeIcon
-                            icon={file.isSymlink ? faFileImport : file.isArchiveType() ? faFileArchive : faFileAlt}
-                        />
+                        file.isSymlink ? (
+                            <IconFileImport />
+                        ) : file.isArchiveType() ? (
+                            <IconFileZip />
+                        ) : (
+                            <IconFile />
+                        )
                     ) : (
-                        <FontAwesomeIcon icon={faFolder} />
+                        <IconFolder />
                     )}
                 </div>
                 <div css={tw`flex-1 truncate`}>{file.name}</div>

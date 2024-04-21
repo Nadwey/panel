@@ -5,12 +5,12 @@ import Translate from '@/components/elements/Translate';
 import { format, formatDistanceToNowStrict } from 'date-fns';
 import { ActivityLog } from '@definitions/user';
 import ActivityLogMetaButton from '@/components/elements/activity/ActivityLogMetaButton';
-import { FolderOpenIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 import style from './style.module.css';
 import Avatar from '@/components/Avatar';
 import useLocationHash from '@/plugins/useLocationHash';
 import { getObjectKeys, isObject } from '@/lib/objects';
+import { IconFolderOpen } from '@tabler/icons-react';
 
 interface Props {
     activity: ActivityLog;
@@ -74,7 +74,7 @@ export default ({ activity, children }: Props) => {
                             )}
                             {activity.event.startsWith('server:sftp.') && (
                                 <Tooltip placement={'top'} content={'Using SFTP'}>
-                                    <FolderOpenIcon />
+                                    <IconFolderOpen />
                                 </Tooltip>
                             )}
                             {children}

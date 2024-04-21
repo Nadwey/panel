@@ -1,10 +1,10 @@
-import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 import tw from 'twin.macro';
 
 import AdminBox from '@/components/admin/AdminBox';
 import AllocationTable from '@/components/admin/nodes/allocations/AllocationTable';
 import CreateAllocationForm from '@/components/admin/nodes/allocations/CreateAllocationForm';
+import { IconCloudNetwork } from '@tabler/icons-react';
 
 export default () => {
     const params = useParams<'id'>();
@@ -17,7 +17,7 @@ export default () => {
                 </div>
 
                 <div css={tw`w-full flex col-span-4`}>
-                    <AdminBox icon={faNetworkWired} title={'Allocations'} css={tw`h-auto w-full`}>
+                    <AdminBox icon={IconCloudNetwork} title={'Allocations'} css={tw`h-auto w-full`}>
                         <CreateAllocationForm nodeId={Number(params.id)} />
                     </AdminBox>
                 </div>

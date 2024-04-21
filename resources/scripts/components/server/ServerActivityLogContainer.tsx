@@ -10,8 +10,8 @@ import { ActivityLogFilters } from '@/api/account/activity';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { styles as btnStyles } from '@/components/elements/button/index';
-import { XCircleIcon } from '@heroicons/react/24/solid';
 import useLocationHash from '@/plugins/useLocationHash';
+import { IconCircleX } from '@tabler/icons-react';
 
 export default () => {
     const { hash } = useLocationHash();
@@ -41,7 +41,7 @@ export default () => {
                         className={classNames(btnStyles.button, btnStyles.text, 'w-full sm:w-auto')}
                         onClick={() => setFilters(value => ({ ...value, filters: {} }))}
                     >
-                        Clear Filters <XCircleIcon className={'ml-2 h-4 w-4'} />
+                        Clear Filters <IconCircleX className={'ml-2 h-4 w-4'} />
                     </Link>
                 </div>
             )}

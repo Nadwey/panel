@@ -16,17 +16,7 @@ import isEqual from 'react-fast-compare';
 import ChmodFileModal from '@/components/server/files/ChmodFileModal';
 import { Dialog } from '@/components/elements/dialog';
 import { Dropdown } from '@/components/elements/dropdown';
-import {
-    ArchiveBoxArrowDownIcon,
-    ArchiveBoxIcon,
-    ArrowDownTrayIcon,
-    ArrowUpIcon,
-    CodeBracketIcon,
-    DocumentDuplicateIcon,
-    EllipsisVerticalIcon,
-    PencilIcon,
-    TrashIcon,
-} from '@heroicons/react/24/solid';
+import { IconArrowUp, IconCode, IconDotsVertical, IconDownload, IconFiles, IconPackage, IconPackageExport, IconPencil, IconTrash } from '@tabler/icons-react';
 
 type ModalType = 'rename' | 'move' | 'chmod';
 
@@ -130,22 +120,22 @@ const FileDropdownMenu = ({ file }: { file: FileObject }) => {
 
             <Dropdown>
                 <Dropdown.Button className="px-2">
-                    <EllipsisVerticalIcon />
+                    <IconDotsVertical />
                 </Dropdown.Button>
                 <Can action={'file.update'}>
-                    <Dropdown.Item icon={<PencilIcon />} onClick={() => setModal('rename')}>
+                    <Dropdown.Item icon={<IconPencil />} onClick={() => setModal('rename')}>
                         Rename
                     </Dropdown.Item>
-                    <Dropdown.Item icon={<ArrowUpIcon />} onClick={() => setModal('move')}>
+                    <Dropdown.Item icon={<IconArrowUp />} onClick={() => setModal('move')}>
                         Move
                     </Dropdown.Item>
-                    <Dropdown.Item icon={<CodeBracketIcon />} onClick={() => setModal('chmod')}>
+                    <Dropdown.Item icon={<IconCode />} onClick={() => setModal('chmod')}>
                         Permissions
                     </Dropdown.Item>
                 </Can>
                 {file.isFile && (
                     <Can action={'file.create'}>
-                        <Dropdown.Item icon={<DocumentDuplicateIcon />} onClick={doCopy}>
+                        <Dropdown.Item icon={<IconFiles />} onClick={doCopy}>
                             Copy
                         </Dropdown.Item>
                     </Can>
@@ -153,25 +143,25 @@ const FileDropdownMenu = ({ file }: { file: FileObject }) => {
                 <Dropdown.Gap />
                 {file.isArchiveType() ? (
                     <Can action={'file.create'}>
-                        <Dropdown.Item icon={<ArchiveBoxArrowDownIcon />} onClick={doUnarchive}>
+                        <Dropdown.Item icon={<IconPackageExport />} onClick={doUnarchive}>
                             Unarchive
                         </Dropdown.Item>
                     </Can>
                 ) : (
                     <Can action={'file.archive'}>
-                        <Dropdown.Item icon={<ArchiveBoxIcon />} onClick={doArchive}>
+                        <Dropdown.Item icon={<IconPackage />} onClick={doArchive}>
                             Archive
                         </Dropdown.Item>
                     </Can>
                 )}
                 {file.isFile && (
-                    <Dropdown.Item icon={<ArrowDownTrayIcon />} onClick={doDownload}>
+                    <Dropdown.Item icon={<IconDownload />} onClick={doDownload}>
                         Download
                     </Dropdown.Item>
                 )}
                 <Dropdown.Gap />
                 <Can action={'file.delete'}>
-                    <Dropdown.Item danger icon={<TrashIcon />} onClick={() => setShowConfirmation(true)}>
+                    <Dropdown.Item danger icon={<IconTrash />} onClick={() => setShowConfirmation(true)}>
                         Delete
                     </Dropdown.Item>
                 </Can>

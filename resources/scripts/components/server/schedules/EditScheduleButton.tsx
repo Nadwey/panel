@@ -1,8 +1,8 @@
 import { Schedule } from '@/api/server/schedules/getServerSchedules';
 import { useState } from 'react';
 import Button from '@/components/elements/Button';
-import { PencilIcon } from '@heroicons/react/24/solid';
 import EditScheduleModal from './EditScheduleModal';
+import { IconPencil } from '@tabler/icons-react';
 
 interface Props {
     schedule?: Schedule;
@@ -22,7 +22,7 @@ export default ({ schedule }: Props) => {
                     setVisible(true);
                 }}
             >
-                <PencilIcon height={'1rem'} />
+                <IconPencil height={'1rem'} />
             </Button>
         </>
     );

@@ -1,12 +1,3 @@
-import {
-    faClock,
-    faCloudDownloadAlt,
-    faCloudUploadAlt,
-    faHdd,
-    faMemory,
-    faMicrochip,
-    faWifi,
-} from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 import type { ReactNode } from 'react';
 import { useEffect, useMemo, useState } from 'react';
@@ -18,6 +9,7 @@ import { bytesToString, ip, mbToBytes } from '@/lib/formatters';
 import { capitalize } from '@/lib/strings';
 import { ServerContext } from '@/state/server';
 import useWebsocketEvent from '@/plugins/useWebsocketEvent';
+import { IconClock, IconCpu, IconDatabase, IconDeviceSdCard, IconDownload, IconUpload, IconWifi } from '@tabler/icons-react';
 
 type Stats = Record<'memory' | 'cpu' | 'disk' | 'uptime' | 'rx' | 'tx', number>;
 
@@ -94,11 +86,11 @@ function ServerDetailsBlock({ className }: { className?: string }) {
 
     return (
         <div className={classNames('grid grid-cols-6 gap-2 md:gap-4', className)}>
-            <StatBlock icon={faWifi} title={'Address'} copyOnClick={allocation}>
+            <StatBlock icon={IconWifi} title={'Address'} copyOnClick={allocation}>
                 {allocation}
             </StatBlock>
             <StatBlock
-                icon={faClock}
+                icon={IconClock}
                 title={'Uptime'}
                 color={getBackgroundColor(status === 'running' ? 0 : status !== 'offline' ? 9 : 10, 10)}
             >
@@ -110,7 +102,7 @@ function ServerDetailsBlock({ className }: { className?: string }) {
                     capitalize(status)
                 )}
             </StatBlock>
-            <StatBlock icon={faMicrochip} title={'CPU Load'} color={getBackgroundColor(stats.cpu, limits.cpu)}>
+            <StatBlock icon={IconCpu} title={'CPU Load'} color={getBackgroundColor(stats.cpu, limits.cpu)}>
                 {status === 'offline' ? (
                     <span className={'text-slate-400'}>Offline</span>
                 ) : (
@@ -118,7 +110,7 @@ function ServerDetailsBlock({ className }: { className?: string }) {
                 )}
             </StatBlock>
             <StatBlock
-                icon={faMemory}
+                icon={IconDatabase}
                 title={'Memory'}
                 color={getBackgroundColor(stats.memory / 1024, limits.memory * 1024)}
             >
@@ -128,13 +120,13 @@ function ServerDetailsBlock({ className }: { className?: string }) {
                     <Limit limit={textLimits.memory}>{bytesToString(stats.memory)}</Limit>
                 )}
             </StatBlock>
-            <StatBlock icon={faHdd} title={'Disk'} color={getBackgroundColor(stats.disk / 1024, limits.disk * 1024)}>
+            <StatBlock icon={IconDeviceSdCard} title={'Disk'} color={getBackgroundColor(stats.disk / 1024, limits.disk * 1024)}>
                 <Limit limit={textLimits.disk}>{bytesToString(stats.disk)}</Limit>
             </StatBlock>
-            <StatBlock icon={faCloudDownloadAlt} title={'Network (Inbound)'}>
+            <StatBlock icon={IconDownload} title={'Network (Inbound)'}>
                 {status === 'offline' ? <span className={'text-slate-400'}>Offline</span> : bytesToString(stats.rx)}
             </StatBlock>
-            <StatBlock icon={faCloudUploadAlt} title={'Network (Outbound)'}>
+            <StatBlock icon={IconUpload} title={'Network (Outbound)'}>
                 {status === 'offline' ? <span className={'text-slate-400'}>Offline</span> : bytesToString(stats.tx)}
             </StatBlock>
         </div>

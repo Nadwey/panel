@@ -1,16 +1,16 @@
-import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { useFormikContext } from 'formik';
 import tw from 'twin.macro';
 
 import AdminBox from '@/components/admin/AdminBox';
 import Field from '@/components/elements/Field';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
+import { IconCloudNetwork } from '@tabler/icons-react';
 
 export default () => {
     const { isSubmitting } = useFormikContext();
 
     return (
-        <AdminBox icon={faNetworkWired} title={'Listen'} css={tw`w-full relative`}>
+        <AdminBox icon={IconCloudNetwork} title={'Listen'} css={tw`w-full relative`}>
             <SpinnerOverlay visible={isSubmitting} />
 
             <div css={tw`mb-6 md:w-full md:flex md:flex-row`}>

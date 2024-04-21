@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLayerGroup, faScrewdriverWrench, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { PropsWithChildren, useState } from 'react';
+import { Link, NavLink, NavLinkProps } from 'react-router-dom';
 import { useStoreState } from 'easy-peasy';
 import { ApplicationStore } from '@/state';
 import SearchContainer from '@/components/dashboard/search/SearchContainer';
@@ -9,27 +7,29 @@ import tw, { theme } from 'twin.macro';
 import styled from 'styled-components';
 import http from '@/api/http';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
-import Tooltip from '@/components/elements/tooltip/Tooltip';
 import Avatar from '@/components/Avatar';
+import { IconLogout, IconStack2, IconTool, IconUser } from '@tabler/icons-react';
 
 const RightNavigation = styled.div`
-    & > a,
-    & > button,
-    & > .navigation-link {
-        ${tw`flex items-center h-full no-underline text-neutral-300 px-6 cursor-pointer transition-all duration-150`};
+    & .navigation-link {
+        ${tw`flex flex-row gap-x-2 justify-start font-medium w-full border-l-2 border-l-transparent no-underline text-neutral-100 px-6 py-2 cursor-pointer transition-all duration-150`};
+    }
 
-        &:active,
-        &:hover {
-            ${tw`text-neutral-100 bg-black`};
-        }
-
-        &:active,
-        &:hover,
-        &.active {
-            box-shadow: inset 0 -2px ${theme`colors.cyan.600`.toString()};
-        }
+    & .navigation-link-active {
+        ${tw`text-sky-400 border-l-sky-400`};
     }
 `;
+
+function NavbarLink({ children, ...props }: NavLinkProps) {
+    return (
+        <NavLink
+            className={({ isActive }) => (isActive ? 'navigation-link navigation-link-active' : 'navigation-link')}
+            {...props}
+        >
+            {children}
+        </NavLink>
+    );
+}
 
 export default () => {
     const name = useStoreState((state: ApplicationStore) => state.settings.data!.name);
@@ -46,50 +46,44 @@ export default () => {
     };
 
     return (
-        <div className="w-full overflow-x-auto bg-neutral-900 shadow-md">
+        <div className="overflow-x-auto bg-zinc-950 border-r border-r-zinc-900 shadow-md shrink-0">
             <SpinnerOverlay visible={isLoggingOut} />
-            <div className="mx-auto flex h-[3.5rem] w-full max-w-[1200px] items-center">
-                <div id="logo" className="flex-1">
+            <RightNavigation className="h-full flex flex-col pb-4">
+                <div>
                     <Link
                         to="/"
-                        className="px-4 font-header text-2xl text-neutral-200 no-underline transition-colors duration-150 hover:text-neutral-100"
+                        className="py-4 px-10 block font-inter font-bold text-3xl text-neutral-200 no-underline transition-colors duration-150 hover:text-neutral-100"
                     >
                         {name}
                     </Link>
                 </div>
+                <div className="flex flex-col flex-1 justify-between">
+                    {/* <SearchContainer /> */}
+                    <NavbarLink to="/" end>
+                        <IconStack2 className="inline-block" /> Servers
+                    </NavbarLink>
 
-                <RightNavigation className="flex h-full items-center justify-center">
-                    <SearchContainer />
+                    <div className="flex flex-col gap-y-3">
+                        {rootAdmin && (
+                            <NavbarLink to="/admin" rel="noreferrer">
+                                <IconTool className="inline-block" /> Admin
+                            </NavbarLink>
+                        )}
 
-                    <Tooltip placement="bottom" content="Dashboard">
-                        <NavLink to="/" end>
-                            <FontAwesomeIcon icon={faLayerGroup} />
-                        </NavLink>
-                    </Tooltip>
-
-                    <Tooltip placement="bottom" content="Account Settings">
-                        <NavLink to="/account">
-                            <span className="flex h-5 w-5 items-center">
-                                <Avatar.User />
+                        <NavbarLink to="/account">
+                            <span className='flex h-6 w-6 items-center'>
+                            <Avatar.User />
                             </span>
-                        </NavLink>
-                    </Tooltip>
+                             You
+                        </NavbarLink>
 
-                    {rootAdmin && (
-                        <Tooltip placement="bottom" content="Admin">
-                            <a href="/admin" rel="noreferrer">
-                                <FontAwesomeIcon icon={faScrewdriverWrench} />
-                            </a>
-                        </Tooltip>
-                    )}
-
-                    <Tooltip placement="bottom" content="Sign Out">
-                        <button onClick={onTriggerLogout}>
-                            <FontAwesomeIcon icon={faSignOutAlt} />
+                        <button className="navigation-link" onClick={onTriggerLogout}>
+                            <IconLogout className="inline-block" />
+                            Sign out
                         </button>
-                    </Tooltip>
-                </RightNavigation>
-            </div>
+                    </div>
+                </div>
+            </RightNavigation>
         </div>
     );
 };

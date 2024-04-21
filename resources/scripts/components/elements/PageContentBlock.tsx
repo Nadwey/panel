@@ -22,11 +22,11 @@ function PageContentBlock({ title, showFlashKey, className, children }: PageCont
 
     return (
         <>
-            <ContentContainer css={tw`my-4 sm:my-10`} className={className}>
+            <ContentContainer css={tw`my-6 w-full`} className={className}>
                 {showFlashKey && <FlashMessageRender byKey={showFlashKey} css={tw`mb-4`} />}
                 {children}
             </ContentContainer>
-
+{/* 
             <ContentContainer css={tw`mb-4`}>
                 <p css={tw`text-center text-neutral-500 text-xs`}>
                     <a
@@ -39,7 +39,7 @@ function PageContentBlock({ title, showFlashKey, className, children }: PageCont
                     </a>
                     &nbsp;&copy; 2015 - {new Date().getFullYear()}
                 </p>
-            </ContentContainer>
+            </ContentContainer> */}
         </>
     );
 }

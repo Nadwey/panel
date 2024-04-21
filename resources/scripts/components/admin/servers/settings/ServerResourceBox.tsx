@@ -1,16 +1,16 @@
-import { faBalanceScale } from '@fortawesome/free-solid-svg-icons';
 import { useFormikContext } from 'formik';
 import tw from 'twin.macro';
 
 import AdminBox from '@/components/admin/AdminBox';
 import Field from '@/components/elements/Field';
 import FormikSwitch from '@/components/elements/FormikSwitch';
+import { IconScale } from '@tabler/icons-react';
 
 export default () => {
     const { isSubmitting } = useFormikContext();
 
     return (
-        <AdminBox icon={faBalanceScale} title={'Resources'} isLoading={isSubmitting}>
+        <AdminBox icon={IconScale} title={'Resources'} isLoading={isSubmitting}>
             <div css={tw`grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6`}>
                 <Field
                     id={'limits.cpu'}

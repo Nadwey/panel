@@ -25,7 +25,7 @@ interface Props {
 }
 
 interface PropsWithIcon extends Props {
-    icon: ComponentType;
+    icon: React.ReactNode;
     children?: never;
 }
 
@@ -34,9 +34,9 @@ interface PropsWithoutIcon extends Props {
     children: ReactNode;
 }
 
-export const SubNavigationLink = ({ to, name, icon: IconComponent, children }: PropsWithIcon | PropsWithoutIcon) => (
+export const SubNavigationLink = ({ to, name, icon, children }: PropsWithIcon | PropsWithoutIcon) => (
     <NavLink to={to} end>
-        {IconComponent ? <IconComponent /> : children}
+        {icon || children}
         {name}
     </NavLink>
 );

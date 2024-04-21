@@ -1,6 +1,4 @@
 import { Schedule } from '@/api/server/schedules/getServerSchedules';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { format } from 'date-fns';
 import Can from '@/components/elements/Can';
 import tw from 'twin.macro';
@@ -10,6 +8,7 @@ import EditScheduleModal from './EditScheduleModal';
 import { useState } from 'react';
 import EditScheduleButton from './EditScheduleButton';
 import RunScheduleButton from './RunScheduleButton';
+import { IconCalendar } from '@tabler/icons-react';
 
 export default ({ schedule }: { schedule: Schedule }) => {
     const [visible, setVisible] = useState(false);
@@ -18,7 +17,7 @@ export default ({ schedule }: { schedule: Schedule }) => {
         <>
             <EditScheduleModal schedule={schedule} visible={visible} onModalDismissed={() => setVisible(false)} />
             <div css={tw`hidden md:block`}>
-                <FontAwesomeIcon icon={faCalendarAlt} fixedWidth />
+                <IconCalendar />
             </div>
             <div css={tw`flex-1 md:ml-4`}>
                 <p>{schedule.name}</p>

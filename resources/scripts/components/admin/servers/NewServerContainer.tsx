@@ -1,4 +1,3 @@
-import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import type { FormikHelpers } from 'formik';
 import { Form, Formik, useFormikContext } from 'formik';
 import { useEffect, useState } from 'react';
@@ -31,6 +30,7 @@ import FlashMessageRender from '@/components/FlashMessageRender';
 import useFlash from '@/plugins/useFlash';
 import AdminContentBlock from '@/components/admin/AdminContentBlock';
 import { WithRelationships } from '@/api/admin';
+import { IconCloudNetwork } from '@tabler/icons-react';
 
 function InternalForm() {
     const {
@@ -81,7 +81,7 @@ function InternalForm() {
                     <ServerServiceContainer selectedEggId={egg?.id} setEgg={setEgg} nestId={0} />
                 </div>
                 <div className="grid grid-cols-1 gap-y-6 col-span-2 md:col-span-1">
-                    <AdminBox icon={faNetworkWired} title="Networking" isLoading={isSubmitting}>
+                    <AdminBox icon={IconCloudNetwork} title="Networking" isLoading={isSubmitting}>
                         <div className="grid grid-cols-1 gap-4 lg:gap-6">
                             <div>
                                 <Label htmlFor={'allocation.default'}>Primary Allocation</Label>

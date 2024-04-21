@@ -77,7 +77,7 @@ function App() {
                 <ThemeProvider>
                     <ProgressBar />
 
-                    <div className="mx-auto w-auto">
+                    <div className="mx-auto w-auto h-dvh">
                         <BrowserRouter>
                             <Routes>
                                 <Route

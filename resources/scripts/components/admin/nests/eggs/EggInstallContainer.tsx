@@ -1,9 +1,9 @@
 import { LanguageDescription, LanguageSupport, StreamLanguage } from '@codemirror/language';
 import { shell } from '@codemirror/legacy-modes/mode/shell';
-import { faScroll } from '@fortawesome/free-solid-svg-icons';
 import type { FormikHelpers } from 'formik';
 import { Form, Formik } from 'formik';
 import tw from 'twin.macro';
+import { IconScript } from "@tabler/icons-react";
 
 import { useEggFromRoute } from '@/api/admin/egg';
 import updateEgg from '@/api/admin/eggs/updateEgg';
@@ -58,7 +58,7 @@ export default function EggInstallContainer() {
             }}
         >
             {({ isSubmitting, isValid }) => (
-                <AdminBox icon={faScroll} title={'Install Script'} noPadding>
+                <AdminBox icon={IconScript} title={'Install Script'} noPadding>
                     <div css={tw`relative pb-4`}>
                         <SpinnerOverlay visible={isSubmitting} />
 

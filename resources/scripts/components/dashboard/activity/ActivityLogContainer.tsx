@@ -5,13 +5,13 @@ import PageContentBlock from '@/components/elements/PageContentBlock';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import { Link } from 'react-router-dom';
 import PaginationFooter from '@/components/elements/table/PaginationFooter';
-import { ComputerDesktopIcon, XCircleIcon } from '@heroicons/react/24/solid';
 import Spinner from '@/components/elements/Spinner';
 import { styles as btnStyles } from '@/components/elements/button/index';
 import classNames from 'classnames';
 import ActivityLogEntry from '@/components/elements/activity/ActivityLogEntry';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
 import useLocationHash from '@/plugins/useLocationHash';
+import { IconCircleX, IconDeviceDesktop } from '@tabler/icons-react';
 
 export default () => {
     const { hash } = useLocationHash();
@@ -40,7 +40,7 @@ export default () => {
                         className={classNames(btnStyles.button, btnStyles.text, 'w-full sm:w-auto')}
                         onClick={() => setFilters(value => ({ ...value, filters: {} }))}
                     >
-                        Clear Filters <XCircleIcon className={'ml-2 h-4 w-4'} />
+                        Clear Filters <IconCircleX className={'ml-2 h-4 w-4'} />
                     </Link>
                 </div>
             )}
@@ -53,7 +53,7 @@ export default () => {
                             {typeof activity.properties.useragent === 'string' && (
                                 <Tooltip content={activity.properties.useragent} placement={'top'}>
                                     <span>
-                                        <ComputerDesktopIcon />
+                                        <IconDeviceDesktop />
                                     </span>
                                 </Tooltip>
                             )}

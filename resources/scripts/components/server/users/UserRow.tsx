@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { Subuser } from '@/state/server/subusers';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencilAlt, faUnlockAlt, faUserLock } from '@fortawesome/free-solid-svg-icons';
 import RemoveSubuserButton from '@/components/server/users/RemoveSubuserButton';
 import EditSubuserModal from '@/components/server/users/EditSubuserModal';
 import Can from '@/components/elements/Can';
 import { useStoreState } from 'easy-peasy';
 import tw from 'twin.macro';
 import GreyRowBox from '@/components/elements/GreyRowBox';
+import { Icon2fa, IconLockOpen, IconPencil, IconShield, IconUserExclamation } from '@tabler/icons-react';
 
 interface Props {
     subuser: Subuser;
@@ -29,11 +28,7 @@ export default ({ subuser }: Props) => {
             <div css={tw`ml-4`}>
                 <p css={tw`font-medium text-center`}>
                     &nbsp;
-                    <FontAwesomeIcon
-                        icon={subuser.twoFactorEnabled ? faUserLock : faUnlockAlt}
-                        fixedWidth
-                        css={!subuser.twoFactorEnabled ? tw`text-red-400` : undefined}
-                    />
+                    {subuser.twoFactorEnabled ? <IconShield /> : <IconUserExclamation color="red" />}
                     &nbsp;
                 </p>
                 <p css={tw`text-2xs text-neutral-500 uppercase hidden md:block`}>2FA Enabled</p>
@@ -53,7 +48,7 @@ export default ({ subuser }: Props) => {
                             css={tw`block text-sm p-1 md:p-2 text-neutral-500 hover:text-neutral-100 transition-colors duration-150 mx-4`}
                             onClick={() => setVisible(true)}
                         >
-                            <FontAwesomeIcon icon={faPencilAlt} />
+                            <IconPencil />
                         </button>
                     </Can>
                     <Can action={'user.delete'}>

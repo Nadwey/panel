@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ClipboardDocumentListIcon } from '@heroicons/react/24/outline';
 import { Dialog } from '@/components/elements/dialog';
 import { Button } from '@/components/elements/button';
+import { IconClipboardList } from '@tabler/icons-react';
 
 export default ({ meta }: { meta: Record<string, unknown> }) => {
     const [open, setOpen] = useState(false);
@@ -27,7 +27,7 @@ export default ({ meta }: { meta: Record<string, unknown> }) => {
                 }
                 onClick={() => setOpen(true)}
             >
-                <ClipboardDocumentListIcon className={'h-5 w-5'} />
+                <IconClipboardList className={'h-5 w-5'} />
             </button>
         </div>
     );

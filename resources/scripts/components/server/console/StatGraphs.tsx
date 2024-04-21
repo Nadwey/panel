@@ -6,10 +6,10 @@ import { Line } from 'react-chartjs-2';
 import { useChart, useChartTickLabel } from '@/components/server/console/chart';
 import { hexToRgba } from '@/lib/helpers';
 import { bytesToString } from '@/lib/formatters';
-import { CloudArrowDownIcon, CloudArrowUpIcon } from '@heroicons/react/24/solid';
 import { theme } from 'twin.macro';
 import ChartBlock from '@/components/server/console/ChartBlock';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
+import { IconDownload, IconUpload } from '@tabler/icons-react';
 
 export default () => {
     const status = ServerContext.useStoreState(state => state.status.value);
@@ -79,10 +79,10 @@ export default () => {
                 legend={
                     <>
                         <Tooltip arrow content={'Inbound'}>
-                            <CloudArrowDownIcon className={'mr-2 h-4 w-4 text-yellow-400'} />
+                            <IconDownload className={'mr-2 h-4 w-4 text-yellow-400'} />
                         </Tooltip>
                         <Tooltip arrow content={'Outbound'}>
-                            <CloudArrowUpIcon className={'h-4 w-4 text-cyan-400'} />
+                            <IconUpload className={'h-4 w-4 text-cyan-400'} />
                         </Tooltip>
                     </>
                 }

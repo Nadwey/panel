@@ -1,4 +1,3 @@
-import { faCode, faDragon } from '@fortawesome/free-solid-svg-icons';
 import type { Actions } from 'easy-peasy';
 import { useStoreActions } from 'easy-peasy';
 import { useEffect, useState } from 'react';
@@ -9,6 +8,7 @@ import AdminBox from '@/components/admin/AdminBox';
 import { Context } from '@/components/admin/nodes/NodeRouter';
 import CopyOnClick from '@/components/elements/CopyOnClick';
 import type { ApplicationStore } from '@/state';
+import { IconCode, IconRocket } from '@tabler/icons-react';
 
 export default () => {
     const { clearFlashes, clearAndAddHttpError } = useStoreActions(
@@ -36,7 +36,7 @@ export default () => {
 
     return (
         <>
-            <AdminBox title={'Configuration'} icon={faCode} css={tw`mb-4`}>
+            <AdminBox title={'Configuration'} icon={<IconCode />} css={tw`mb-4`}>
                 <div css={tw`relative`}>
                     <div css={tw`absolute top-0 right-0`}>
                         <CopyOnClick text={configuration} showInNotification={false}>
@@ -62,7 +62,7 @@ export default () => {
                 </div>
             </AdminBox>
 
-            <AdminBox title={'Auto Deploy'} icon={faDragon}>
+            <AdminBox title={'Auto Deploy'} icon={<IconRocket />}>
                 Never&trade;
             </AdminBox>
         </>

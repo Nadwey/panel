@@ -1,4 +1,3 @@
-import { ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 import debounce from 'debounce';
 import type { KeyboardEvent as ReactKeyboardEvent } from 'react';
@@ -20,6 +19,7 @@ import { ServerContext } from '@/state/server';
 
 import '@xterm/xterm/css/xterm.css';
 import styles from './style.module.css';
+import { IconChevronsRight } from '@tabler/icons-react';
 
 const theme: ITheme = {
     background: th`colors.black`.toString(),
@@ -224,7 +224,7 @@ export default () => {
                             styles.command_icon,
                         )}
                     >
-                        <ChevronDoubleRightIcon className={'h-4 w-4'} />
+                        <IconChevronsRight className={'h-4 w-4'} />
                     </div>
                 </div>
             )}

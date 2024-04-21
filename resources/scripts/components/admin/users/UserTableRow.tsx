@@ -1,17 +1,10 @@
-import {
-    NoSymbolIcon,
-    EllipsisVerticalIcon,
-    LockOpenIcon,
-    PencilIcon,
-    LifebuoyIcon,
-    TrashIcon,
-} from '@heroicons/react/24/solid';
 import { useState } from 'react';
 
 import Checkbox from '@/components/elements/inputs/Checkbox';
 import { Dropdown } from '@/components/elements/dropdown';
 import { Dialog } from '@/components/elements/dialog';
 import type { User } from '@definitions/admin';
+import { IconBan, IconDotsVertical, IconLifebuoy, IconLockOpen, IconPencil, IconTrash } from '@tabler/icons-react';
 
 interface Props {
     user: User;
@@ -66,18 +59,18 @@ function UserTableRow({ user, selected, onRowChange }: Props) {
                 <td className="whitespace-nowrap px-6 py-4">
                     <Dropdown>
                         <Dropdown.Button className="px-2">
-                            <EllipsisVerticalIcon />
+                            <IconDotsVertical />
                         </Dropdown.Button>
-                        <Dropdown.Item to={`/admin/users/${user.id}`} icon={<PencilIcon />}>
+                        <Dropdown.Item to={`/admin/users/${user.id}`} icon={<IconPencil />}>
                             Edit
                         </Dropdown.Item>
-                        <Dropdown.Item icon={<LifebuoyIcon />}>Reset Password</Dropdown.Item>
-                        <Dropdown.Item icon={<LockOpenIcon />} disabled={!user.isUsingTwoFactor}>
+                        <Dropdown.Item icon={<IconLifebuoy />}>Reset Password</Dropdown.Item>
+                        <Dropdown.Item icon={<IconLockOpen />} disabled={!user.isUsingTwoFactor}>
                             Disable 2-FA
                         </Dropdown.Item>
-                        <Dropdown.Item icon={<NoSymbolIcon />}>Suspend</Dropdown.Item>
+                        <Dropdown.Item icon={<IconBan />}>Suspend</Dropdown.Item>
                         <Dropdown.Gap />
-                        <Dropdown.Item icon={<TrashIcon />} onClick={() => setVisible(true)} danger>
+                        <Dropdown.Item icon={<IconTrash />} onClick={() => setVisible(true)} danger>
                             Delete Account
                         </Dropdown.Item>
                     </Dropdown>

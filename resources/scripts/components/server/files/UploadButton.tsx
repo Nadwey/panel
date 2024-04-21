@@ -1,4 +1,3 @@
-import { CloudArrowUpIcon } from '@heroicons/react/24/outline';
 import { useSignals, useSignal } from '@preact/signals-react/runtime';
 import axios, { AxiosProgressEvent } from 'axios';
 import { useEffect, useRef } from 'react';
@@ -14,6 +13,7 @@ import useEventListener from '@/plugins/useEventListener';
 import { useFlashKey } from '@/plugins/useFlash';
 import useFileManagerSwr from '@/plugins/useFileManagerSwr';
 import { ServerContext } from '@/state/server';
+import { IconUpload } from '@tabler/icons-react';
 
 function isFileOrDirectory(event: DragEvent): boolean {
     if (!event.dataTransfer?.types) {
@@ -127,7 +127,7 @@ export default ({ className }: WithClassname) => {
                                     'mx-10 flex w-full max-w-sm items-center space-x-4 rounded bg-black p-6 ring-4 ring-blue-200 ring-opacity-60'
                                 }
                             >
-                                <CloudArrowUpIcon className={'h-10 w-10 flex-shrink-0'} />
+                                <IconUpload className={'h-10 w-10 flex-shrink-0'} />
                                 <p className={'flex-1 text-center font-header text-lg text-neutral-100'}>
                                     Drag and drop files to upload.
                                 </p>

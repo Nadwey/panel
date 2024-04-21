@@ -1,7 +1,5 @@
-import { memo, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEthernet, faHdd, faMemory, faMicrochip, faServer } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { Server } from '@/api/server/getServer';
 import getServerResourceUsage, { ServerPowerState, ServerStats } from '@/api/server/getServerResourceUsage';
@@ -10,18 +8,19 @@ import tw from 'twin.macro';
 import GreyRowBox from '@/components/elements/GreyRowBox';
 import Spinner from '@/components/elements/Spinner';
 import styled from 'styled-components';
-import isEqual from 'react-fast-compare';
+import { IconCpu, IconDatabase, IconDeviceSdCard } from '@tabler/icons-react';
 
 // Determines if the current value is in an alarm threshold so we can show it in red rather
 // than the more faded default style.
 const isAlarmState = (current: number, limit: number): boolean => limit > 0 && current / (limit * 1024 * 1024) >= 0.9;
 
-const Icon = memo(
-    styled(FontAwesomeIcon)<{ $alarm: boolean }>`
-        ${props => (props.$alarm ? tw`text-red-400` : tw`text-neutral-500`)};
-    `,
-    isEqual,
-);
+function AlarmIcon({ icon: IconT, alarm }: { icon: React.FC<any>; alarm: boolean }) {
+    return (
+        <span css={alarm ? tw`text-red-500` : tw`text-neutral-500`}>
+            <IconT />
+        </span>
+    );
+}
 
 const IconDescription = styled.p<{ $alarm: boolean }>`
     ${tw`text-sm ml-2`};
@@ -29,11 +28,10 @@ const IconDescription = styled.p<{ $alarm: boolean }>`
 `;
 
 const StatusIndicatorBox = styled(GreyRowBox)<{ $status: ServerPowerState | undefined }>`
-    ${tw`grid grid-cols-12 gap-4 relative`};
+    ${tw`grid grid-cols-10 gap-4 relative`};
 
-    & .status-bar {
-        ${tw`w-2 bg-red-500 absolute right-0 z-20 rounded-full m-1 opacity-50 transition-all duration-150`};
-        height: calc(100% - 0.5rem);
+    & .status-bar-shadow {
+        ${tw`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75`};
 
         ${({ $status }) =>
             !$status || $status === 'offline'
@@ -43,8 +41,14 @@ const StatusIndicatorBox = styled(GreyRowBox)<{ $status: ServerPowerState | unde
                   : tw`bg-yellow-500`};
     }
 
-    &:hover .status-bar {
-        ${tw`opacity-75`};
+    & .status-bar-indicator {
+        ${tw`relative inline-flex rounded-full h-3 w-3`}
+        ${({ $status }) =>
+            !$status || $status === 'offline'
+                ? tw`bg-red-500`
+                : $status === 'running'
+                  ? tw`bg-green-500`
+                  : tw`bg-yellow-500`};
     }
 `;
 
@@ -92,20 +96,16 @@ export default ({ server, className }: { server: Server; className?: string }) =
     return (
         <StatusIndicatorBox as={Link} to={`/server/${server.id}`} className={className} $status={stats?.status}>
             <div css={tw`flex items-center col-span-12 sm:col-span-5 lg:col-span-6`}>
-                <div className={'icon mr-4'}>
-                    <FontAwesomeIcon icon={faServer} />
-                </div>
                 <div>
-                    <p css={tw`text-lg break-words`}>{server.name}</p>
-                    {!!server.description && (
-                        <p css={tw`text-sm text-neutral-300 break-words line-clamp-2`}>{server.description}</p>
-                    )}
-                </div>
-            </div>
-            <div css={tw`flex-1 ml-4 lg:block lg:col-span-2 hidden`}>
-                <div css={tw`flex justify-center`}>
-                    <FontAwesomeIcon icon={faEthernet} css={tw`text-neutral-500`} />
-                    <p css={tw`text-sm text-neutral-400 ml-2`}>
+                    <div css={tw`text-2xl font-extrabold flex gap-x-3 items-center`}>
+                        <span>{server.name}</span>
+                        <span css={tw`relative flex h-3 w-3`}>
+                            <span className="status-bar-shadow"></span>
+                            <span className="status-bar-indicator"></span>
+                        </span>
+                    </div>
+
+                    <p css={tw`text-sm text-zinc-400`}>
                         {server.allocations
                             .filter(alloc => alloc.isDefault)
                             .map(allocation => (
@@ -143,7 +143,7 @@ export default ({ server, className }: { server: Server; className?: string }) =
                     <React.Fragment>
                         <div css={tw`flex-1 ml-4 sm:block hidden`}>
                             <div css={tw`flex justify-center`}>
-                                <Icon icon={faMicrochip} $alarm={alarms.cpu} />
+                                <AlarmIcon icon={IconCpu} alarm={alarms.cpu} />
                                 <IconDescription $alarm={alarms.cpu}>
                                     {stats.cpuUsagePercent.toFixed(2)} %
                                 </IconDescription>
@@ -152,7 +152,8 @@ export default ({ server, className }: { server: Server; className?: string }) =
                         </div>
                         <div css={tw`flex-1 ml-4 sm:block hidden`}>
                             <div css={tw`flex justify-center`}>
-                                <Icon icon={faMemory} $alarm={alarms.memory} />
+                                <AlarmIcon icon={IconDatabase} alarm={alarms.memory} />
+                                {/* TODO: replace with something better */}
                                 <IconDescription $alarm={alarms.memory}>
                                     {bytesToString(stats.memoryUsageInBytes)}
                                 </IconDescription>
@@ -161,7 +162,7 @@ export default ({ server, className }: { server: Server; className?: string }) =
                         </div>
                         <div css={tw`flex-1 ml-4 sm:block hidden`}>
                             <div css={tw`flex justify-center`}>
-                                <Icon icon={faHdd} $alarm={alarms.disk} />
+                                <AlarmIcon icon={IconDeviceSdCard} alarm={alarms.disk} />
                                 <IconDescription $alarm={alarms.disk}>
                                     {bytesToString(stats.diskUsageInBytes)}
                                 </IconDescription>
@@ -171,7 +172,6 @@ export default ({ server, className }: { server: Server; className?: string }) =
                     </React.Fragment>
                 )}
             </div>
-            <div className={'status-bar'} />
         </StatusIndicatorBox>
     );
 };

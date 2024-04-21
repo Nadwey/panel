@@ -1,12 +1,10 @@
 import { memo } from 'react';
 import * as React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import tw from 'twin.macro';
 import isEqual from 'react-fast-compare';
 
 interface Props {
-    icon?: IconProp;
+    icon?: React.ReactNode;
     title: string | React.ReactNode;
     className?: string;
     children: React.ReactNode;
@@ -17,7 +15,7 @@ const TitledGreyBox = ({ icon, title, children, className }: Props) => (
         <div css={tw`bg-neutral-900 rounded-t p-3 border-b border-black`}>
             {typeof title === 'string' ? (
                 <p css={tw`text-sm uppercase`}>
-                    {icon && <FontAwesomeIcon icon={icon} css={tw`mr-2 text-neutral-300`} />}
+                    {icon}
                     {title}
                 </p>
             ) : (

@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import useEventListener from '@/plugins/useEventListener';
 import SearchModal from '@/components/dashboard/search/SearchModal';
 import Tooltip from '@/components/elements/tooltip/Tooltip';
+import { IconSearch } from '@tabler/icons-react';
 
 export default () => {
     const [visible, setVisible] = useState(false);
@@ -22,7 +21,7 @@ export default () => {
 
             <Tooltip placement={'bottom'} content={'Search'}>
                 <div className={'navigation-link'} onClick={() => setVisible(true)}>
-                    <FontAwesomeIcon icon={faSearch} />
+                    <IconSearch className="inline-block" /> Search
                 </div>
             </Tooltip>
         </>

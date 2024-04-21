@@ -1,18 +1,13 @@
 import { useContext, useEffect } from 'react';
-import {
-    CheckIcon,
-    ExclamationTriangleIcon,
-    InformationCircleIcon,
-    ShieldExclamationIcon,
-} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import { DialogContext, DialogIconProps, styles } from './';
+import { IconAlertTriangle, IconCheck, IconInfoCircle, IconShieldExclamation } from '@tabler/icons-react';
 
 const icons = {
-    danger: ShieldExclamationIcon,
-    warning: ExclamationTriangleIcon,
-    success: CheckIcon,
-    info: InformationCircleIcon,
+    danger: IconShieldExclamation,
+    warning: IconAlertTriangle,
+    success: IconCheck,
+    info: IconInfoCircle,
 };
 
 export default ({ type, position, className }: DialogIconProps) => {

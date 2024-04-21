@@ -6,9 +6,10 @@ module.exports = {
         extend: {
             fontFamily: {
                 header: ['"IBM Plex Sans"', '"Roboto"', 'system-ui', 'sans-serif'],
+                inter: ["'Inter'"]
             },
             colors: {
-                black: '#131a20',
+                black: '#000000',
                 slate: colors.slate,
                 // "primary" and "neutral" are deprecated, prefer the use of "blue" and "gray"
                 // in new code.

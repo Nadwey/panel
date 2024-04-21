@@ -1,11 +1,10 @@
 import PageContentBlock from '@/components/elements/PageContentBlock';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import styled, { keyframes } from 'styled-components';
 import tw from 'twin.macro';
 import Button from '@/components/elements/Button';
 import NotFoundSvg from '@/assets/images/not_found.svg';
 import ServerErrorSvg from '@/assets/images/server_error.svg';
+import { IconArrowLeft, IconRotate } from '@tabler/icons-react';
 
 interface BaseProps {
     title: string;
@@ -51,7 +50,7 @@ const ScreenBlock = ({ title, image, message, onBack, onRetry }: ScreenBlockProp
                             onClick={() => (onRetry ? onRetry() : onBack ? onBack() : null)}
                             className={onRetry ? 'hover:spin' : undefined}
                         >
-                            <FontAwesomeIcon icon={onRetry ? faSyncAlt : faArrowLeft} />
+                            {onRetry ? <IconRotate /> : <IconArrowLeft />}
                         </ActionButton>
                     </div>
                 )}

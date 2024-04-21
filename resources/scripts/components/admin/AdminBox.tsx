@@ -1,12 +1,11 @@
-import type { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import type { ReactNode } from 'react';
+import type { ForwardRefExoticComponent, ReactNode, RefAttributes } from 'react';
 import tw from 'twin.macro';
 
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
+import { Icon, IconProps } from '@tabler/icons-react';
 
 interface Props {
-    icon?: IconProp;
+    icon?: ForwardRefExoticComponent<Omit<IconProps, 'ref'> & RefAttributes<Icon>>; // bruh
     isLoading?: boolean;
     title: string | ReactNode;
     className?: string;
@@ -15,15 +14,18 @@ interface Props {
     button?: ReactNode;
 }
 
-const AdminBox = ({ icon, title, className, isLoading, children, button, noPadding }: Props) => (
-    <div css={tw`relative rounded shadow-md bg-neutral-700`} className={className}>
+const AdminBox = ({ icon: Icon, title, className, isLoading, children, button, noPadding }: Props) => (
+    <div css={tw`relative border border-zinc-800 rounded-md bg-zinc-900`} className={className}>
         <SpinnerOverlay visible={isLoading || false} />
-        <div css={tw`flex flex-row bg-neutral-900 rounded-t px-4 xl:px-5 py-3 border-b border-black`}>
+        <div css={tw`flex flex-row bg-zinc-900 rounded-md px-4 xl:px-5 py-3`}>
             {typeof title === 'string' ? (
-                <p css={tw`text-sm uppercase`}>
-                    {icon && <FontAwesomeIcon icon={icon} css={tw`mr-2 text-neutral-300`} />}
+                <div css={tw`text-sm font-bold flex flex-row items-center justify-center gap-x-1`}>
+                    <span css={tw`text-neutral-300`}>
+                        {/* @ts-ignore */}
+                        <Icon />
+                    </span>
                     {title}
-                </p>
+                </div>
             ) : (
                 title
             )}

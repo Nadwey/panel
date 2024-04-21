@@ -1,4 +1,3 @@
-import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { useFormikContext } from 'formik';
 import tw from 'twin.macro';
 
@@ -9,6 +8,7 @@ import Label from '@/components/elements/Label';
 import Select from '@/components/elements/Select';
 import type { Option } from '@/components/elements/SelectField';
 import SelectField, { AsyncSelectField } from '@/components/elements/SelectField';
+import { IconCloudNetwork } from '@tabler/icons-react';
 
 export default () => {
     const { isSubmitting } = useFormikContext();
@@ -30,7 +30,7 @@ export default () => {
     };
 
     return (
-        <AdminBox icon={faNetworkWired} title={'Networking'} isLoading={isSubmitting}>
+        <AdminBox icon={IconCloudNetwork} title={'Networking'} isLoading={isSubmitting}>
             <div css={tw`grid grid-cols-1 gap-4 lg:gap-6`}>
                 <div>
                     <Label htmlFor={'allocationId'}>Primary Allocation</Label>

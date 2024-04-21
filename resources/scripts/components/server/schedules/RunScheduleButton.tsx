@@ -5,7 +5,7 @@ import triggerScheduleExecution from '@/api/server/schedules/triggerScheduleExec
 import { ServerContext } from '@/state/server';
 import useFlash from '@/plugins/useFlash';
 import { Schedule } from '@/api/server/schedules/getServerSchedules';
-import { PlayIcon } from '@heroicons/react/24/solid';
+import { IconPlayerPlay } from '@tabler/icons-react';
 
 const RunScheduleButton = ({ schedule }: { schedule: Schedule }) => {
     const [loading, setLoading] = useState(false);
@@ -40,7 +40,7 @@ const RunScheduleButton = ({ schedule }: { schedule: Schedule }) => {
                     onTriggerExecute();
                 }}
             >
-                <PlayIcon height="1rem" />
+                <IconPlayerPlay height="1rem" />
             </Button>
         </>
     );

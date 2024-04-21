@@ -1,4 +1,3 @@
-import { CloudArrowUpIcon, XCircleIcon } from '@heroicons/react/24/solid';
 import { useSignals, useSignal } from '@preact/signals-react/runtime';
 import { useContext, useEffect } from 'react';
 
@@ -8,6 +7,7 @@ import Tooltip from '@/components/elements/tooltip/Tooltip';
 import Code from '@/components/elements/Code';
 import asDialog from '@/hoc/asDialog';
 import { ServerContext } from '@/state/server';
+import { IconCircleX, IconUpload } from '@tabler/icons-react';
 
 const svgProps = {
     cx: 16,
@@ -55,7 +55,7 @@ const FileUploadList = () => {
                         onClick={cancelFileUpload.bind(this, name)}
                         className={'text-slate-500 transition-colors duration-75 hover:text-slate-200'}
                     >
-                        <XCircleIcon className={'h-5 w-5'} />
+                        <IconCircleX className={'h-5 w-5'} />
                     </button>
                 </div>
             ))}
@@ -99,7 +99,7 @@ export default () => {
                         onClick={() => (open.value = true)}
                     >
                         <Spinner progress={(progress.uploaded / progress.total) * 100} className={'h-8 w-8'} />
-                        <CloudArrowUpIcon className={'absolute mx-auto h-3 animate-pulse'} />
+                        <IconUpload className={'absolute mx-auto h-3 animate-pulse'} />
                     </button>
                 </Tooltip>
             )}

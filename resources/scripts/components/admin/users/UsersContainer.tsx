@@ -1,4 +1,3 @@
-import { LockOpenIcon, PlusIcon, LifebuoyIcon, TrashIcon } from '@heroicons/react/24/solid';
 import { Fragment, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -14,6 +13,7 @@ import type { User } from '@definitions/admin';
 import extractSearchFilters from '@/helpers/extractSearchFilters';
 import useDebouncedState from '@/plugins/useDebouncedState';
 import { Shape } from '@/components/elements/button/types';
+import { IconLifebuoy, IconLockOpen, IconPlus, IconTrash } from '@tabler/icons-react';
 
 const filters = ['id', 'uuid', 'external_id', 'username', 'email'] as const;
 
@@ -46,7 +46,7 @@ function UsersContainer() {
             <div className="mb-4 flex justify-end">
                 <NavLink to="/admin/users/new">
                     <Button className="shadow focus:ring-offset-2 focus:ring-offset-neutral-800">
-                        Add User <PlusIcon className="ml-2 h-5 w-5" />
+                        Add User <IconPlus className="ml-2 h-5 w-5" />
                     </Button>
                 </NavLink>
             </div>
@@ -79,13 +79,13 @@ function UsersContainer() {
                             />
                         </div>
                         <Button.Text shape={Shape.IconSquare}>
-                            <LifebuoyIcon className="h-4 w-4" />
+                            <IconLifebuoy className="h-4 w-4" />
                         </Button.Text>
                         <Button.Text shape={Shape.IconSquare}>
-                            <LockOpenIcon className="h-4 w-4" />
+                            <IconLockOpen className="h-4 w-4" />
                         </Button.Text>
                         <Button.Text shape={Shape.IconSquare}>
-                            <TrashIcon className="h-4 w-4" />
+                            <IconTrash className="h-4 w-4" />
                         </Button.Text>
                     </div>
                 </Transition.Fade>

@@ -1,16 +1,3 @@
-import {
-    CogIcon,
-    CircleStackIcon,
-    FolderIcon,
-    GlobeAltIcon,
-    BuildingOfficeIcon,
-    ArrowUturnLeftIcon,
-    ServerIcon,
-    CommandLineIcon,
-    UserGroupIcon,
-    UsersIcon,
-    TableCellsIcon,
-} from '@heroicons/react/24/outline';
 import { useStoreState } from 'easy-peasy';
 import { useState } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
@@ -46,6 +33,7 @@ import Sidebar from '@/components/admin/Sidebar';
 // import useUserPersistedState from '@/plugins/useUserPersistedState';
 import UsersContainer from '@/components/admin/users/UsersContainer';
 import SettingsRouter from '@/components/admin/settings/SettingsRouter';
+import { IconArrowBackUp, IconBuilding, IconFolder, IconServer, IconSettings, IconStack2, IconTable, IconTerminal2, IconUsers, IconUsersGroup, IconWorld } from '@tabler/icons-react';
 
 function AdminRouter() {
     const email = useStoreState((state: ApplicationStore) => state.user.data!.email);
@@ -64,7 +52,7 @@ function AdminRouter() {
                     onClick={() => setCollapsed(!collapsed)}
                 >
                     {!collapsed ? (
-                        <h1 css={tw`text-2xl text-neutral-50 whitespace-nowrap font-medium`}>{applicationName}</h1>
+                        <h1 css={tw`text-3xl text-neutral-50 whitespace-nowrap font-extrabold`}>{applicationName}</h1>
                     ) : (
                         <img src={CollapsedIcon} css={tw`mt-4 w-20`} alt={'Pterodactyl Icon'} />
                     )}
@@ -72,50 +60,50 @@ function AdminRouter() {
                 <Sidebar.Wrapper>
                     <Sidebar.Section>Administration</Sidebar.Section>
                     <NavLink to="/admin" end>
-                        <BuildingOfficeIcon />
+                        <IconBuilding />
                         <span>Overview</span>
                     </NavLink>
                     <NavLink to="/admin/settings">
-                        <CogIcon />
+                        <IconSettings />
                         <span>Settings</span>
                     </NavLink>
                     <Sidebar.Section>Management</Sidebar.Section>
                     <NavLink to="/admin/databases">
-                        <CircleStackIcon />
+                        <IconStack2 />
                         <span>Databases</span>
                     </NavLink>
                     <NavLink to="/admin/locations">
-                        <GlobeAltIcon />
+                        <IconWorld />
                         <span>Locations</span>
                     </NavLink>
                     <NavLink to="/admin/nodes">
-                        <ServerIcon />
+                        <IconServer />
                         <span>Nodes</span>
                     </NavLink>
                     <NavLink to="/admin/servers">
-                        <CommandLineIcon />
+                        <IconTerminal2 />
                         <span>Servers</span>
                     </NavLink>
                     <NavLink to="/admin/users">
-                        <UsersIcon />
+                        <IconUsers />
                         <span>Users</span>
                     </NavLink>
                     <NavLink to="/admin/roles">
-                        <UserGroupIcon />
+                        <IconUsersGroup />
                         <span>Roles</span>
                     </NavLink>
                     <Sidebar.Section>Service Management</Sidebar.Section>
                     <NavLink to="/admin/nests">
-                        <TableCellsIcon />
+                        <IconTable />
                         <span>Nests</span>
                     </NavLink>
                     <NavLink to="/admin/mounts">
-                        <FolderIcon />
+                        <IconFolder />
                         <span>Mounts</span>
                     </NavLink>
                 </Sidebar.Wrapper>
                 <NavLink to="/" css={tw`mt-auto mb-3`}>
-                    <ArrowUturnLeftIcon />
+                    <IconArrowBackUp />
                     <span>Return</span>
                 </NavLink>
                 <Sidebar.User>

@@ -1,9 +1,9 @@
 import { Menu } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 import type { ReactNode } from 'react';
 
 import styles from './style.module.css';
+import { IconChevronDown } from '@tabler/icons-react';
 
 interface Props {
     className?: string;
@@ -17,7 +17,7 @@ function DropdownButton({ className, animate = true, children }: Props) {
             {typeof children === 'string' ? (
                 <>
                     <span className="mr-2">{children}</span>
-                    <ChevronDownIcon aria-hidden="true" data-animated={animate.toString()} />
+                    <IconChevronDown aria-hidden="true" data-animated={animate.toString()} />
                 </>
             ) : (
                 children

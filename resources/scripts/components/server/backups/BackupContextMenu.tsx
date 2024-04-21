@@ -13,14 +13,8 @@ import { restoreServerBackup } from '@/api/server/backups';
 import http, { httpErrorToHuman } from '@/api/http';
 import { Dialog } from '@/components/elements/dialog';
 import { Dropdown } from '@/components/elements/dropdown';
-import {
-    ArrowDownTrayIcon,
-    EllipsisVerticalIcon,
-    BackwardIcon,
-    LockClosedIcon,
-    LockOpenIcon,
-    TrashIcon,
-} from '@heroicons/react/24/solid';
+import { IconDotsVertical, IconDownload, IconLock, IconLockOpen, IconRestore, IconTrash } from '@tabler/icons-react';
+
 
 interface Props {
     backup: ServerBackup;
@@ -166,28 +160,28 @@ export default ({ backup }: Props) => {
             {backup.isSuccessful ? (
                 <Dropdown>
                     <Dropdown.Button className="px-2">
-                        <EllipsisVerticalIcon />
+                        <IconDotsVertical />
                     </Dropdown.Button>
                     <Can action={'backup.download'}>
-                        <Dropdown.Item icon={<ArrowDownTrayIcon />} onClick={doDownload}>
+                        <Dropdown.Item icon={<IconDownload />} onClick={doDownload}>
                             Download
                         </Dropdown.Item>
                     </Can>
                     <Can action={'backup.restore'}>
-                        <Dropdown.Item icon={<BackwardIcon />} onClick={() => setModal('restore')}>
+                        <Dropdown.Item icon={<IconRestore />} onClick={() => setModal('restore')}>
                             Restore
                         </Dropdown.Item>
                     </Can>
                     <Can action={'backup.delete'}>
                         <>
                             <Dropdown.Item
-                                icon={backup.isLocked ? <LockClosedIcon /> : <LockOpenIcon />}
+                                icon={backup.isLocked ? <IconLock /> : <IconLockOpen />}
                                 onClick={onLockToggle}
                             >
                                 {backup.isLocked ? 'Unlock' : 'Lock'}
                             </Dropdown.Item>
                             {!backup.isLocked && (
-                                <Dropdown.Item icon={<TrashIcon />} danger onClick={() => setModal('delete')}>
+                                <Dropdown.Item icon={<IconTrash />} danger onClick={() => setModal('delete')}>
                                     Delete
                                 </Dropdown.Item>
                             )}
@@ -196,7 +190,7 @@ export default ({ backup }: Props) => {
                 </Dropdown>
             ) : (
                 <button onClick={() => setModal('delete')} css={tw`p-2`}>
-                    <TrashIcon width={'1.2rem'} />
+                    <IconTrash width={'1.2rem'} />
                 </button>
             )}
         </>

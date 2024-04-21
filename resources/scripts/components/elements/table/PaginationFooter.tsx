@@ -1,7 +1,7 @@
 import { PaginationDataSet } from '@/api/http';
 import classNames from 'classnames';
 import { Button } from '@/components/elements/button';
-import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from '@heroicons/react/24/solid';
+import { IconChevronsLeft, IconChevronsRight } from '@tabler/icons-react';
 
 interface Props {
     className?: string;
@@ -50,7 +50,7 @@ const PaginationFooter = ({ pagination, className, onPageSelect }: Props) => {
             {pagination.totalPages > 1 && (
                 <div className={'flex space-x-1'}>
                     <Button.Text {...buttonProps(1)} disabled={pages.previous.length !== 2}>
-                        <ChevronDoubleLeftIcon className={'h-3 w-3'} />
+                        <IconChevronsLeft className={'h-3 w-3'} />
                     </Button.Text>
                     {pages.previous.reverse().map(value => (
                         <Button.Text key={`previous-${value}`} {...buttonProps(value)}>
@@ -66,7 +66,7 @@ const PaginationFooter = ({ pagination, className, onPageSelect }: Props) => {
                         </Button.Text>
                     ))}
                     <Button.Text {...buttonProps(total)} disabled={pages.next.length !== 2}>
-                        <ChevronDoubleRightIcon className={'h-3 w-3'} />
+                        <IconChevronsRight className={'h-3 w-3'} />
                     </Button.Text>
                 </div>
             )}

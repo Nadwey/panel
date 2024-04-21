@@ -1,4 +1,3 @@
-import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { Field as FormikField, useFormikContext } from 'formik';
 import tw from 'twin.macro';
 
@@ -9,12 +8,13 @@ import LocationSelect from '@/components/admin/nodes/LocationSelect';
 import Label from '@/components/elements/Label';
 import Field from '@/components/elements/Field';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
+import { IconDatabase } from '@tabler/icons-react';
 
 export default function NodeSettingsContainer({ node }: { node?: Node }) {
     const { isSubmitting } = useFormikContext();
 
     return (
-        <AdminBox icon={faDatabase} title={'Settings'} css={tw`w-full relative`}>
+        <AdminBox icon={IconDatabase} title={'Settings'} css={tw`w-full relative`}>
             <SpinnerOverlay visible={isSubmitting} />
 
             <div css={tw`mb-6`}>

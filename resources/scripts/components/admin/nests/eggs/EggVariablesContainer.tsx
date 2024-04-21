@@ -1,4 +1,3 @@
-import { TrashIcon } from '@heroicons/react/24/outline';
 import type { FormikHelpers } from 'formik';
 import { Form, Formik, useFormikContext } from 'formik';
 import { useState } from 'react';
@@ -19,6 +18,7 @@ import Field, { FieldRow, TextareaField } from '@/components/elements/Field';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 import useFlash from '@/plugins/useFlash';
 import Label from '@/components/elements/Label';
+import { IconTrash } from '@tabler/icons-react';
 
 export const validationSchema = object().shape({
     name: string().required().min(1).max(191),
@@ -121,7 +121,7 @@ function EggVariableDeleteButton({ onClick }: { onClick: (success: () => void) =
                 css={tw`ml-auto text-neutral-500 hover:text-neutral-300`}
                 onClick={() => setVisible(true)}
             >
-                <TrashIcon className="h-5 w-5" />
+                <IconTrash className="h-5 w-5" />
             </button>
         </>
     );

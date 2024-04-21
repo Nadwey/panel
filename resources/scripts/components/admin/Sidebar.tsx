@@ -14,7 +14,7 @@ const Wrapper = styled.div`
         }
 
         & > span {
-            ${tw`font-header font-medium text-lg whitespace-nowrap leading-none ml-3`};
+            ${tw`font-header font-bold text-lg whitespace-nowrap leading-none ml-3`};
         }
 
         &:active,
@@ -37,7 +37,7 @@ const User = styled.div`
 `;
 
 const Sidebar = styled.div<{ $collapsed?: boolean }>`
-    ${tw`h-screen hidden md:flex flex-col items-center flex-shrink-0 bg-neutral-900 overflow-x-hidden ease-linear`};
+    ${tw`h-screen hidden md:flex flex-col items-center flex-shrink-0 bg-zinc-950 border border-zinc-800 overflow-x-hidden ease-linear`};
     ${tw`transition-[width] duration-150 ease-in`};
     ${tw`w-[17.5rem]`};
 
