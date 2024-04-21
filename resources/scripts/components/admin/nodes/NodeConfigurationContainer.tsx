@@ -36,7 +36,7 @@ export default () => {
 
     return (
         <>
-            <AdminBox title={'Configuration'} icon={<IconCode />} css={tw`mb-4`}>
+            <AdminBox title={'Configuration'} icon={IconCode} css={tw`mb-4`}>
                 <div css={tw`relative`}>
                     <div css={tw`absolute top-0 right-0`}>
                         <CopyOnClick text={configuration} showInNotification={false}>
@@ -62,7 +62,7 @@ export default () => {
                 </div>
             </AdminBox>
 
-            <AdminBox title={'Auto Deploy'} icon={<IconRocket />}>
+            <AdminBox title={'Auto Deploy'} icon={IconRocket}>
                 Never&trade;
             </AdminBox>
         </>
