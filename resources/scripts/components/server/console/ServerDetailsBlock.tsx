@@ -5,11 +5,11 @@ import { useEffect, useMemo, useState } from 'react';
 import { SocketEvent, SocketRequest } from '@/components/server/events';
 import UptimeDuration from '@/components/server/UptimeDuration';
 import StatBlock from '@/components/server/console/StatBlock';
-import { bytesToString, ip, mbToBytes } from '@/lib/formatters';
+import { bytesToString, mbToBytes } from '@/lib/formatters';
 import { capitalize } from '@/lib/strings';
 import { ServerContext } from '@/state/server';
 import useWebsocketEvent from '@/plugins/useWebsocketEvent';
-import { IconClock, IconCpu, IconDatabase, IconDeviceSdCard, IconDownload, IconUpload, IconWifi } from '@tabler/icons-react';
+import { IconClock, IconCpu, IconDatabase, IconDeviceSdCard, IconDownload, IconUpload } from '@tabler/icons-react';
 
 type Stats = Record<'memory' | 'cpu' | 'disk' | 'uptime' | 'rx' | 'tx', number>;
 
@@ -111,7 +111,11 @@ function ServerDetailsBlock({ className }: { className?: string }) {
                     <Limit limit={textLimits.memory}>{bytesToString(stats.memory)}</Limit>
                 )}
             </StatBlock>
-            <StatBlock icon={IconDeviceSdCard} title={'Disk'} color={getIconColor(stats.disk / 1024, limits.disk * 1024)}>
+            <StatBlock
+                icon={IconDeviceSdCard}
+                title={'Disk'}
+                color={getIconColor(stats.disk / 1024, limits.disk * 1024)}
+            >
                 <Limit limit={textLimits.disk}>{bytesToString(stats.disk)}</Limit>
             </StatBlock>
             <StatBlock icon={IconDownload} title={'Network (Inbound)'}>

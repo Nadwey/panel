@@ -3,7 +3,7 @@ import { shell } from '@codemirror/legacy-modes/mode/shell';
 import type { FormikHelpers } from 'formik';
 import { Form, Formik } from 'formik';
 import tw from 'twin.macro';
-import { IconScript } from "@tabler/icons-react";
+import { IconScript } from '@tabler/icons-react';
 
 import { useEggFromRoute } from '@/api/admin/egg';
 import updateEgg from '@/api/admin/eggs/updateEgg';

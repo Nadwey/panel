@@ -108,8 +108,7 @@ interface Props<T> {
 const PaginationButton = styled.button<{ active?: boolean }>`
     ${tw`relative items-center px-3 py-1 -ml-px text-sm font-normal leading-5 transition duration-150 ease-in-out border border-zinc-500 focus:z-10 focus:outline-none focus:border-primary-300 inline-flex`};
 
-    ${props =>
-        props.active ? tw`bg-zinc-500 text-zinc-50` : tw`bg-zinc-600 text-zinc-200 hover:text-zinc-50`};
+    ${props => (props.active ? tw`bg-zinc-500 text-zinc-50` : tw`bg-zinc-600 text-zinc-200 hover:text-zinc-50`)};
 `;
 
 const PaginationArrow = styled.button`

@@ -17,7 +17,7 @@ function DashboardRouter() {
             <div css={tw`flex flex-row items-stretch flex-1`}>
                 <NavigationBar />
 
-                <div className='w-full'>
+                <div className="w-full">
                     {location.pathname.startsWith('/account') && (
                         <SubNavigation>
                             <div>

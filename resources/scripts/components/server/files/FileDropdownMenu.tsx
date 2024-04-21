@@ -16,7 +16,17 @@ import isEqual from 'react-fast-compare';
 import ChmodFileModal from '@/components/server/files/ChmodFileModal';
 import { Dialog } from '@/components/elements/dialog';
 import { Dropdown } from '@/components/elements/dropdown';
-import { IconArrowUp, IconCode, IconDotsVertical, IconDownload, IconFiles, IconPackage, IconPackageExport, IconPencil, IconTrash } from '@tabler/icons-react';
+import {
+    IconArrowUp,
+    IconCode,
+    IconDotsVertical,
+    IconDownload,
+    IconFiles,
+    IconPackage,
+    IconPackageExport,
+    IconPencil,
+    IconTrash,
+} from '@tabler/icons-react';
 
 type ModalType = 'rename' | 'move' | 'chmod';
 

@@ -9,7 +9,15 @@ import useFlash from '@/plugins/useFlash';
 import { ServerContext } from '@/state/server';
 import tw from 'twin.macro';
 import ConfirmationModal from '@/components/elements/ConfirmationModal';
-import { IconCircleArrowDown, IconClock, IconCode, IconFileZip, IconPencil, IconToggleRight, IconTrash } from '@tabler/icons-react';
+import {
+    IconCircleArrowDown,
+    IconClock,
+    IconCode,
+    IconFileZip,
+    IconPencil,
+    IconToggleRight,
+    IconTrash,
+} from '@tabler/icons-react';
 
 interface Props {
     schedule: Schedule;

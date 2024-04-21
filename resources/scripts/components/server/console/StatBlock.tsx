@@ -23,9 +23,7 @@ function StatBlock({ title, copyOnClick, icon: Icon, color, className, children 
             <div className={classNames(styles.stat_block, 'bg-zinc-900/50 border border-zinc-900', className)}>
                 <div className={classNames(styles.status_bar, color || 'bg-zinc-700')} />
                 <div className={classNames(styles.icon)}>
-                    <Icon
-                        className={color}
-                    />
+                    <Icon className={color} />
                 </div>
                 <div className={'flex w-full flex-col justify-center overflow-hidden'}>
                     <p className={'font-header text-xs leading-tight text-zinc-200 md:text-sm'}>{title}</p>

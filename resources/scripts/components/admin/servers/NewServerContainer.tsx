@@ -31,7 +31,6 @@ import AdminContentBlock from '@/components/admin/AdminContentBlock';
 import { WithRelationships } from '@/api/admin';
 import { IconCloudNetwork } from '@tabler/icons-react';
 import { Button } from '@/components/elements/button';
-import { Size } from '@/components/elements/button/types';
 
 function InternalForm() {
     const {

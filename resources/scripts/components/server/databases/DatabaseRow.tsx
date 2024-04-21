@@ -86,7 +86,12 @@ export default ({ database, className }: Props) => {
                                 description={'Enter the database name to confirm deletion.'}
                             />
                             <div css={tw`mt-6 text-right`}>
-                                <Button type={'button'} variant={Variant.Secondary} css={tw`mr-2`} onClick={() => setVisible(false)}>
+                                <Button
+                                    type={'button'}
+                                    variant={Variant.Secondary}
+                                    css={tw`mr-2`}
+                                    onClick={() => setVisible(false)}
+                                >
                                     Cancel
                                 </Button>
                                 <Button.Danger type={'submit'} disabled={!isValid}>

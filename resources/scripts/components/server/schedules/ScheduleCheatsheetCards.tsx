@@ -1,7 +1,3 @@
 export default () => {
-    return (
-        <>
-            TODO
-        </>
-    );
+    return <>TODO</>;
 };

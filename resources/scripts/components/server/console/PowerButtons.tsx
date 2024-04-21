@@ -5,7 +5,6 @@ import Can from '@/components/elements/Can';
 import { ServerContext } from '@/state/server';
 import { PowerAction } from '@/components/server/console/ServerConsoleContainer';
 import { Dialog } from '@/components/elements/dialog';
-import { Variant } from '@/components/elements/button/types';
 
 interface PowerButtonProps {
     className?: string;

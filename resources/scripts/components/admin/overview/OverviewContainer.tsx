@@ -83,8 +83,8 @@ export default () => {
                                 </p>
                             ) : versionData?.panel.latest === versionData?.panel.current ? (
                                 <p css={tw`text-zinc-200`}>
-                                    Your panel is <span css={tw`text-zinc-100`}>up-to-date</span>. The latest version
-                                    is <Code>{versionData?.panel.latest}</Code> and you are running version{' '}
+                                    Your panel is <span css={tw`text-zinc-100`}>up-to-date</span>. The latest version is{' '}
+                                    <Code>{versionData?.panel.latest}</Code> and you are running version{' '}
                                     <Code>{versionData?.panel.current}</Code>.
                                 </p>
                             ) : (

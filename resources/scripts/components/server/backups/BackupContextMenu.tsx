@@ -15,7 +15,6 @@ import { Dialog } from '@/components/elements/dialog';
 import { Dropdown } from '@/components/elements/dropdown';
 import { IconDotsVertical, IconDownload, IconLock, IconLockOpen, IconRestore, IconTrash } from '@tabler/icons-react';
 
-
 interface Props {
     backup: ServerBackup;
 }

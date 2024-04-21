@@ -20,9 +20,11 @@ const AdminBox = ({ icon: Icon, title, className, isLoading, children, button, n
         <div css={tw`flex flex-row bg-zinc-900 rounded-md px-4 xl:px-5 py-3`}>
             {typeof title === 'string' ? (
                 <div css={tw`text-sm font-bold flex flex-row items-center justify-center gap-x-1`}>
-                    {Icon && <span css={tw`text-zinc-300`}>
-                        <Icon />
-                    </span>}
+                    {Icon && (
+                        <span css={tw`text-zinc-300`}>
+                            <Icon />
+                        </span>
+                    )}
                     {title}
                 </div>
             ) : (

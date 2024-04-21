@@ -1,7 +1,6 @@
 import type { Actions } from 'easy-peasy';
 import { useStoreActions } from 'easy-peasy';
 import { useState } from 'react';
-import tw from 'twin.macro';
 
 import deleteAllocation from '@/api/admin/nodes/allocations/deleteAllocation';
 import ConfirmationModal from '@/components/elements/ConfirmationModal';

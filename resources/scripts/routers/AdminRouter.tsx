@@ -33,7 +33,19 @@ import Sidebar from '@/components/admin/Sidebar';
 // import useUserPersistedState from '@/plugins/useUserPersistedState';
 import UsersContainer from '@/components/admin/users/UsersContainer';
 import SettingsRouter from '@/components/admin/settings/SettingsRouter';
-import { IconArrowBackUp, IconBuilding, IconFolder, IconServer, IconSettings, IconStack2, IconTable, IconTerminal2, IconUsers, IconUsersGroup, IconWorld } from '@tabler/icons-react';
+import {
+    IconArrowBackUp,
+    IconBuilding,
+    IconFolder,
+    IconServer,
+    IconSettings,
+    IconStack2,
+    IconTable,
+    IconTerminal2,
+    IconUsers,
+    IconUsersGroup,
+    IconWorld,
+} from '@tabler/icons-react';
 
 function AdminRouter() {
     const email = useStoreState((state: ApplicationStore) => state.user.data!.email);

@@ -53,7 +53,7 @@ export const SelectStyle: StylesConfig<T, any, any> = {
             ...base,
             height: '3rem',
             background: theme`colors.zinc.900`,
-            border: "none",
+            border: 'none',
             color: theme`colors.zinc.200`,
             cursor: 'pointer',
             boxShadow: props.isFocused

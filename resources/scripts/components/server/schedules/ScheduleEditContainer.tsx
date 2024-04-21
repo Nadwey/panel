@@ -82,9 +82,7 @@ export default () => {
                 <>
                     <ScheduleCronRow cron={schedule.cron} css={tw`sm:hidden bg-zinc-700 rounded mb-4 p-3`} />
                     <div css={tw`rounded shadow`}>
-                        <div
-                            css={tw`sm:flex items-center bg-zinc-900 p-3 sm:p-6 border-b-4 border-zinc-600 rounded-t`}
-                        >
+                        <div css={tw`sm:flex items-center bg-zinc-900 p-3 sm:p-6 border-b-4 border-zinc-600 rounded-t`}>
                             <div css={tw`flex-1`}>
                                 <h3 css={tw`flex items-center text-zinc-100 text-2xl`}>
                                     {schedule.name}

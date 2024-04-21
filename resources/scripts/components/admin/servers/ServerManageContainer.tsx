@@ -47,7 +47,7 @@ export default () => {
             </div>
             <div css={tw`flex flex-col`}>
                 <AdminBox title={'Suspend Server '} css={tw`relative w-full`}>
-                <Button size={Size.Large} variant={Variant.Primary} css={tw`w-full`}>
+                    <Button size={Size.Large} variant={Variant.Primary} css={tw`w-full`}>
                         Suspend Server
                     </Button>
                     <p css={tw`text-xs text-zinc-400 mt-2`}>

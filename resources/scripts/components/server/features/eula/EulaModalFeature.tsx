@@ -80,7 +80,11 @@ const EulaModalFeature = () => {
                 .
             </p>
             <div css={tw`mt-8 sm:flex items-center justify-end`}>
-                <Button variant={Variant.Secondary} onClick={() => setVisible(false)} css={tw`w-full sm:w-auto border-transparent`}>
+                <Button
+                    variant={Variant.Secondary}
+                    onClick={() => setVisible(false)}
+                    css={tw`w-full sm:w-auto border-transparent`}
+                >
                     Cancel
                 </Button>
                 <Button onClick={onAcceptEULA} css={tw`mt-4 sm:mt-0 sm:ml-4 w-full sm:w-auto`}>

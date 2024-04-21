@@ -53,7 +53,7 @@ const options: ChartOptions<'line'> = {
                 font: {
                     family: theme('fontFamily.sans'),
                     size: 11,
-                    weight: "normal",
+                    weight: 'normal',
                 },
             },
         },

@@ -1,4 +1,3 @@
-import { Model } from '@/api/admin/index';
 import http from '@/api/http';
 import Transformers from '../definitions/admin/transformers';
 

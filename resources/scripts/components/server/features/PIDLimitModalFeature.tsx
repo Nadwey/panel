@@ -64,8 +64,8 @@ const PIDLimitModalFeature = () => {
                     <p css={tw`mt-4`}>This server has reached the maximum process or memory limit.</p>
                     <p css={tw`mt-4`}>
                         Increasing <code css={tw`font-mono bg-zinc-900`}>container_pid_limit</code> in the wings
-                        configuration, <code css={tw`font-mono bg-zinc-900`}>config.yml</code>, might help resolve
-                        this issue.
+                        configuration, <code css={tw`font-mono bg-zinc-900`}>config.yml</code>, might help resolve this
+                        issue.
                     </p>
                     <p css={tw`mt-4`}>
                         <b>Note: Wings must be restarted for the configuration file changes to take effect</b>

@@ -57,9 +57,7 @@ export default () => {
                 </strong>
             </p>
             <div css={tw`mt-6 text-right`}>
-                <Button.Danger onClick={() => setModalVisible(true)}>
-                    Reinstall Server
-                </Button.Danger>
+                <Button.Danger onClick={() => setModalVisible(true)}>Reinstall Server</Button.Danger>
             </div>
         </TitledGreyBox>
     );

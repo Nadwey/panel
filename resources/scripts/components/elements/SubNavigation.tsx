@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import tw, { theme } from 'twin.macro';
+import tw from 'twin.macro';
 
 const SubNavigation = styled.div`
     ${tw`w-full overflow-x-auto flex flex-row justify-center text-sm p-2`};

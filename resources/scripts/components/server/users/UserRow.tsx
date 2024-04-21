@@ -6,7 +6,7 @@ import Can from '@/components/elements/Can';
 import { useStoreState } from 'easy-peasy';
 import tw from 'twin.macro';
 import GreyRowBox from '@/components/elements/GreyRowBox';
-import { Icon2fa, IconLockOpen, IconPencil, IconShield, IconUserExclamation } from '@tabler/icons-react';
+import { IconPencil, IconShield, IconUserExclamation } from '@tabler/icons-react';
 
 interface Props {
     subuser: Subuser;
