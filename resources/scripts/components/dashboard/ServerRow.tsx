@@ -139,6 +139,8 @@ export default ({ server, className }: { server: Server; className?: string }) =
                     ) : (
                         <Spinner size={'small'} />
                     )
+                ) : stats.status === 'offline' ? (
+                    <span css={tw`font-extrabold text-zinc-400`}>Offline</span>
                 ) : (
                     <>
                         <div css={tw`flex justify-center`}>
