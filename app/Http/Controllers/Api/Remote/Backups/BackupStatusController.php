@@ -3,6 +3,7 @@
 namespace Pterodactyl\Http\Controllers\Api\Remote\Backups;
 
 use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Pterodactyl\Models\Backup;
 use Illuminate\Http\JsonResponse;
@@ -36,7 +37,9 @@ class BackupStatusController extends Controller
 
         /** @var Backup $model */
         $model = Backup::query()
-            ->where('node_id', $node->id)
+            ->whereHas('server', function (Builder $query) use ($node) {
+                $query->where('node_id', $node->id);
+            })
             ->where('uuid', $backup)
             ->firstOrFail();
 
