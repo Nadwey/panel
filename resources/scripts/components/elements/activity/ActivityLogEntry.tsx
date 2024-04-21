@@ -47,9 +47,9 @@ export default ({ activity, children }: Props) => {
     const properties = wrapProperties(activity.properties);
 
     return (
-        <div className={'group grid grid-cols-10 border-b-2 border-slate-800 py-4 last:rounded-b last:border-0'}>
+        <div className={'group grid grid-cols-10 border border-zinc-900 py-3 my-5 rounded-xl'}>
             <div className={'hidden select-none items-center justify-center sm:col-span-1 sm:flex'}>
-                <div className={'flex h-10 w-10 items-center overflow-hidden rounded-full bg-slate-600'}>
+                <div className={'flex h-10 w-10 items-center overflow-hidden rounded-full bg-zinc-600'}>
                     <Avatar name={actor?.uuid || 'system'} />
                 </div>
             </div>

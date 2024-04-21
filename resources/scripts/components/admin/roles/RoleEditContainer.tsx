@@ -12,12 +12,12 @@ import FlashMessageRender from '@/components/FlashMessageRender';
 import AdminBox from '@/components/admin/AdminBox';
 import AdminContentBlock from '@/components/admin/AdminContentBlock';
 import RoleDeleteButton from '@/components/admin/roles/RoleDeleteButton';
-import Button from '@/components/elements/Button';
 import Field from '@/components/elements/Field';
 import Spinner from '@/components/elements/Spinner';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 import type { UserRole } from '@definitions/admin';
 import type { ApplicationStore } from '@/state';
+import { Button } from '@/components/elements/button';
 
 interface ctx {
     role: UserRole | undefined;
@@ -147,13 +147,13 @@ const RoleEditContainer = () => {
         <AdminContentBlock title={'Role - ' + role.name}>
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>{role.name}</h2>
+                    <h2 css={tw`text-2xl text-zinc-50 font-header font-medium`}>{role.name}</h2>
                     {(role.description || '').length < 1 ? (
-                        <p css={tw`text-base text-neutral-400`}>
+                        <p css={tw`text-base text-zinc-400`}>
                             <span css={tw`italic`}>No description</span>
                         </p>
                     ) : (
-                        <p css={tw`text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}>
+                        <p css={tw`text-base text-zinc-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}>
                             {role.description}
                         </p>
                     )}

@@ -20,21 +20,18 @@ function StatBlock({ title, copyOnClick, icon: Icon, color, className, children 
 
     return (
         <CopyOnClick text={copyOnClick}>
-            <div className={classNames(styles.stat_block, 'bg-slate-600', className)}>
-                <div className={classNames(styles.status_bar, color || 'bg-slate-700')} />
-                <div className={classNames(styles.icon, color || 'bg-slate-700')}>
+            <div className={classNames(styles.stat_block, 'bg-zinc-900/50 border border-zinc-900', className)}>
+                <div className={classNames(styles.status_bar, color || 'bg-zinc-700')} />
+                <div className={classNames(styles.icon)}>
                     <Icon
-                        className={classNames({
-                            'text-slate-100': !color || color === 'bg-slate-700',
-                            'text-slate-50': color && color !== 'bg-slate-700',
-                        })}
+                        className={color}
                     />
                 </div>
                 <div className={'flex w-full flex-col justify-center overflow-hidden'}>
-                    <p className={'font-header text-xs leading-tight text-slate-200 md:text-sm'}>{title}</p>
+                    <p className={'font-header text-xs leading-tight text-zinc-200 md:text-sm'}>{title}</p>
                     <div
                         ref={ref}
-                        className={'h-[1.75rem] w-full truncate font-semibold text-slate-50'}
+                        className={'h-[1.75rem] w-full truncate font-semibold text-zinc-50'}
                         style={{ fontSize }}
                     >
                         {children}

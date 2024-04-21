@@ -9,10 +9,10 @@ import { httpErrorToHuman } from '@/api/http';
 import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 import { ApiKey } from '@/api/account/getApiKeys';
 import tw from 'twin.macro';
-import Button from '@/components/elements/Button';
 import Input, { Textarea } from '@/components/elements/Input';
 import styled from 'styled-components';
 import ApiKeyModal from '@/components/dashboard/ApiKeyModal';
+import { Button } from '@/components/elements/button';
 
 interface Values {
     description: string;

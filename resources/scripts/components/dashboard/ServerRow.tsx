@@ -8,27 +8,29 @@ import tw from 'twin.macro';
 import GreyRowBox from '@/components/elements/GreyRowBox';
 import Spinner from '@/components/elements/Spinner';
 import styled from 'styled-components';
-import { IconCpu, IconDatabase, IconDeviceSdCard } from '@tabler/icons-react';
 
 // Determines if the current value is in an alarm threshold so we can show it in red rather
 // than the more faded default style.
 const isAlarmState = (current: number, limit: number): boolean => limit > 0 && current / (limit * 1024 * 1024) >= 0.9;
 
-function AlarmIcon({ icon: IconT, alarm }: { icon: React.FC<any>; alarm: boolean }) {
+function StatusText({ name, status, alarm }: { name: string; status: string; alarm: boolean }) {
     return (
-        <span css={alarm ? tw`text-red-500` : tw`text-neutral-500`}>
-            <IconT />
-        </span>
+        <div css={tw`flex flex-row gap-1`}>
+            <span className={`font-bold ${alarm ? 'text-red-500' : 'text-zinc-500'}`}>{name}</span>
+            <span className={`font-bold ${alarm ? 'text-red-500' : 'text-zinc-200'}`}>{status}</span>
+        </div>
     );
 }
 
-const IconDescription = styled.p<{ $alarm: boolean }>`
-    ${tw`text-sm ml-2`};
-    ${props => (props.$alarm ? tw`text-white` : tw`text-neutral-400`)};
-`;
-
 const StatusIndicatorBox = styled(GreyRowBox)<{ $status: ServerPowerState | undefined }>`
-    ${tw`grid grid-cols-10 gap-4 relative`};
+    ${tw`flex flex-row justify-between relative`};
+
+    ${({ $status }) =>
+        !$status || $status === 'offline'
+            ? tw`bg-gradient-to-l from-[#220000] to-zinc-950`
+            : $status === 'running'
+              ? tw`bg-gradient-to-l from-[#183500] to-zinc-950`
+              : tw`bg-gradient-to-l from-[#292500] to-zinc-950`};
 
     & .status-bar-shadow {
         ${tw`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75`};
@@ -89,13 +91,9 @@ export default ({ server, className }: { server: Server; className?: string }) =
         alarms.disk = server.limits.disk === 0 ? false : isAlarmState(stats.diskUsageInBytes, server.limits.disk);
     }
 
-    const diskLimit = server.limits.disk !== 0 ? bytesToString(mbToBytes(server.limits.disk)) : 'Unlimited';
-    const memoryLimit = server.limits.memory !== 0 ? bytesToString(mbToBytes(server.limits.memory)) : 'Unlimited';
-    const cpuLimit = server.limits.cpu !== 0 ? server.limits.cpu + ' %' : 'Unlimited';
-
     return (
         <StatusIndicatorBox as={Link} to={`/server/${server.id}`} className={className} $status={stats?.status}>
-            <div css={tw`flex items-center col-span-12 sm:col-span-5 lg:col-span-6`}>
+            <div css={tw`flex items-center`}>
                 <div>
                     <div css={tw`text-2xl font-extrabold flex gap-x-3 items-center`}>
                         <span>{server.name}</span>
@@ -116,17 +114,19 @@ export default ({ server, className }: { server: Server; className?: string }) =
                     </p>
                 </div>
             </div>
-            <div css={tw`hidden col-span-7 lg:col-span-4 sm:flex items-baseline justify-center`}>
+            <div
+                css={tw`sm:flex gap-4 items-baseline justify-center p-3 sm:block bg-zinc-900 hidden rounded-lg shadow shadow-zinc-950`}
+            >
                 {!stats || isSuspended ? (
                     isSuspended ? (
                         <div css={tw`flex-1 text-center`}>
-                            <span css={tw`bg-red-500 rounded px-2 py-1 text-red-100 text-xs`}>
+                            <span css={tw`text-red-500`}>
                                 {server.status === 'suspended' ? 'Suspended' : 'Connection Error'}
                             </span>
                         </div>
                     ) : server.isTransferring || server.status ? (
                         <div css={tw`flex-1 text-center`}>
-                            <span css={tw`bg-neutral-500 rounded px-2 py-1 text-neutral-100 text-xs`}>
+                            <span css={tw`text-zinc-100`}>
                                 {server.isTransferring
                                     ? 'Transferring'
                                     : server.status === 'installing'
@@ -140,36 +140,29 @@ export default ({ server, className }: { server: Server; className?: string }) =
                         <Spinner size={'small'} />
                     )
                 ) : (
-                    <React.Fragment>
-                        <div css={tw`flex-1 ml-4 sm:block hidden`}>
-                            <div css={tw`flex justify-center`}>
-                                <AlarmIcon icon={IconCpu} alarm={alarms.cpu} />
-                                <IconDescription $alarm={alarms.cpu}>
-                                    {stats.cpuUsagePercent.toFixed(2)} %
-                                </IconDescription>
-                            </div>
-                            <p css={tw`text-xs text-neutral-600 text-center mt-1`}>of {cpuLimit}</p>
+                    <>
+                        <div css={tw`flex justify-center`}>
+                            <StatusText
+                                name="CPU"
+                                status={`${Math.round(stats.cpuUsagePercent)}%`}
+                                alarm={alarms.cpu}
+                            />
                         </div>
-                        <div css={tw`flex-1 ml-4 sm:block hidden`}>
-                            <div css={tw`flex justify-center`}>
-                                <AlarmIcon icon={IconDatabase} alarm={alarms.memory} />
-                                {/* TODO: replace with something better */}
-                                <IconDescription $alarm={alarms.memory}>
-                                    {bytesToString(stats.memoryUsageInBytes)}
-                                </IconDescription>
-                            </div>
-                            <p css={tw`text-xs text-neutral-600 text-center mt-1`}>of {memoryLimit}</p>
+                        <div css={tw`flex justify-center`}>
+                            <StatusText
+                                name="RAM"
+                                status={bytesToString(stats.memoryUsageInBytes)}
+                                alarm={alarms.memory}
+                            />
                         </div>
-                        <div css={tw`flex-1 ml-4 sm:block hidden`}>
-                            <div css={tw`flex justify-center`}>
-                                <AlarmIcon icon={IconDeviceSdCard} alarm={alarms.disk} />
-                                <IconDescription $alarm={alarms.disk}>
-                                    {bytesToString(stats.diskUsageInBytes)}
-                                </IconDescription>
-                            </div>
-                            <p css={tw`text-xs text-neutral-600 text-center mt-1`}>of {diskLimit}</p>
+                        <div css={tw`flex justify-center`}>
+                            <StatusText
+                                name="Storage"
+                                status={bytesToString(stats.diskUsageInBytes, 1)}
+                                alarm={alarms.disk}
+                            />
                         </div>
-                    </React.Fragment>
+                    </>
                 )}
             </div>
         </StatusIndicatorBox>

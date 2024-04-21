@@ -12,8 +12,8 @@ import NodeLimitContainer from '@/components/admin/nodes/NodeLimitContainer';
 import NodeListenContainer from '@/components/admin/nodes/NodeListenContainer';
 import { Context } from '@/components/admin/nodes/NodeRouter';
 import NodeSettingsContainer from '@/components/admin/nodes/NodeSettingsContainer';
-import Button from '@/components/elements/Button';
 import type { ApplicationStore } from '@/state';
+import { Button } from '@/components/elements/button';
 
 interface Values {
     name: string;
@@ -117,10 +117,10 @@ export default () => {
                                 <NodeLimitContainer />
                             </div>
 
-                            <div css={tw`rounded shadow-md bg-neutral-700 mt-4 py-2 px-6`}>
-                                <div css={tw`flex flex-row`}>
+                            <div css={tw`rounded shadow-md bg-zinc-700 mt-4 py-2 px-6`}>
+                                <div css={tw`flex flex-row items-center`}>
                                     <NodeDeleteButton nodeId={node?.id} onDeleted={() => navigate('/admin/nodes')} />
-                                    <Button type={'submit'} css={tw`ml-auto`} disabled={isSubmitting || !isValid}>
+                                    <Button type='submit' css={tw`ml-auto`} disabled={isSubmitting || !isValid}>
                                         Save Changes
                                     </Button>
                                 </div>

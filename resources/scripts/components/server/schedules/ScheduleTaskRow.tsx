@@ -58,7 +58,7 @@ export default ({ schedule, task }: Props) => {
     const Icon = icon;
 
     return (
-        <div css={tw`sm:flex items-center p-3 sm:p-6 border-b border-neutral-800`}>
+        <div css={tw`sm:flex items-center p-3 sm:p-6 border-b border-zinc-800`}>
             <SpinnerOverlay visible={isLoading} fixed size={'large'} />
             <TaskDetailsModal
                 schedule={schedule}
@@ -77,14 +77,14 @@ export default ({ schedule, task }: Props) => {
             </ConfirmationModal>
             <Icon css={tw`text-lg text-white hidden md:block`} />
             <div css={tw`flex-none sm:flex-1 w-full sm:w-auto overflow-x-auto`}>
-                <p css={tw`md:ml-6 text-neutral-200 uppercase text-sm`}>{title}</p>
+                <p css={tw`md:ml-6 text-zinc-200 uppercase text-sm`}>{title}</p>
                 {task.payload && (
                     <div css={tw`md:ml-6 mt-2`}>
                         {task.action === 'backup' && (
-                            <p css={tw`text-xs uppercase text-neutral-400 mb-1`}>Ignoring files & folders:</p>
+                            <p css={tw`text-xs uppercase text-zinc-400 mb-1`}>Ignoring files & folders:</p>
                         )}
                         <div
-                            css={tw`font-mono bg-neutral-800 rounded py-1 px-2 text-sm w-auto inline-block whitespace-pre-wrap break-all`}
+                            css={tw`font-mono bg-zinc-800 rounded py-1 px-2 text-sm w-auto inline-block whitespace-pre-wrap break-all`}
                         >
                             {task.payload}
                         </div>
@@ -102,7 +102,7 @@ export default ({ schedule, task }: Props) => {
                 )}
                 {task.sequenceId > 1 && task.timeOffset > 0 && (
                     <div css={tw`mr-6`}>
-                        <div css={tw`flex items-center px-2 py-1 bg-neutral-500 text-sm rounded-full`}>
+                        <div css={tw`flex items-center px-2 py-1 bg-zinc-500 text-sm rounded-full`}>
                             <IconClock css={tw`w-3 h-3 mr-2`} />
                             {task.timeOffset}s later
                         </div>
@@ -112,7 +112,7 @@ export default ({ schedule, task }: Props) => {
                     <button
                         type={'button'}
                         aria-label={'Edit scheduled task'}
-                        css={tw`block text-sm p-2 text-neutral-500 hover:text-neutral-100 transition-colors duration-150 mr-4 ml-auto sm:ml-0`}
+                        css={tw`block text-sm p-2 text-zinc-500 hover:text-zinc-100 transition-colors duration-150 mr-4 ml-auto sm:ml-0`}
                         onClick={() => setIsEditing(true)}
                     >
                         <IconPencil />
@@ -122,7 +122,7 @@ export default ({ schedule, task }: Props) => {
                     <button
                         type={'button'}
                         aria-label={'Delete scheduled task'}
-                        css={tw`block text-sm p-2 text-neutral-500 hover:text-red-600 transition-colors duration-150`}
+                        css={tw`block text-sm p-2 text-zinc-500 hover:text-red-600 transition-colors duration-150`}
                         onClick={() => setVisible(true)}
                     >
                         <IconTrash />

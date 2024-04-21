@@ -5,8 +5,9 @@ import { ApplicationStore } from '@/state';
 import { ServerContext } from '@/state/server';
 import { ServerDatabase } from '@/api/server/databases/getServerDatabases';
 import { httpErrorToHuman } from '@/api/http';
-import Button from '@/components/elements/Button';
 import tw from 'twin.macro';
+import { Button } from '@/components/elements/button';
+import { Variant } from '@/components/elements/button/types';
 
 export default ({ databaseId, onUpdate }: { databaseId: string; onUpdate: (database: ServerDatabase) => void }) => {
     const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ export default ({ databaseId, onUpdate }: { databaseId: string; onUpdate: (datab
     };
 
     return (
-        <Button isSecondary color={'primary'} css={tw`mr-2`} onClick={rotate} isLoading={loading}>
+        <Button variant={Variant.Secondary} css={tw`mr-2`} onClick={rotate} loading={loading}>
             Rotate Password
         </Button>
     );

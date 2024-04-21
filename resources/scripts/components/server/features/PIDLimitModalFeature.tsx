@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { ServerContext } from '@/state/server';
 import Modal from '@/components/elements/Modal';
 import tw from 'twin.macro';
-import Button from '@/components/elements/Button';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import useFlash from '@/plugins/useFlash';
 import { SocketEvent } from '@/components/server/events';
 import { useStoreState } from 'easy-peasy';
 import { IconAlertTriangle } from '@tabler/icons-react';
+import { Button } from '@/components/elements/button';
 
 const PIDLimitModalFeature = () => {
     const [visible, setVisible] = useState(false);
@@ -59,12 +59,12 @@ const PIDLimitModalFeature = () => {
                 <>
                     <div css={tw`mt-4 sm:flex items-center`}>
                         <IconAlertTriangle css={tw`pr-4`} color={'orange'} size={'4x'} />
-                        <h2 css={tw`text-2xl mb-4 text-neutral-100 `}>Memory or process limit reached...</h2>
+                        <h2 css={tw`text-2xl mb-4 text-zinc-100 `}>Memory or process limit reached...</h2>
                     </div>
                     <p css={tw`mt-4`}>This server has reached the maximum process or memory limit.</p>
                     <p css={tw`mt-4`}>
-                        Increasing <code css={tw`font-mono bg-neutral-900`}>container_pid_limit</code> in the wings
-                        configuration, <code css={tw`font-mono bg-neutral-900`}>config.yml</code>, might help resolve
+                        Increasing <code css={tw`font-mono bg-zinc-900`}>container_pid_limit</code> in the wings
+                        configuration, <code css={tw`font-mono bg-zinc-900`}>config.yml</code>, might help resolve
                         this issue.
                     </p>
                     <p css={tw`mt-4`}>
@@ -80,14 +80,14 @@ const PIDLimitModalFeature = () => {
                 <>
                     <div css={tw`mt-4 sm:flex items-center`}>
                         <IconAlertTriangle css={tw`pr-4`} color={'orange'} size={'4x'} />
-                        <h2 css={tw`text-2xl mb-4 text-neutral-100`}>Possible resource limit reached...</h2>
+                        <h2 css={tw`text-2xl mb-4 text-zinc-100`}>Possible resource limit reached...</h2>
                     </div>
                     <p css={tw`mt-4`}>
                         This server is attempting to use more resources than allocated. Please contact the administrator
                         and give them the error below.
                     </p>
                     <p css={tw`mt-4`}>
-                        <code css={tw`font-mono bg-neutral-900`}>
+                        <code css={tw`font-mono bg-zinc-900`}>
                             pthread_create failed, Possibly out of memory or process/resource limits reached
                         </code>
                     </p>

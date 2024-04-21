@@ -35,8 +35,8 @@ export default () => {
             return {
                 ...opts,
                 label: !index ? 'Network In' : 'Network Out',
-                borderColor: !index ? theme('colors.cyan.400') : theme('colors.yellow.400'),
-                backgroundColor: hexToRgba(!index ? theme('colors.cyan.700') : theme('colors.yellow.700'), 0.5),
+                borderColor: !index ? theme('colors.sky.600') : theme('colors.red.600'),
+                backgroundColor: hexToRgba(!index ? theme('colors.sky.800') : theme('colors.red.800'), 0.3),
             };
         },
     });
@@ -79,10 +79,10 @@ export default () => {
                 legend={
                     <>
                         <Tooltip arrow content={'Inbound'}>
-                            <IconDownload className={'mr-2 h-4 w-4 text-yellow-400'} />
+                            <IconDownload className={'mr-2 h-4 w-4 text-red-600'} />
                         </Tooltip>
                         <Tooltip arrow content={'Outbound'}>
-                            <IconUpload className={'h-4 w-4 text-cyan-400'} />
+                            <IconUpload className={'h-4 w-4 text-sky-600'} />
                         </Tooltip>
                     </>
                 }

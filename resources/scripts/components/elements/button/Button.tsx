@@ -4,9 +4,11 @@ import classNames from 'classnames';
 import type { ButtonProps } from '@/components/elements/button/types';
 import { Options } from '@/components/elements/button/types';
 import styles from './style.module.css';
+import Spinner from '../Spinner';
+import tw from 'twin.macro';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ children, shape, size, variant, className, ...rest }, ref) => {
+    ({ children, shape, size, variant, className, loading, ...rest }, ref) => {
         return (
             <button
                 ref={ref}
@@ -24,6 +26,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 {...rest}
             >
                 {children}
+                {loading && (
+                    <div css={tw`flex absolute bg-zinc-900/90 justify-center items-center w-full h-full left-0 top-0`}>
+                        <Spinner size={'small'} />
+                    </div>
+                )}
             </button>
         );
     },

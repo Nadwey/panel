@@ -4,7 +4,7 @@ import { EditorView } from '@codemirror/view';
 import { tags as t } from '@lezer/highlight';
 
 const highlightBackground = 'transparent';
-const background = '#1F2430';
+const background = '#101010';
 const selection = '#34455A';
 const cursor = '#FFCC66';
 

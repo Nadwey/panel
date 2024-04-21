@@ -22,18 +22,18 @@ function PageContentBlock({ title, showFlashKey, className, children }: PageCont
 
     return (
         <>
-            <ContentContainer css={tw`my-6 w-full`} className={className}>
+            <ContentContainer css={tw`my-6`} className={className}>
                 {showFlashKey && <FlashMessageRender byKey={showFlashKey} css={tw`mb-4`} />}
                 {children}
             </ContentContainer>
 {/* 
             <ContentContainer css={tw`mb-4`}>
-                <p css={tw`text-center text-neutral-500 text-xs`}>
+                <p css={tw`text-center text-zinc-500 text-xs`}>
                     <a
                         rel={'noopener nofollow noreferrer'}
                         href={'https://pterodactyl.io'}
                         target={'_blank'}
-                        css={tw`no-underline text-neutral-500 hover:text-neutral-300`}
+                        css={tw`no-underline text-zinc-500 hover:text-zinc-300`}
                     >
                         Pterodactyl&reg;
                     </a>

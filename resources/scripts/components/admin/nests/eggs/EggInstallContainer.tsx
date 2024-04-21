@@ -98,7 +98,7 @@ export default function EggInstallContainer() {
                                 </div>
                             </div>
 
-                            <div css={tw`flex flex-row border-t border-neutral-600`}>
+                            <div css={tw`flex flex-row border-t border-zinc-600`}>
                                 <Button type="submit" css={tw`ml-auto mr-6 mt-4`} disabled={isSubmitting || !isValid}>
                                     Save Changes
                                 </Button>

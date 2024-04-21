@@ -10,8 +10,9 @@ import { object, string } from 'yup';
 import login from '@/api/auth/login';
 import LoginFormContainer from '@/components/auth/LoginFormContainer';
 import Field from '@/components/elements/Field';
-import Button from '@/components/elements/Button';
 import useFlash from '@/plugins/useFlash';
+import { Button } from '../elements/button';
+import { Size } from '../elements/button/types';
 
 interface Values {
     username: string;
@@ -79,12 +80,12 @@ function LoginContainer() {
         >
             {({ isSubmitting, setSubmitting, submitForm }) => (
                 <LoginFormContainer title={'Login to Continue'} css={tw`w-full flex`}>
-                    <Field light type={'text'} label={'Username or Email'} name={'username'} disabled={isSubmitting} />
+                    <Field type={'text'} label={'Username or Email'} name={'username'} disabled={isSubmitting} />
                     <div css={tw`mt-6`}>
-                        <Field light type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
+                        <Field type={'password'} label={'Password'} name={'password'} disabled={isSubmitting} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Button type={'submit'} size={'xlarge'} isLoading={isSubmitting} disabled={isSubmitting}>
+                        <Button type={'submit'} size={Size.Large} loading={isSubmitting} disabled={isSubmitting}>
                             Login
                         </Button>
                     </div>
@@ -106,7 +107,7 @@ function LoginContainer() {
                     <div css={tw`mt-6 text-center`}>
                         <Link
                             to={'/auth/password'}
-                            css={tw`text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                            css={tw`text-xs text-zinc-500 tracking-wide no-underline uppercase hover:text-zinc-600`}
                         >
                             Forgot password?
                         </Link>

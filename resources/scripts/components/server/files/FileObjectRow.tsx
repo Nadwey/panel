@@ -48,7 +48,7 @@ function FileObjectRow({ file }: { file: FileObject }) {
         >
             <SelectFileCheckbox name={file.name} />
             <MemoizedClickable file={file}>
-                <div css={tw`flex-none text-neutral-400 ml-6 mr-4 text-lg pl-3`}>
+                <div css={tw`flex-none text-zinc-400 ml-6 mr-4 text-lg pl-3`}>
                     {file.isFile ? (
                         file.isSymlink ? (
                             <IconFileImport />

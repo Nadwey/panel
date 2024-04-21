@@ -5,10 +5,10 @@ import Input from '@/components/elements/Input';
 
 export const TableCheckbox = styled(Input)`
     && {
-        ${tw`border-neutral-500 bg-transparent`};
+        ${tw`border-zinc-500 bg-transparent`};
 
         &:not(:checked) {
-            ${tw`hover:border-neutral-300`};
+            ${tw`hover:border-zinc-300`};
         }
     }
 `;

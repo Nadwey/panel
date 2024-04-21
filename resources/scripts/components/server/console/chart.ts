@@ -34,7 +34,6 @@ const options: ChartOptions<'line'> = {
             type: 'linear',
             grid: {
                 display: false,
-                drawBorder: false,
             },
             ticks: {
                 display: false,
@@ -45,17 +44,16 @@ const options: ChartOptions<'line'> = {
             type: 'linear',
             grid: {
                 display: true,
-                color: theme('colors.slate.700'),
-                drawBorder: false,
+                color: theme('colors.zinc.700'),
             },
             ticks: {
                 display: true,
                 count: 3,
-                color: theme('colors.slate.200'),
+                color: theme('colors.zinc.200'),
                 font: {
                     family: theme('fontFamily.sans'),
                     size: 11,
-                    weight: '400',
+                    weight: "normal",
                 },
             },
         },
@@ -92,8 +90,8 @@ function getEmptyData(label: string, sets = 1, callback?: ChartDatasetCallback |
                         fill: true,
                         label,
                         data: Array(20).fill(-5),
-                        borderColor: theme('colors.cyan.400'),
-                        backgroundColor: hexToRgba(theme('colors.cyan.700'), 0.5),
+                        borderColor: theme('colors.sky.600'),
+                        backgroundColor: hexToRgba(theme('colors.sky.800'), 0.3),
                     },
                     index,
                 ),

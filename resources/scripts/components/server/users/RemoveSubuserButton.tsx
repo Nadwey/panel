@@ -48,7 +48,7 @@ export default ({ subuser }: { subuser: Subuser }) => {
             <button
                 type={'button'}
                 aria-label={'Delete subuser'}
-                css={tw`block text-sm p-2 text-neutral-500 hover:text-red-600 transition-colors duration-150`}
+                css={tw`block text-sm p-2 text-zinc-500 hover:text-red-600 transition-colors duration-150`}
                 onClick={() => setShowConfirmation(true)}
             >
                 <IconTrash />

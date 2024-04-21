@@ -2,8 +2,9 @@ import * as React from 'react';
 import { PaginatedResult } from '@/api/http';
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import Button from '@/components/elements/Button';
 import { IconChevronsLeft, IconChevronsRight } from '@tabler/icons-react';
+import { Button } from './button';
+import { Variant } from './button/types';
 
 interface RenderFuncProps<T> {
     items: T[];
@@ -48,14 +49,13 @@ function Pagination<T>({ data: { items, pagination }, onPageSelect, children }: 
             {pages.length > 1 && (
                 <div css={tw`mt-4 flex justify-center`}>
                     {(pages?.[0] ?? 0) > 1 && !isFirstPage && (
-                        <Block isSecondary color={'primary'} onClick={() => onPageSelect(1)}>
+                        <Block variant={Variant.Secondary} onClick={() => onPageSelect(1)}>
                             <IconChevronsLeft />
                         </Block>
                     )}
                     {pages.map(i => (
                         <Block
-                            isSecondary={pagination.currentPage !== i}
-                            color={'primary'}
+                            variant={pagination.currentPage !== i ? Variant.Secondary : Variant.Primary}
                             key={`block_page_${i}`}
                             onClick={() => onPageSelect(i)}
                         >
@@ -63,7 +63,7 @@ function Pagination<T>({ data: { items, pagination }, onPageSelect, children }: 
                         </Block>
                     ))}
                     {(pages?.[4] ?? 0) < pagination.totalPages && !isLastPage && (
-                        <Block isSecondary color={'primary'} onClick={() => onPageSelect(pagination.totalPages)}>
+                        <Block variant={Variant.Secondary} onClick={() => onPageSelect(pagination.totalPages)}>
                             <IconChevronsRight />
                         </Block>
                     )}

@@ -12,11 +12,11 @@ import Can from '@/components/elements/Can';
 import { usePermissions } from '@/plugins/usePermissions';
 import { useDeepCompareMemo } from '@/plugins/useDeepCompareMemo';
 import tw from 'twin.macro';
-import Button from '@/components/elements/Button';
 import PermissionTitleBox from '@/components/server/users/PermissionTitleBox';
 import asModal from '@/hoc/asModal';
 import PermissionRow from '@/components/server/users/PermissionRow';
 import ModalContext from '@/context/ModalContext';
+import { Button } from '@/components/elements/button';
 
 type Props = {
     subuser?: Subuser;
@@ -118,7 +118,7 @@ const EditSubuserModal = ({ subuser }: Props) => {
                 <FlashMessageRender byKey={'user:edit'} css={tw`mt-4`} />
                 {!isRootAdmin && loggedInPermissions[0] !== '*' && (
                     <div css={tw`mt-4 pl-4 py-2 border-l-4 border-cyan-400`}>
-                        <p css={tw`text-sm text-neutral-300`}>
+                        <p css={tw`text-sm text-zinc-300`}>
                             Only permissions which your account is currently assigned may be selected when creating or
                             modifying other users.
                         </p>
@@ -146,7 +146,7 @@ const EditSubuserModal = ({ subuser }: Props) => {
                                 permissions={Object.keys(permissions[key]?.keys ?? {}).map(pkey => `${key}.${pkey}`)}
                                 css={index > 0 ? tw`mt-4` : undefined}
                             >
-                                <p css={tw`text-sm text-neutral-400 mb-4`}>{permissions[key]?.description}</p>
+                                <p css={tw`text-sm text-zinc-400 mb-4`}>{permissions[key]?.description}</p>
                                 {Object.keys(permissions[key]?.keys ?? {}).map(pkey => (
                                     <PermissionRow
                                         key={`permission_${key}.${pkey}`}

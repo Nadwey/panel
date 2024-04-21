@@ -14,7 +14,6 @@ import updateServerStartup from '@/api/admin/servers/updateServerStartup';
 import EggSelect from '@/components/admin/servers/EggSelect';
 import NestSelector from '@/components/admin/servers/NestSelector';
 import FormikSwitch from '@/components/elements/FormikSwitch';
-import Button from '@/components/elements/Button';
 import Input from '@/components/elements/Input';
 import AdminBox from '@/components/admin/AdminBox';
 import Field from '@/components/elements/Field';
@@ -22,6 +21,8 @@ import SpinnerOverlay from '@/components/elements/SpinnerOverlay';
 import Label from '@/components/elements/Label';
 import type { ApplicationStore } from '@/state';
 import { WithRelationships } from '@/api/admin';
+import { Button } from '@/components/elements/button';
+import { Size } from '@/components/elements/button/types';
 
 function ServerStartupLineContainer({ egg, server }: { egg?: Egg; server: Server }) {
     const { isSubmitting, setFieldValue } = useFormikContext();
@@ -89,7 +90,7 @@ export function ServerServiceContainer({
             <div className="mb-6">
                 <EggSelect nestId={nestId} selectedEggId={selectedEggId} onEggSelect={setEgg} />
             </div>
-            <div className="bg-neutral-800 border border-neutral-900 shadow-inner p-4 rounded">
+            <div className="bg-zinc-800 border border-zinc-900 shadow-inner p-4 rounded">
                 <FormikSwitch name={'skipScripts'} label={'Skip Egg Install Script'} description={'Soon™'} />
             </div>
         </AdminBox>
@@ -195,9 +196,9 @@ function ServerStartupForm({
                         ))}
                 </div>
 
-                <div className="bg-neutral-700 rounded shadow-md py-2 pr-6 mt-6">
+                <div className="bg-zinc-700 rounded shadow-md py-2 pr-6 mt-6">
                     <div className="flex flex-row">
-                        <Button type="submit" size="small" className="ml-auto" disabled={isSubmitting || !isValid}>
+                        <Button type="submit" size={Size.Small} className="ml-auto" disabled={isSubmitting || !isValid}>
                             Save Changes
                         </Button>
                     </div>

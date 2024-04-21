@@ -5,9 +5,9 @@ import { join } from 'pathe';
 import renameFiles from '@/api/server/files/renameFiles';
 import { ServerContext } from '@/state/server';
 import tw from 'twin.macro';
-import Button from '@/components/elements/Button';
 import useFileManagerSwr from '@/plugins/useFileManagerSwr';
 import useFlash from '@/plugins/useFlash';
+import { Button } from '@/components/elements/button';
 
 interface FormikValues {
     name: string;
@@ -79,8 +79,8 @@ const RenameFileModal = ({ files, useMoveTerminology, ...props }: OwnProps) => {
                             </div>
                         </div>
                         {useMoveTerminology && (
-                            <p css={tw`text-xs mt-2 text-neutral-400`}>
-                                <strong css={tw`text-neutral-200`}>New location:</strong>
+                            <p css={tw`text-xs mt-2 text-zinc-400`}>
+                                <strong css={tw`text-zinc-200`}>New location:</strong>
                                 &nbsp;/home/container/{join(directory, values.name).replace(/^(\.\.\/|\/)+/, '')}
                             </p>
                         )}

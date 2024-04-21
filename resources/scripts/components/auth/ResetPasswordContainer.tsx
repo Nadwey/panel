@@ -10,7 +10,8 @@ import { object, ref, string } from 'yup';
 import Field from '@/components/elements/Field';
 import Input from '@/components/elements/Input';
 import tw from 'twin.macro';
-import Button from '@/components/elements/Button';
+import { Button } from '../elements/button';
+import { Size } from '../elements/button/types';
 
 interface Values {
     password: string;
@@ -79,14 +80,14 @@ function ResetPasswordContainer() {
                         <Field light label={'Confirm New Password'} name={'passwordConfirmation'} type={'password'} />
                     </div>
                     <div css={tw`mt-6`}>
-                        <Button size={'xlarge'} type={'submit'} disabled={isSubmitting} isLoading={isSubmitting}>
+                        <Button size={Size.Large} type={'submit'} disabled={isSubmitting} loading={isSubmitting}>
                             Reset Password
                         </Button>
                     </div>
                     <div css={tw`mt-6 text-center`}>
                         <Link
                             to={'/auth/login'}
-                            css={tw`text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                            css={tw`text-xs text-zinc-500 tracking-wide no-underline uppercase hover:text-zinc-600`}
                         >
                             Return to Login
                         </Link>

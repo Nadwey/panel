@@ -10,9 +10,10 @@ import { object, string } from 'yup';
 import requestPasswordResetEmail from '@/api/auth/requestPasswordResetEmail';
 import { httpErrorToHuman } from '@/api/http';
 import LoginFormContainer from '@/components/auth/LoginFormContainer';
-import Button from '@/components/elements/Button';
 import Field from '@/components/elements/Field';
 import useFlash from '@/plugins/useFlash';
+import { Button } from '../elements/button';
+import { Size } from '../elements/button/types';
 
 interface Values {
     email: string;
@@ -77,7 +78,6 @@ function ForgotPasswordContainer() {
             {({ isSubmitting, setSubmitting, submitForm }) => (
                 <LoginFormContainer title={'Request Password Reset'} css={tw`w-full flex`}>
                     <Field
-                        light
                         label={'Email'}
                         description={
                             'Enter your account email address to receive instructions on resetting your password.'
@@ -86,7 +86,7 @@ function ForgotPasswordContainer() {
                         type={'email'}
                     />
                     <div css={tw`mt-6`}>
-                        <Button type={'submit'} size={'xlarge'} disabled={isSubmitting} isLoading={isSubmitting}>
+                        <Button type={'submit'} size={Size.Large} disabled={isSubmitting} loading={isSubmitting}>
                             Send Email
                         </Button>
                     </div>
@@ -108,7 +108,7 @@ function ForgotPasswordContainer() {
                     <div css={tw`mt-6 text-center`}>
                         <Link
                             to={'/auth/login'}
-                            css={tw`text-xs text-neutral-500 tracking-wide uppercase no-underline hover:text-neutral-700`}
+                            css={tw`text-xs text-zinc-500 tracking-wide uppercase no-underline hover:text-zinc-700`}
                         >
                             Return to Login
                         </Link>

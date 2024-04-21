@@ -7,10 +7,11 @@ import tw from 'twin.macro';
 
 import loginCheckpoint from '@/api/auth/loginCheckpoint';
 import LoginFormContainer from '@/components/auth/LoginFormContainer';
-import Button from '@/components/elements/Button';
 import Field from '@/components/elements/Field';
 import useFlash from '@/plugins/useFlash';
 import type { FlashStore } from '@/state/flashes';
+import { Button } from '../elements/button';
+import { Size } from '../elements/button/types';
 
 interface Values {
     code: string;
@@ -45,7 +46,7 @@ function LoginCheckpointContainer() {
                 />
             </div>
             <div css={tw`mt-6`}>
-                <Button size={'xlarge'} type={'submit'} disabled={isSubmitting} isLoading={isSubmitting}>
+                <Button size={Size.Large} type={'submit'} disabled={isSubmitting} loading={isSubmitting}>
                     Continue
                 </Button>
             </div>
@@ -56,7 +57,7 @@ function LoginCheckpointContainer() {
                         setFieldValue('recoveryCode', '');
                         setIsMissingDevice(s => !s);
                     }}
-                    css={tw`cursor-pointer text-xs text-neutral-500 tracking-wide uppercase no-underline hover:text-neutral-700`}
+                    css={tw`cursor-pointer text-xs text-zinc-500 tracking-wide uppercase no-underline hover:text-zinc-700`}
                 >
                     {!isMissingDevice ? "I've Lost My Device" : 'I Have My Device'}
                 </span>
@@ -64,7 +65,7 @@ function LoginCheckpointContainer() {
             <div css={tw`mt-6 text-center`}>
                 <Link
                     to={'/auth/login'}
-                    css={tw`text-xs text-neutral-500 tracking-wide uppercase no-underline hover:text-neutral-700`}
+                    css={tw`text-xs text-zinc-500 tracking-wide uppercase no-underline hover:text-zinc-700`}
                 >
                     Return to Login
                 </Link>

@@ -20,7 +20,6 @@ import {
 import BaseSettingsBox from '@/components/admin/servers/settings/BaseSettingsBox';
 import FeatureLimitsBox from '@/components/admin/servers/settings/FeatureLimitsBox';
 import ServerResourceBox from '@/components/admin/servers/settings/ServerResourceBox';
-import Button from '@/components/elements/Button';
 import Field from '@/components/elements/Field';
 import FormikSwitch from '@/components/elements/FormikSwitch';
 import Label from '@/components/elements/Label';
@@ -31,6 +30,8 @@ import useFlash from '@/plugins/useFlash';
 import AdminContentBlock from '@/components/admin/AdminContentBlock';
 import { WithRelationships } from '@/api/admin';
 import { IconCloudNetwork } from '@tabler/icons-react';
+import { Button } from '@/components/elements/button';
+import { Size } from '@/components/elements/button/types';
 
 function InternalForm() {
     const {
@@ -69,7 +70,7 @@ function InternalForm() {
                 <div className="grid grid-cols-1 gap-y-6 col-span-2 md:col-span-1">
                     <BaseSettingsBox>
                         <NodeSelect node={node} setNode={setNode} />
-                        <div className="xl:col-span-2 bg-neutral-800 border border-neutral-900 shadow-inner p-4 rounded">
+                        <div className="xl:col-span-2 bg-zinc-800 border border-zinc-900 shadow-inner p-4 rounded">
                             <FormikSwitch
                                 name={'startOnCompletion'}
                                 label={'Start after installation'}
@@ -139,9 +140,9 @@ function InternalForm() {
                         .map((v, i) => <ServerVariableContainer key={i} variable={v} />)}
                 </div>
 
-                <div className="bg-neutral-700 rounded shadow-md px-4 py-3 col-span-2">
+                <div className="bg-zinc-700 rounded shadow-md px-4 py-3 col-span-2">
                     <div className="flex flex-row">
-                        <Button type="submit" size="small" className="ml-auto" disabled={isSubmitting || !isValid}>
+                        <Button type="submit" className="ml-auto" disabled={isSubmitting || !isValid}>
                             Create Server
                         </Button>
                     </div>
@@ -169,8 +170,8 @@ export default () => {
         <AdminContentBlock title={'New Server'}>
             <div css={tw`w-full flex flex-row items-center mb-8`}>
                 <div css={tw`flex flex-col flex-shrink`} style={{ minWidth: '0' }}>
-                    <h2 css={tw`text-2xl text-neutral-50 font-header font-medium`}>New Server</h2>
-                    <p css={tw`text-base text-neutral-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}>
+                    <h2 css={tw`text-2xl text-zinc-50 font-header font-medium`}>New Server</h2>
+                    <p css={tw`text-base text-zinc-400 whitespace-nowrap overflow-ellipsis overflow-hidden`}>
                         Add a new server to the panel.
                     </p>
                 </div>

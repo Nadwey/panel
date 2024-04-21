@@ -2,7 +2,8 @@ import tw from 'twin.macro';
 
 import { useServerFromRoute } from '@/api/admin/server';
 import AdminBox from '@/components/admin/AdminBox';
-import Button from '@/components/elements/Button';
+import { Button } from '@/components/elements/button';
+import { Size, Variant } from '@/components/elements/button/types';
 
 export default () => {
     const { data: server } = useServerFromRoute();
@@ -11,7 +12,7 @@ export default () => {
 
     return (
         <div css={tw`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-2 gap-y-2`}>
-            <div css={tw`h-auto flex flex-col`}>
+            <div css={tw`flex flex-col`}>
                 <AdminBox title={'Reinstall Server'} css={tw`relative w-full`}>
                     <div css={tw`flex flex-row text-red-500 justify-start items-center mb-4`}>
                         <div css={tw`w-12 mr-2`}>
@@ -25,31 +26,31 @@ export default () => {
                         </div>
                         <p css={tw`text-sm`}>Danger! This could overwrite server data.</p>
                     </div>
-                    <Button size={'large'} color={'red'} css={tw`w-full`}>
+                    <Button.Danger size={Size.Large} css={tw`w-full`}>
                         Reinstall Server
-                    </Button>
-                    <p css={tw`text-xs text-neutral-400 mt-2`}>
+                    </Button.Danger>
+                    <p css={tw`text-xs text-zinc-400 mt-2`}>
                         This will reinstall the server with the assigned service scripts.
                     </p>
                 </AdminBox>
             </div>
-            <div css={tw`h-auto flex flex-col`}>
+            <div css={tw`flex flex-col`}>
                 <AdminBox title={'Install Status'} css={tw`relative w-full`}>
-                    <Button size={'large'} color={'primary'} css={tw`w-full`}>
+                    <Button size={Size.Large} variant={Variant.Primary} css={tw`w-full`}>
                         Set Server as Installing
                     </Button>
-                    <p css={tw`text-xs text-neutral-400 mt-2`}>
+                    <p css={tw`text-xs text-zinc-400 mt-2`}>
                         If you need to change the install status from uninstalled to installed, or vice versa, you may
                         do so with the button below.
                     </p>
                 </AdminBox>
             </div>
-            <div css={tw`h-auto flex flex-col`}>
+            <div css={tw`flex flex-col`}>
                 <AdminBox title={'Suspend Server '} css={tw`relative w-full`}>
-                    <Button size={'large'} color={'primary'} css={tw`w-full`}>
+                <Button size={Size.Large} variant={Variant.Primary} css={tw`w-full`}>
                         Suspend Server
                     </Button>
-                    <p css={tw`text-xs text-neutral-400 mt-2`}>
+                    <p css={tw`text-xs text-zinc-400 mt-2`}>
                         This will suspend the server, stop any running processes, and immediately block the user from
                         being able to access their files or otherwise manage the server through the panel or API.
                     </p>

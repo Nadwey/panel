@@ -7,13 +7,13 @@ import FormikFieldWrapper from '@/components/elements/FormikFieldWrapper';
 import useFlash from '@/plugins/useFlash';
 import createServerBackup from '@/api/server/backups/createServerBackup';
 import FlashMessageRender from '@/components/FlashMessageRender';
-import Button from '@/components/elements/Button';
 import tw from 'twin.macro';
 import { Textarea } from '@/components/elements/Input';
 import getServerBackups from '@/api/swr/getServerBackups';
 import { ServerContext } from '@/state/server';
 import FormikSwitch from '@/components/elements/FormikSwitch';
 import Can from '@/components/elements/Can';
+import { Button } from '@/components/elements/button';
 
 interface Values {
     name: string;
@@ -49,7 +49,7 @@ const ModalContent = ({ ...props }: RequiredModalProps) => {
                     </FormikFieldWrapper>
                 </div>
                 <Can action={'backup.delete'}>
-                    <div css={tw`mt-6 bg-neutral-700 border border-neutral-800 shadow-inner p-4 rounded`}>
+                    <div css={tw`mt-6 bg-zinc-900 border border-zinc-800 p-4 rounded`}>
                         <FormikSwitch
                             name={'isLocked'}
                             label={'Locked'}

@@ -17,6 +17,7 @@ import ConflictStateRenderer from '@/components/server/ConflictStateRenderer';
 import PermissionRoute from '@/components/elements/PermissionRoute';
 import routes from '@/routers/routes';
 import { IconExternalLink } from '@tabler/icons-react';
+import tw from 'twin.macro';
 
 function ServerRouter() {
     const params = useParams<'id'>();
@@ -58,71 +59,77 @@ function ServerRouter() {
 
     return (
         <Fragment key={'server-router'}>
-            <NavigationBar />
-            {!uuid || !id ? (
-                error ? (
-                    <ServerError message={error} />
-                ) : (
-                    <Spinner size="large" centered />
-                )
-            ) : (
-                <>
-                    <SubNavigation>
-                        <div>
-                            {routes.server
-                                .filter(route => route.path !== undefined)
-                                .map(route =>
-                                    route.permission ? (
-                                        <Can key={route.path} action={route.permission} matchAny>
-                                            <NavLink to={`/server/${id}/${route.path ?? ''}`.replace(/\/$/, '')} end>
+            <div css={tw`flex flex-row items-stretch`}>
+                <NavigationBar />
+                <div css={tw`w-full`}>
+                    {!uuid || !id ? (
+                        error ? (
+                            <ServerError message={error} />
+                        ) : (
+                            <Spinner size="large" centered />
+                        )
+                    ) : (
+                        <>
+                            <SubNavigation>
+                                {routes.server
+                                    .filter(route => route.path !== undefined)
+                                    .map(route =>
+                                        route.permission ? (
+                                            <Can key={route.path} action={route.permission} matchAny>
+                                                <NavLink
+                                                    to={`/server/${id}/${route.path ?? ''}`.replace(/\/$/, '')}
+                                                    end
+                                                >
+                                                    {route.name}
+                                                </NavLink>
+                                            </Can>
+                                        ) : (
+                                            <NavLink
+                                                key={route.path}
+                                                to={`/server/${id}/${route.path ?? ''}`.replace(/\/$/, '')}
+                                                end
+                                            >
                                                 {route.name}
                                             </NavLink>
-                                        </Can>
-                                    ) : (
-                                        <NavLink
-                                            key={route.path}
-                                            to={`/server/${id}/${route.path ?? ''}`.replace(/\/$/, '')}
-                                            end
-                                        >
-                                            {route.name}
-                                        </NavLink>
-                                    ),
+                                        ),
+                                    )}
+                                {rootAdmin && (
+                                    <NavLink to={`/admin/servers/${serverId}`}>
+                                        <IconExternalLink />
+                                    </NavLink>
                                 )}
-                            {rootAdmin && (
-                                <NavLink to={`/admin/servers/${serverId}`}>
-                                    <IconExternalLink />
-                                </NavLink>
-                            )}
-                        </div>
-                    </SubNavigation>
-                    <InstallListener />
-                    <TransferListener />
-                    <WebsocketHandler />
-                    {inConflictState && (!rootAdmin || (rootAdmin && !location.pathname.endsWith(`/server/${id}/`))) ? (
-                        <ConflictStateRenderer />
-                    ) : (
-                        <ErrorBoundary>
-                            <Routes location={location}>
-                                {routes.server.map(({ route, permission, component: Component }) => (
-                                    <Route
-                                        key={route}
-                                        path={route}
-                                        element={
-                                            <PermissionRoute permission={permission}>
-                                                <Spinner.Suspense>
-                                                    <Component />
-                                                </Spinner.Suspense>
-                                            </PermissionRoute>
-                                        }
-                                    />
-                                ))}
+                            </SubNavigation>
+                            <InstallListener />
+                            <TransferListener />
+                            <WebsocketHandler />
+                            {inConflictState &&
+                            (!rootAdmin || (rootAdmin && !location.pathname.endsWith(`/server/${id}/`))) ? (
+                                <ConflictStateRenderer />
+                            ) : (
+                                <ErrorBoundary>
+                                    <Routes location={location}>
+                                        {routes.server.map(({ route, permission, component: Component }) => (
+                                            <Route
+                                                key={route}
+                                                path={route}
+                                                element={
+                                                    <PermissionRoute permission={permission}>
+                                                        <Spinner.Suspense>
+                                                            <Component />
+                                                        </Spinner.Suspense>
+                                                    </PermissionRoute>
+                                                }
+                                            />
+                                        ))}
 
-                                <Route path="*" element={<NotFound />} />
-                            </Routes>
-                        </ErrorBoundary>
+                                        <Route path="*" element={<NotFound />} />
+                                    </Routes>
+                                </ErrorBoundary>
+                            )}
+                        </>
                     )}
-                </>
-            )}
+                </div>
+            </div>
         </Fragment>
     );
 }

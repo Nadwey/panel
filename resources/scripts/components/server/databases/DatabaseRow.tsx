@@ -12,12 +12,13 @@ import Can from '@/components/elements/Can';
 import { ServerDatabase } from '@/api/server/databases/getServerDatabases';
 import useFlash from '@/plugins/useFlash';
 import tw from 'twin.macro';
-import Button from '@/components/elements/Button';
 import Label from '@/components/elements/Label';
 import Input from '@/components/elements/Input';
 import GreyRowBox from '@/components/elements/GreyRowBox';
 import CopyOnClick from '@/components/elements/CopyOnClick';
 import { IconDatabase, IconEye, IconTrash } from '@tabler/icons-react';
+import { Button } from '@/components/elements/button';
+import { Variant } from '@/components/elements/button/types';
 
 interface Props {
     database: ServerDatabase;
@@ -85,12 +86,12 @@ export default ({ database, className }: Props) => {
                                 description={'Enter the database name to confirm deletion.'}
                             />
                             <div css={tw`mt-6 text-right`}>
-                                <Button type={'button'} isSecondary css={tw`mr-2`} onClick={() => setVisible(false)}>
+                                <Button type={'button'} variant={Variant.Secondary} css={tw`mr-2`} onClick={() => setVisible(false)}>
                                     Cancel
                                 </Button>
-                                <Button type={'submit'} color={'red'} disabled={!isValid}>
+                                <Button.Danger type={'submit'} disabled={!isValid}>
                                     Delete Database
-                                </Button>
+                                </Button.Danger>
                             </div>
                         </Form>
                     </Modal>
@@ -133,7 +134,7 @@ export default ({ database, className }: Props) => {
                     <Can action={'database.update'}>
                         <RotatePasswordButton databaseId={database.id} onUpdate={appendDatabase} />
                     </Can>
-                    <Button isSecondary onClick={() => setConnectionVisible(false)}>
+                    <Button variant={Variant.Secondary} onClick={() => setConnectionVisible(false)}>
                         Close
                     </Button>
                 </div>
@@ -151,26 +152,26 @@ export default ({ database, className }: Props) => {
                     <CopyOnClick text={database.connectionString}>
                         <p css={tw`text-sm`}>{database.connectionString}</p>
                     </CopyOnClick>
-                    <p css={tw`mt-1 text-2xs text-neutral-500 uppercase select-none`}>Endpoint</p>
+                    <p css={tw`mt-1 text-2xs text-zinc-500 uppercase select-none`}>Endpoint</p>
                 </div>
                 <div css={tw`ml-8 text-center hidden md:block`}>
                     <p css={tw`text-sm`}>{database.allowConnectionsFrom}</p>
-                    <p css={tw`mt-1 text-2xs text-neutral-500 uppercase select-none`}>Connections from</p>
+                    <p css={tw`mt-1 text-2xs text-zinc-500 uppercase select-none`}>Connections from</p>
                 </div>
                 <div css={tw`ml-8 text-center hidden md:block`}>
                     <CopyOnClick text={database.username}>
                         <p css={tw`text-sm`}>{database.username}</p>
                     </CopyOnClick>
-                    <p css={tw`mt-1 text-2xs text-neutral-500 uppercase select-none`}>Username</p>
+                    <p css={tw`mt-1 text-2xs text-zinc-500 uppercase select-none`}>Username</p>
                 </div>
                 <div css={tw`ml-8`}>
-                    <Button isSecondary css={tw`mr-2`} onClick={() => setConnectionVisible(true)}>
+                    <Button variant={Variant.Secondary} css={tw`mr-2`} onClick={() => setConnectionVisible(true)}>
                         <IconEye />
                     </Button>
                     <Can action={'database.delete'}>
-                        <Button color={'red'} isSecondary onClick={() => setVisible(true)}>
+                        <Button.Danger variant={Variant.Secondary} onClick={() => setVisible(true)}>
                             <IconTrash />
-                        </Button>
+                        </Button.Danger>
                     </Can>
                 </div>
             </GreyRowBox>

@@ -14,10 +14,10 @@ function DashboardRouter() {
 
     return (
         <>
-            <div css={tw`flex flex-row items-stretch h-full`}>
+            <div css={tw`flex flex-row items-stretch flex-1`}>
                 <NavigationBar />
 
-                <div className='w-9/12'>
+                <div className='w-full'>
                     {location.pathname.startsWith('/account') && (
                         <SubNavigation>
                             <div>

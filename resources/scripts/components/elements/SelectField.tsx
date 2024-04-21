@@ -33,10 +33,10 @@ export const SelectStyle: StylesConfig<T, any, any> = {
     clearIndicator: (base: CSSObject, props: IndicatorProps<T, any, any>): CSSObject => {
         return {
             ...base,
-            color: props.isFocused ? theme`colors.neutral.300` : theme`colors.neutral.400`,
+            color: props.isFocused ? theme`colors.zinc.300` : theme`colors.zinc.400`,
 
             ':hover': {
-                color: theme`colors.neutral.100`,
+                color: theme`colors.zinc.100`,
             },
         };
     },
@@ -52,29 +52,24 @@ export const SelectStyle: StylesConfig<T, any, any> = {
         return {
             ...base,
             height: '3rem',
-            background: theme`colors.neutral.600`,
-            borderColor: !props.isFocused ? theme`colors.neutral.500` : theme`colors.primary.300`,
-            borderWidth: '2px',
-            color: theme`colors.neutral.200`,
+            background: theme`colors.zinc.900`,
+            border: "none",
+            color: theme`colors.zinc.200`,
             cursor: 'pointer',
             boxShadow: props.isFocused
                 ? 'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(36, 135, 235, 0.5) 0px 0px 0px 2px, rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px'
                 : undefined,
-
-            ':hover': {
-                borderColor: !props.isFocused ? theme`colors.neutral.400` : theme`colors.primary.300`,
-            },
         };
     },
 
     dropdownIndicator: (base: CSSObject, props: IndicatorProps<T, any, any>): CSSObject => {
         return {
             ...base,
-            color: props.isFocused ? theme`colors.neutral.300` : theme`colors.neutral.400`,
+            color: props.isFocused ? theme`colors.zinc.300` : theme`colors.zinc.400`,
             transform: props.isFocused ? 'rotate(180deg)' : undefined,
 
             ':hover': {
-                color: theme`colors.neutral.300`,
+                color: theme`colors.zinc.300`,
             },
         };
     },
@@ -104,7 +99,7 @@ export const SelectStyle: StylesConfig<T, any, any> = {
     indicatorSeparator: (base: CSSObject, props: IndicatorProps<T, any, any>): CSSObject => {
         return {
             ...base,
-            backgroundColor: theme`colors.neutral.500`,
+            backgroundColor: theme`colors.zinc.500`,
         };
     },
 
@@ -112,7 +107,7 @@ export const SelectStyle: StylesConfig<T, any, any> = {
     input: (base: CSSObject, props: InputProps): CSSObject => {
         return {
             ...base,
-            color: theme`colors.neutral.200`,
+            color: theme`colors.zinc.200`,
             fontSize: '0.875rem',
         };
     },
@@ -135,8 +130,8 @@ export const SelectStyle: StylesConfig<T, any, any> = {
     menu: (base: CSSObject, props: MenuProps<T, any, any>): CSSObject => {
         return {
             ...base,
-            background: theme`colors.neutral.900`,
-            color: theme`colors.neutral.200`,
+            background: theme`colors.zinc.900`,
+            color: theme`colors.zinc.200`,
         };
     },
 
@@ -158,8 +153,8 @@ export const SelectStyle: StylesConfig<T, any, any> = {
     multiValue: (base: CSSObject, props: MultiValueProps<T, any>): CSSObject => {
         return {
             ...base,
-            background: theme`colors.neutral.900`,
-            color: theme`colors.neutral.200`,
+            background: theme`colors.zinc.800`,
+            color: theme`colors.zinc.200`,
         };
     },
 
@@ -167,7 +162,7 @@ export const SelectStyle: StylesConfig<T, any, any> = {
     multiValueLabel: (base: CSSObject, props: MultiValueProps<T, any>): CSSObject => {
         return {
             ...base,
-            color: theme`colors.neutral.200`,
+            color: theme`colors.zinc.200`,
         };
     },
 
@@ -189,10 +184,10 @@ export const SelectStyle: StylesConfig<T, any, any> = {
     option: (base: CSSObject, props: OptionProps<T, any, any>): CSSObject => {
         return {
             ...base,
-            background: theme`colors.neutral.900`,
+            background: theme`colors.zinc.900`,
 
             ':hover': {
-                background: theme`colors.neutral.700`,
+                background: theme`colors.zinc.800`,
                 cursor: 'pointer',
             },
         };
@@ -202,7 +197,7 @@ export const SelectStyle: StylesConfig<T, any, any> = {
     placeholder: (base: CSSObject, props: PlaceholderProps<T, any, any>): CSSObject => {
         return {
             ...base,
-            color: theme`colors.neutral.300`,
+            color: theme`colors.zinc.200`,
             fontSize: '0.875rem',
         };
     },
@@ -303,7 +298,7 @@ const SelectField = forwardRef<HTMLElement, SelectFieldProps>(function Select2(
                                 (errors[field.name] as string).slice(1)}
                         </p>
                     ) : description ? (
-                        <p css={tw`text-neutral-400 text-xs mt-1`}>{description}</p>
+                        <p css={tw`text-zinc-400 text-xs mt-1`}>{description}</p>
                     ) : null}
                 </div>
             )}
@@ -365,7 +360,7 @@ const AsyncSelectField = forwardRef<HTMLElement, AsyncSelectFieldProps>(function
                                 (errors[field.name] as string).slice(1)}
                         </p>
                     ) : description ? (
-                        <p css={tw`text-neutral-400 text-xs mt-1`}>{description}</p>
+                        <p css={tw`text-zinc-400 text-xs mt-1`}>{description}</p>
                     ) : null}
                 </div>
             )}

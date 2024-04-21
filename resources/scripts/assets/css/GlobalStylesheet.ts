@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
     body {
-        ${tw`font-inter bg-gradient-to-b from-zinc-950 to-black text-neutral-200`};
+        ${tw`font-inter bg-gradient-to-b from-zinc-950 to-black text-zinc-200`};
         letter-spacing: 0.015em;
         min-height: 100vh;
     }
@@ -13,7 +13,7 @@ export default createGlobalStyle`
     }
 
     p {
-        ${tw`text-neutral-200 leading-snug font-inter`};
+        ${tw`text-zinc-200 leading-snug font-inter`};
     }
 
     form {
@@ -28,6 +28,10 @@ export default createGlobalStyle`
     input[type=number]::-webkit-inner-spin-button {
         -webkit-appearance: none !important;
         margin: 0;
+    }
+
+    input {
+        color-scheme: dark;
     }
 
     input[type=number] {

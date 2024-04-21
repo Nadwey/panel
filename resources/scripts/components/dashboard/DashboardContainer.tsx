@@ -75,7 +75,7 @@ export default () => {
                                 <ServerRow key={server.uuid} server={server} css={index > 0 ? tw`mt-2` : undefined} />
                             ))
                         ) : (
-                            <p css={tw`text-center text-sm text-neutral-400`}>
+                            <p css={tw`text-center text-sm text-zinc-400`}>
                                 {showOnlyAdmin
                                     ? 'There are no other servers to display.'
                                     : 'There are no servers associated with your account.'}

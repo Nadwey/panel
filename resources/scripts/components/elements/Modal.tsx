@@ -147,7 +147,7 @@ function Modal({
                     </FadeTransition>
 
                     <div
-                        css={tw`bg-neutral-800 p-3 sm:p-4 md:p-6 rounded shadow-md overflow-y-scroll transition-all duration-150`}
+                        css={tw`bg-zinc-900/50 backdrop-blur-sm p-3 sm:p-4 md:p-6 rounded shadow-md overflow-y-scroll transition-all duration-150`}
                     >
                         {children}
                     </div>

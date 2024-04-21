@@ -13,14 +13,14 @@ import { IconClock, IconCpu, IconDatabase, IconDeviceSdCard, IconDownload, IconU
 
 type Stats = Record<'memory' | 'cpu' | 'disk' | 'uptime' | 'rx' | 'tx', number>;
 
-function getBackgroundColor(value: number, max: number | null): string | undefined {
+function getIconColor(value: number, max: number | null): string | undefined {
     const delta = !max ? 0 : value / max;
 
     if (delta > 0.8) {
         if (delta > 0.9) {
-            return 'bg-red-500';
+            return 'text-red-500';
         }
-        return 'bg-yellow-500';
+        return 'text-yellow-500';
     }
 
     return undefined;
@@ -30,7 +30,7 @@ function Limit({ limit, children }: { limit: string | null; children: ReactNode 
     return (
         <>
             {children}
-            <span className={'ml-1 select-none text-[70%] text-slate-300'}>/ {limit || <>&infin;</>}</span>
+            <span className={'ml-1 select-none text-[70%] text-zinc-400'}>/ {limit || <>&infin;</>}</span>
         </>
     );
 }
@@ -51,12 +51,6 @@ function ServerDetailsBlock({ className }: { className?: string }) {
         }),
         [limits],
     );
-
-    const allocation = ServerContext.useStoreState(state => {
-        const match = state.server.data!.allocations.find(allocation => allocation.isDefault);
-
-        return !match ? 'n/a' : `${match.alias || ip(match.ip)}:${match.port}`;
-    });
 
     useEffect(() => {
         if (!connected || !instance) {
@@ -86,13 +80,10 @@ function ServerDetailsBlock({ className }: { className?: string }) {
 
     return (
         <div className={classNames('grid grid-cols-6 gap-2 md:gap-4', className)}>
-            <StatBlock icon={IconWifi} title={'Address'} copyOnClick={allocation}>
-                {allocation}
-            </StatBlock>
             <StatBlock
                 icon={IconClock}
                 title={'Uptime'}
-                color={getBackgroundColor(status === 'running' ? 0 : status !== 'offline' ? 9 : 10, 10)}
+                color={getIconColor(status === 'running' ? 0 : status !== 'offline' ? 9 : 10, 10)}
             >
                 {status === null ? (
                     'Offline'
@@ -102,9 +93,9 @@ function ServerDetailsBlock({ className }: { className?: string }) {
                     capitalize(status)
                 )}
             </StatBlock>
-            <StatBlock icon={IconCpu} title={'CPU Load'} color={getBackgroundColor(stats.cpu, limits.cpu)}>
+            <StatBlock icon={IconCpu} title={'CPU Load'} color={getIconColor(stats.cpu, limits.cpu)}>
                 {status === 'offline' ? (
-                    <span className={'text-slate-400'}>Offline</span>
+                    <span className={'text-zinc-400'}>Offline</span>
                 ) : (
                     <Limit limit={textLimits.cpu}>{stats.cpu.toFixed(2)}%</Limit>
                 )}
@@ -112,22 +103,22 @@ function ServerDetailsBlock({ className }: { className?: string }) {
             <StatBlock
                 icon={IconDatabase}
                 title={'Memory'}
-                color={getBackgroundColor(stats.memory / 1024, limits.memory * 1024)}
+                color={getIconColor(stats.memory / 1024, limits.memory * 1024)}
             >
                 {status === 'offline' ? (
-                    <span className={'text-slate-400'}>Offline</span>
+                    <span className={'text-zinc-400'}>Offline</span>
                 ) : (
                     <Limit limit={textLimits.memory}>{bytesToString(stats.memory)}</Limit>
                 )}
             </StatBlock>
-            <StatBlock icon={IconDeviceSdCard} title={'Disk'} color={getBackgroundColor(stats.disk / 1024, limits.disk * 1024)}>
+            <StatBlock icon={IconDeviceSdCard} title={'Disk'} color={getIconColor(stats.disk / 1024, limits.disk * 1024)}>
                 <Limit limit={textLimits.disk}>{bytesToString(stats.disk)}</Limit>
             </StatBlock>
             <StatBlock icon={IconDownload} title={'Network (Inbound)'}>
-                {status === 'offline' ? <span className={'text-slate-400'}>Offline</span> : bytesToString(stats.rx)}
+                {status === 'offline' ? <span className={'text-zinc-400'}>Offline</span> : bytesToString(stats.rx)}
             </StatBlock>
             <StatBlock icon={IconUpload} title={'Network (Outbound)'}>
-                {status === 'offline' ? <span className={'text-slate-400'}>Offline</span> : bytesToString(stats.tx)}
+                {status === 'offline' ? <span className={'text-zinc-400'}>Offline</span> : bytesToString(stats.tx)}
             </StatBlock>
         </div>
     );

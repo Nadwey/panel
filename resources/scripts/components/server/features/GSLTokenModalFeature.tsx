@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { ServerContext } from '@/state/server';
 import Modal from '@/components/elements/Modal';
 import tw from 'twin.macro';
-import Button from '@/components/elements/Button';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import useFlash from '@/plugins/useFlash';
 import { SocketEvent, SocketRequest } from '@/components/server/events';
 import Field from '@/components/elements/Field';
 import updateStartupVariable from '@/api/server/updateStartupVariable';
 import { Form, Formik } from 'formik';
+import { Button } from '@/components/elements/button';
 
 interface Values {
     gslToken: string;
@@ -75,7 +75,7 @@ const GSLTokenModalFeature = () => {
             >
                 <FlashMessageRender key={'feature:gslToken'} css={tw`mb-4`} />
                 <Form>
-                    <h2 css={tw`text-2xl mb-4 text-neutral-100`}>Invalid GSL token!</h2>
+                    <h2 css={tw`text-2xl mb-4 text-zinc-100`}>Invalid GSL token!</h2>
                     <p css={tw`mt-4`}>
                         It seems like your Gameserver Login Token (GSL token) is invalid or has expired.
                     </p>
