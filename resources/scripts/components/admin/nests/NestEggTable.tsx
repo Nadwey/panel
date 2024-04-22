@@ -84,6 +84,7 @@ const EggsTable = () => {
     return (
         <AdminTable>
             <ContentWrapper
+                checkAllButton
                 checked={selectedEggsLength === (length === 0 ? -1 : length)}
                 onSelectAllClick={onSelectAllClick}
                 onSearch={onSearch}

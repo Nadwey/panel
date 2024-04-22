@@ -106,6 +106,7 @@ const NodesContainer = () => {
 
             <AdminTable>
                 <ContentWrapper
+                    checkAllButton
                     checked={selectedNodesLength === (length === 0 ? -1 : length)}
                     onSelectAllClick={onSelectAllClick}
                     onSearch={onSearch}

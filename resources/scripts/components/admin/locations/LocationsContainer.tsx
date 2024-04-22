@@ -101,6 +101,7 @@ function LocationsContainer() {
 
             <AdminTable>
                 <ContentWrapper
+                    checkAllButton
                     checked={selectedLocationsLength === (length === 0 ? -1 : length)}
                     onSelectAllClick={onSelectAllClick}
                     onSearch={onSearch}

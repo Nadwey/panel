@@ -101,6 +101,7 @@ const RolesContainer = () => {
 
             <AdminTable>
                 <ContentWrapper
+                    checkAllButton
                     checked={selectedRolesLength === (length === 0 ? -1 : length)}
                     onSelectAllClick={onSelectAllClick}
                     onSearch={onSearch}

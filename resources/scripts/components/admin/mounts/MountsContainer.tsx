@@ -106,6 +106,7 @@ const MountsContainer = () => {
 
             <AdminTable>
                 <ContentWrapper
+                    checkAllButton
                     checked={selectedMountsLength === (length === 0 ? -1 : length)}
                     onSelectAllClick={onSelectAllClick}
                     onSearch={onSearch}

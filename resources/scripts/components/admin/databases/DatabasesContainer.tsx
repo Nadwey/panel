@@ -105,6 +105,7 @@ const DatabasesContainer = () => {
 
             <AdminTable>
                 <ContentWrapper
+                    checkAllButton
                     checked={selectedDatabasesLength === (length === 0 ? -1 : length)}
                     onSelectAllClick={onSelectAllClick}
                     onSearch={onSearch}

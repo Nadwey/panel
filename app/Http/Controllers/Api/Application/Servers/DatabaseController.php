@@ -3,6 +3,8 @@
 namespace Pterodactyl\Http\Controllers\Api\Application\Servers;
 
 use Illuminate\Http\Response;
+use Pterodactyl\Exceptions\Http\QueryValueOutOfRangeHttpException;
+use Pterodactyl\Models\DatabaseHost;
 use Pterodactyl\Models\Server;
 use Pterodactyl\Models\Database;
 use Illuminate\Http\JsonResponse;
@@ -14,6 +16,7 @@ use Pterodactyl\Http\Requests\Api\Application\Servers\Databases\GetServerDatabas
 use Pterodactyl\Http\Requests\Api\Application\Servers\Databases\GetServerDatabasesRequest;
 use Pterodactyl\Http\Requests\Api\Application\Servers\Databases\ServerDatabaseWriteRequest;
 use Pterodactyl\Http\Requests\Api\Application\Servers\Databases\StoreServerDatabaseRequest;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class DatabaseController extends ApplicationApiController
 {
@@ -33,7 +36,17 @@ class DatabaseController extends ApplicationApiController
      */
     public function index(GetServerDatabasesRequest $request, Server $server): array
     {
-        return $this->fractal->collection($server->databases)
+        $perPage = (int) $request->query('per_page', '10');
+        if ($perPage < 1 || $perPage > 100) {
+            throw new QueryValueOutOfRangeHttpException('per_page', 1, 100);
+        }
+
+        $databases = QueryBuilder::for(Database::query()->where('server_id', $server->id))
+            ->allowedFilters(['database'])
+            ->allowedSorts(['id', 'database'])
+            ->paginate($perPage);
+
+        return $this->fractal->collection($databases)
             ->transformWith(ServerDatabaseTransformer::class)
             ->toArray();
     }

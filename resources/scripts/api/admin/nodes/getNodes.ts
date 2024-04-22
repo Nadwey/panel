@@ -64,7 +64,7 @@ export const rawDataToNode = ({ attributes }: FractalResponseData): Node => ({
     relations: {
         // eslint-disable-next-line camelcase
         databaseHost:
-            attributes.relationships?.database_host !== undefined &&
+            attributes.relationships?.database_host &&
             attributes.relationships?.database_host.object !== 'null_resource'
                 ? rawDataToDatabase(attributes.relationships.database_host as FractalResponseData)
                 : undefined,

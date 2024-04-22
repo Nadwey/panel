@@ -79,11 +79,11 @@ export const TableHeader = ({
     );
 };
 
-export const TableHead = ({ children }: { children: ReactNode }) => {
+export const TableHead = ({ children, noCheckboxHeader }: { children: ReactNode; noCheckboxHeader?: boolean }) => {
     return (
         <thead css={tw`border-b border-zinc-800`}>
             <tr>
-                <TableHeader />
+                {!noCheckboxHeader && <TableHeader />}
                 {children}
             </tr>
         </thead>
@@ -275,14 +275,15 @@ export const NoItems = ({ className }: { className?: string }) => {
 };
 
 interface Params {
-    checked: boolean;
-    onSelectAllClick: (e: ChangeEvent<HTMLInputElement>) => void;
+    checkAllButton?: boolean;
+    checked?: boolean;
+    onSelectAllClick?: (e: ChangeEvent<HTMLInputElement>) => void;
     onSearch?: (query: string) => Promise<void>;
 
     children: ReactNode;
 }
 
-export const ContentWrapper = ({ checked, onSelectAllClick, onSearch, children }: Params) => {
+export const ContentWrapper = ({ checkAllButton, checked, onSelectAllClick, onSearch, children }: Params) => {
     const [loading, setLoading] = useState(false);
     const [inputText, setInputText] = useState('');
 
@@ -301,22 +302,29 @@ export const ContentWrapper = ({ checked, onSelectAllClick, onSearch, children }
     return (
         <>
             <div css={tw`flex flex-row items-center justify-start gap-8 h-12 px-6`}>
-                <div css={tw`flex flex-row items-center`}>
-                    <TableCheckbox type={'checkbox'} name={'selectAll'} checked={checked} onChange={onSelectAllClick} />
-
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        css={tw`w-4 h-4 ml-1 text-zinc-200`}
-                    >
-                        <path
-                            clipRule="evenodd"
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                {checkAllButton && (
+                    <div css={tw`flex flex-row items-center`}>
+                        <TableCheckbox
+                            type={'checkbox'}
+                            name={'selectAll'}
+                            checked={checked}
+                            onChange={onSelectAllClick}
                         />
-                    </svg>
-                </div>
+
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            css={tw`w-4 h-4 ml-1 text-zinc-200`}
+                        >
+                            <path
+                                clipRule="evenodd"
+                                fillRule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            />
+                        </svg>
+                    </div>
+                )}
 
                 <div css={tw`flex flex-row items-center`}>
                     <InputSpinner visible={loading}>

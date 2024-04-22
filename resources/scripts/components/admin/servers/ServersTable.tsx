@@ -86,6 +86,7 @@ function ServersTable({ filters }: Props) {
     return (
         <AdminTable>
             <ContentWrapper
+                checkAllButton
                 checked={selectedServerLength === (length === 0 ? -1 : length)}
                 onSelectAllClick={onSelectAllClick}
                 onSearch={onSearch}

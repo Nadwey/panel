@@ -12,6 +12,7 @@ import ServerSettingsContainer from '@/components/admin/servers/ServerSettingsCo
 import useFlash from '@/plugins/useFlash';
 import { useServerFromRoute } from '@/api/admin/server';
 import { IconAdjustments, IconFolder, IconSettings, IconShieldExclamation, IconStack2 } from '@tabler/icons-react';
+import ServerDatabasesContainer from './ServerDatabasesContainer';
 
 export default () => {
     const params = useParams<'id'>();
@@ -73,6 +74,7 @@ export default () => {
             <Routes>
                 <Route path="" element={<ServerSettingsContainer />} />
                 <Route path="startup" element={<ServerStartupContainer />} />
+                <Route path="databases" element={<ServerDatabasesContainer />} />
                 <Route path="manage" element={<ServerManageContainer />} />
             </Routes>
         </AdminContentBlock>

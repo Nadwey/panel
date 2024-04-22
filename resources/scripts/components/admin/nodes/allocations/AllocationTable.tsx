@@ -94,6 +94,7 @@ function AllocationsTable({ nodeId, filters }: Props) {
     return (
         <AdminTable>
             <ContentWrapper
+                checkAllButton
                 checked={selectedAllocationLength === (length === 0 ? -1 : length)}
                 onSelectAllClick={onSelectAllClick}
                 onSearch={onSearch}

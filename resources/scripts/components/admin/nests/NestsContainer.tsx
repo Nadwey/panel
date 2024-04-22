@@ -101,6 +101,7 @@ const NestsContainer = () => {
 
             <AdminTable>
                 <ContentWrapper
+                    checkAllButton
                     checked={selectedNestsLength === (length === 0 ? -1 : length)}
                     onSelectAllClick={onSelectAllClick}
                     onSearch={onSearch}
