@@ -11,7 +11,7 @@ import useFlash from '@/plugins/useFlash';
 
 const Code = ({ children }: { children: ReactNode }) => {
     return (
-        <code css={tw`text-sm font-mono bg-zinc-900 rounded`} style={{ padding: '2px 6px' }}>
+        <code css={tw`text-sm font-mono bg-zinc-900/50 rounded`} style={{ padding: '2px 6px' }}>
             {children}
         </code>
     );
@@ -47,14 +47,14 @@ export default () => {
 
             <FlashMessageRender byKey={'overview'} css={tw`mb-4`} />
 
-            <div css={tw`flex flex-col w-full rounded-lg shadow-md bg-zinc-700`}>
+            <div css={tw`flex flex-col w-full rounded-lg shadow-md bg-zinc-900/50 border border-zinc-900`}>
                 {loading ? (
                     <div css={tw`w-full flex flex-col items-center justify-center`} style={{ height: '16rem' }}>
                         <Spinner size={'base'} />
                     </div>
                 ) : (
-                    <div css={tw`rounded shadow-md bg-zinc-700`}>
-                        <div css={tw`bg-zinc-900 rounded-t border-b border-black px-4 py-3`}>
+                    <div css={tw`rounded shadow-md`}>
+                        <div css={tw`rounded-t px-4 py-3`}>
                             <p css={tw`text-sm uppercase`}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

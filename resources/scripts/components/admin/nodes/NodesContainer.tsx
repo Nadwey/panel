@@ -144,7 +144,7 @@ const NodesContainer = () => {
                                         direction={sort === 'disk' ? (sortDirection ? 1 : 2) : null}
                                         onClick={() => setSort('disk')}
                                     />
-                                    <TableHeader />
+                                    <TableHeader name='Secure' />
                                     <TableHeader />
                                 </TableHead>
 

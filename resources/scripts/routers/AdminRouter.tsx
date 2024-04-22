@@ -64,7 +64,7 @@ function AdminRouter() {
                     onClick={() => setCollapsed(!collapsed)}
                 >
                     {!collapsed ? (
-                        <h1 css={tw`text-3xl text-zinc-50 whitespace-nowrap font-extrabold`}>{applicationName}</h1>
+                        <h1 css={tw`text-3xl text-zinc-50 whitespace-nowrap font-black`}>{applicationName}</h1>
                     ) : (
                         <img src={CollapsedIcon} css={tw`mt-4 w-20`} alt={'Pterodactyl Icon'} />
                     )}

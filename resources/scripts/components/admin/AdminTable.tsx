@@ -81,7 +81,7 @@ export const TableHeader = ({
 
 export const TableHead = ({ children }: { children: ReactNode }) => {
     return (
-        <thead css={tw`bg-zinc-900 border-t border-b border-zinc-500`}>
+        <thead css={tw`border-b border-zinc-800`}>
             <tr>
                 <TableHeader />
                 {children}
@@ -95,7 +95,7 @@ export const TableBody = ({ children }: { children: ReactNode }) => {
 };
 
 export const TableRow = ({ children }: { children: ReactNode }) => {
-    return <tr css={tw`h-12 hover:bg-zinc-600`}>{children}</tr>;
+    return <tr css={tw`h-12 hover:bg-zinc-900`}>{children}</tr>;
 };
 
 interface Props<T> {
@@ -176,7 +176,7 @@ export function Pagination<T>({ data, onPageSelect, children }: Props<T>) {
         <>
             {children}
 
-            <div css={tw`h-12 flex flex-row items-center w-full px-6 py-3 border-t border-zinc-500`}>
+            <div css={tw`h-12 flex flex-row items-center w-full px-6 py-3 border-t border-zinc-800`}>
                 <p css={tw`text-sm leading-5 text-zinc-400`}>
                     Showing{' '}
                     <span css={tw`text-zinc-300`}>
@@ -263,7 +263,7 @@ export const Loading = () => {
 export const NoItems = ({ className }: { className?: string }) => {
     return (
         <div css={tw`w-full flex flex-col items-center justify-center py-6 px-8`} className={className}>
-            <div css={tw`h-48 flex`}>
+            <div css={tw`h-48 flex brightness-75`}>
                 <img src={'/assets/svgs/not_found.svg'} alt={'No Items'} css={tw`h-full select-none`} />
             </div>
 
@@ -300,7 +300,7 @@ export const ContentWrapper = ({ checked, onSelectAllClick, onSearch, children }
 
     return (
         <>
-            <div css={tw`flex flex-row items-center h-12 px-6`}>
+            <div css={tw`flex flex-row items-center justify-start gap-8 h-12 px-6`}>
                 <div css={tw`flex flex-row items-center`}>
                     <TableCheckbox type={'checkbox'} name={'selectAll'} checked={checked} onChange={onSelectAllClick} />
 
@@ -318,7 +318,7 @@ export const ContentWrapper = ({ checked, onSelectAllClick, onSearch, children }
                     </svg>
                 </div>
 
-                <div css={tw`flex flex-row items-center ml-auto`}>
+                <div css={tw`flex flex-row items-center`}>
                     <InputSpinner visible={loading}>
                         <Input
                             value={inputText}
@@ -341,7 +341,7 @@ export const ContentWrapper = ({ checked, onSelectAllClick, onSearch, children }
 export default ({ children }: { children: ReactNode }) => {
     return (
         <div css={tw`flex flex-col w-full`}>
-            <div css={tw`rounded-lg shadow-md bg-zinc-700`}>{children}</div>
+            <div css={tw`rounded-xl shadow-md bg-zinc-900/50 border border-zinc-900`}>{children}</div>
         </div>
     );
 };
