@@ -18,22 +18,23 @@ import {
     IconToggleRight,
     IconTrash,
 } from '@tabler/icons-react';
+import IconWrapper from '@/components/elements/IconWrapper';
 
 interface Props {
     schedule: Schedule;
     task: Task;
 }
 
-const getActionDetails = (action: string): [string, any] => {
+const getActionDetails = (action: string) => {
     switch (action) {
         case 'command':
-            return ['Send Command', IconCode];
+            return { title: 'Send Command', icon: IconCode };
         case 'power':
-            return ['Send Power Action', IconToggleRight];
+            return { title: 'Send Power Action', icon: IconToggleRight };
         case 'backup':
-            return ['Create Backup', IconFileZip];
+            return { title: 'Create Backup', icon: IconFileZip };
         default:
-            return ['Unknown Action', IconCode];
+            return { title: 'Unknown Action', icon: IconCode };
     }
 };
 
@@ -62,8 +63,7 @@ export default ({ schedule, task }: Props) => {
             });
     };
 
-    const [title, icon] = getActionDetails(task.action);
-    const Icon = icon;
+    const { title, icon } = getActionDetails(task.action);
 
     return (
         <div css={tw`sm:flex items-center p-3 sm:p-6 border-b border-zinc-800`}>
@@ -83,7 +83,7 @@ export default ({ schedule, task }: Props) => {
             >
                 Are you sure you want to delete this task? This action cannot be undone.
             </ConfirmationModal>
-            <Icon css={tw`text-lg text-white hidden md:block`} />
+            <IconWrapper icon={icon} css={tw`text-lg text-white hidden md:block`} />
             <div css={tw`flex-none sm:flex-1 w-full sm:w-auto overflow-x-auto`}>
                 <p css={tw`md:ml-6 text-zinc-200 uppercase text-sm`}>{title}</p>
                 {task.payload && (
