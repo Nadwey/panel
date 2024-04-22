@@ -28,7 +28,7 @@ export const ModalMask = styled.div`
     background: rgba(0, 0, 0, 0.7);
 `;
 
-const ModalContainer = styled.div<{ alignTop?: boolean }>`
+const ModalContainer = styled.div`
     max-width: 95%;
     max-height: calc(100vh - 8rem);
 
@@ -41,14 +41,6 @@ const ModalContainer = styled.div<{ alignTop?: boolean }>`
     }
 
     ${tw`relative flex flex-col w-full m-auto`};
-    ${props =>
-        props.alignTop &&
-        css`
-            margin-top: 20%;
-            ${({ theme }) => theme.breakpoints.up('medium')} {
-                margin-top: 10%;
-            }
-        `};
 
     margin-bottom: auto;
 
@@ -71,7 +63,6 @@ function Modal({
     appear,
     dismissable,
     showSpinnerOverlay,
-    top = true,
     closeOnBackground = true,
     closeOnEscape = true,
     onDismissed,
@@ -118,7 +109,7 @@ function Modal({
                     }
                 }}
             >
-                <ModalContainer alignTop={top}>
+                <ModalContainer>
                     {isDismissable && (
                         <div className={'close-icon'} onClick={() => setRender(false)}>
                             <svg

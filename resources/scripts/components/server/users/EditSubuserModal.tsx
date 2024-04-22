@@ -169,6 +169,4 @@ const EditSubuserModal = ({ subuser }: Props) => {
     );
 };
 
-export default asModal<Props>({
-    top: false,
-})(EditSubuserModal);
+export default asModal<Props>()(EditSubuserModal);
