@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Schedule } from '@/api/server/schedules/getServerSchedules';
 import Field from '@/components/elements/Field';
-import { Form, Formik, FormikHelpers } from 'formik';
+import { Form, Formik, FormikHelpers, useFormikContext } from 'formik';
 import FormikSwitch from '@/components/elements/FormikSwitch';
 import createOrUpdateSchedule from '@/api/server/schedules/createOrUpdateSchedule';
 import { ServerContext } from '@/state/server';
@@ -12,8 +12,8 @@ import tw from 'twin.macro';
 import { Button } from '@/components/elements/button';
 import ModalContext from '@/context/ModalContext';
 import asModal from '@/hoc/asModal';
-import Switch from '@/components/elements/Switch';
-import ScheduleCheatsheetCards from '@/components/server/schedules/ScheduleCheatsheetCards';
+import cronParser from 'cron-parser';
+import cronstrue from 'cronstrue';
 
 interface Props {
     schedule?: Schedule;
@@ -30,13 +30,32 @@ interface Values {
     onlyWhenOnline: boolean;
 }
 
+const CronPreview = () => {
+    const CronPreviewError = () => <span css={tw`text-red-500`}>Invalid cron</span>;
+
+    const { values }: { values: Values } = useFormikContext();
+    const cron = `${values.minute} ${values.hour} ${values.dayOfMonth} ${values.month} ${values.dayOfWeek}`;
+
+    if (cron.split(' ').some(part => part === '')) {
+        // check if cron has actually 5 parts (cron can also have 6 parts but we don't want that)
+        return <CronPreviewError />;
+    }
+
+    try {
+        cronParser.parseExpression(cron);
+    } catch {
+        return <CronPreviewError />;
+    }
+
+    return cronstrue.toString(cron);
+};
+
 const EditScheduleModal = ({ schedule }: Props) => {
     const { addError, clearFlashes } = useFlash();
     const { dismiss } = useContext(ModalContext);
 
     const uuid = ServerContext.useStoreState(state => state.server.data!.uuid);
     const appendSchedule = ServerContext.useStoreActions(actions => actions.schedules.appendSchedule);
-    const [showCheatsheet, setShowCheetsheet] = useState(false);
 
     useEffect(() => {
         return () => {
@@ -104,24 +123,11 @@ const EditScheduleModal = ({ schedule }: Props) => {
                         <Field name={'month'} label={'Month'} />
                         <Field name={'dayOfWeek'} label={'Day of week'} />
                     </div>
+                    <CronPreview />
                     <p css={tw`text-zinc-400 text-xs mt-2`}>
                         The schedule system supports the use of Cronjob syntax when defining when tasks should begin
                         running. Use the fields above to specify when these tasks should begin running.
                     </p>
-                    <div css={tw`mt-6 border border-zinc-900 shadow-inner p-4 rounded`}>
-                        <Switch
-                            name={'show_cheatsheet'}
-                            description={'Show the cron cheatsheet for some examples.'}
-                            label={'Show Cheatsheet'}
-                            defaultChecked={showCheatsheet}
-                            onChange={() => setShowCheetsheet(s => !s)}
-                        />
-                        {showCheatsheet && (
-                            <div css={tw`block md:flex w-full`}>
-                                <ScheduleCheatsheetCards />
-                            </div>
-                        )}
-                    </div>
                     <div css={tw`mt-6 border border-zinc-900 shadow-inner p-4 rounded`}>
                         <FormikSwitch
                             name={'onlyWhenOnline'}

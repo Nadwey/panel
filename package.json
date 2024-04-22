@@ -55,6 +55,8 @@
         "boring-avatars": "1.10.2",
         "chart.js": "4.4.2",
         "classnames": "2.5.1",
+        "cron-parser": "^4.9.0",
+        "cronstrue": "^2.49.0",
         "date-fns": "3.6.0",
         "debounce": "2.0.0",
         "deepmerge-ts": "5.1.0",
