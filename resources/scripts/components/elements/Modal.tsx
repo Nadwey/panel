@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import tw from 'twin.macro';
 
 import Spinner from '@/components/elements/Spinner';

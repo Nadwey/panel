@@ -28,7 +28,7 @@ export const rawDataToServerDatabase = ({ attributes }: FractalResponseData): Se
         serverId: attributes.server_id,
         name: attributes.name,
         username: attributes.username,
-        // @ts-expect-error
+        // @ts-expect-error todo
         password: attributes.relationships?.password?.attributes?.password,
         remote: attributes.remote,
         maxConnections: attributes.max_connections,
@@ -37,8 +37,7 @@ export const rawDataToServerDatabase = ({ attributes }: FractalResponseData): Se
 
         relations: {
             host:
-                attributes.relationships?.host &&
-                attributes.relationships?.host.object !== 'null_resource'
+                attributes.relationships?.host && attributes.relationships?.host.object !== 'null_resource'
                     ? rawDataToDatabase(attributes.relationships.host as FractalResponseData)
                     : undefined,
         },
