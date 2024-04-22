@@ -15,7 +15,7 @@ export default ({ schedule }: Props) => {
     return (
         <>
             <EditScheduleModal schedule={schedule} visible={visible} onModalDismissed={() => setVisible(false)} />
-            <Button.Danger
+            <Button
                 variant={Variant.Secondary}
                 onClick={e => {
                     e.preventDefault();
@@ -23,7 +23,7 @@ export default ({ schedule }: Props) => {
                 }}
             >
                 <IconPencil height={'1rem'} />
-            </Button.Danger>
+            </Button>
         </>
     );
 };

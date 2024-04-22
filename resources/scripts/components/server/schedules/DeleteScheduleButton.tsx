@@ -49,15 +49,14 @@ export default ({ scheduleId }: Props) => {
                 <SpinnerOverlay visible={isLoading} />
                 All tasks will be removed and any running processes will be terminated.
             </Dialog.Confirm>
-            <Button
-                color={'red'}
+            <Button.Danger
                 onClick={e => {
                     e.preventDefault();
                     setVisible(true);
                 }}
             >
                 <IconTrash height={'1rem'} />
-            </Button>
+            </Button.Danger>
         </>
     );
 };
