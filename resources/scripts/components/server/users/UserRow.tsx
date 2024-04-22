@@ -25,11 +25,9 @@ export default ({ subuser }: Props) => {
             <div css={tw`ml-4 flex-1 overflow-hidden`}>
                 <p css={tw`text-sm truncate`}>{subuser.email}</p>
             </div>
-            <div css={tw`ml-4`}>
+            <div css={tw`ml-4 flex flex-col items-center`}>
                 <p css={tw`font-medium text-center`}>
-                    &nbsp;
                     {subuser.twoFactorEnabled ? <IconShield /> : <IconUserExclamation color="red" />}
-                    &nbsp;
                 </p>
                 <p css={tw`text-2xs text-zinc-500 uppercase hidden md:block`}>2FA Enabled</p>
             </div>
