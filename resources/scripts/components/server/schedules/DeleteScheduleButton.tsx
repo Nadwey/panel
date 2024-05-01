@@ -28,7 +28,7 @@ export default ({ scheduleId, onDeleted }: Props) => {
             .then(() => {
                 setIsLoading(false);
                 removeSchedule(scheduleId);
-                onDeleted();
+                onDeleted?.();
             })
             .catch(error => {
                 console.error(error);
